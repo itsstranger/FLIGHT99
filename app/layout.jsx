@@ -14,8 +14,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en" suppressHydrationWarning={true}>
-            <body className="font-sans antialiased text-gray-900 bg-white" suppressHydrationWarning={true}>
+        <html lang="en" suppressHydrationWarning={true} className="overflow-x-hidden">
+            <body className="font-sans antialiased text-gray-900 bg-white overflow-x-hidden w-full" suppressHydrationWarning={true}>
                 <AuthProvider>
                     <EnquiryProvider>
                         <PackageProvider>

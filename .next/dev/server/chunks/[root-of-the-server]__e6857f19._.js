@@ -86,6 +86,7 @@ async function POST(request) {
             service_type: service_type || 'holiday',
             message: finalMessage
         };
+        // 1. Save to Supabase
         const { error } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["supabase"].from('enquiries').insert([
             enquiryData
         ]);

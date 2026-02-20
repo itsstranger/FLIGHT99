@@ -62,7 +62,7 @@ const PackageDetails = () => {
                             <p className="text-gray-600 leading-relaxed text-lg">{pkg.description}</p>
 
                             <div className="mt-8 grid grid-cols-2 gap-4">
-                                {pkg.inclusions.map((inc, i) => (
+                                {(pkg.inclusions || []).map((inc, i) => (
                                     <div key={i} className="flex items-center gap-3 text-gray-700">
                                         <CheckCircle className="w-5 h-5 text-green-500 shrink-0" />
                                         <span>{inc}</span>
@@ -75,7 +75,7 @@ const PackageDetails = () => {
                         <section>
                             <h2 className="text-2xl font-bold text-gray-900 mb-6">Detailed Itinerary</h2>
                             <div className="space-y-4">
-                                {pkg.itinerary.map((day, idx) => (
+                                {(pkg.itinerary || []).map((day, idx) => (
                                     <AccordionItem
                                         key={idx}
                                         day={day.day}

@@ -38,52 +38,31 @@ const PackagesContent = () => {
                     <p className="text-gray-500 max-w-2xl">Browse our handpicked itineraries designed for every type of traveler.</p>
                 </div>
 
-                {/* Filters */}
-                <div className="flex flex-col md:flex-row gap-8 items-start relative">
-                    {/* Mobile Filter Toggle */}
-                    <button
-                        onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
-                        className="md:hidden flex items-center justify-between w-full bg-white p-4 rounded-xl shadow-sm border border-gray-100 font-bold text-gray-900 relative z-10"
-                    >
-                        <span className="flex items-center gap-2"><Filter className="w-5 h-5" /> Filters</span>
-                        {isMobileFiltersOpen ? <X className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
-                    </button>
+                {/* Horizontal Filters (YouTube Style) */}
+                <div className="flex flex-col gap-4 mb-8">
 
-                    {/* Sidebar Filter */}
-                    <div className={`w-full md:w-64 shrink-0 bg-white p-6 rounded-xl shadow-sm border border-gray-100 md:sticky md:top-24 mt-[-1rem] md:mt-0 ${isMobileFiltersOpen ? 'block' : 'hidden md:block'}`}>
-                        <div className="hidden md:flex items-center gap-2 mb-6 text-gray-900 font-bold text-lg">
-                            <Filter className="w-5 h-5" /> Filters
-                        </div>
+                    {/* Top Row: Scrollable Type Pills */}
+                    <div className="flex items-center overflow-x-auto pb-2 scrollbar-hide gap-3 w-full">
+                        {types.map(t => (
+                            <button
+                                key={t}
+                                onClick={() => setTypeFilter(t)}
+                                className={`whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium transition-all shrink-0 ${typeFilter === t
+                                    ? 'bg-gray-900 text-white shadow-md'
+                                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                                    }`}
+                            >
+                                {t}
+                            </button>
+                        ))}
+                    </div>
 
-                        <div className="space-y-8">
-                            {/* Type Filter */}
-                            <div>
-                                <h4 className="font-semibold mb-3 text-sm uppercase text-gray-500 tracking-wider">Destination Type</h4>
-                                <div className="space-y-2">
-                                    {types.map(t => (
-                                        <label key={t} className="flex items-center gap-3 cursor-pointer group">
-                                            <div className={`w-5 h-5 rounded border flex items-center justify-center transition-colors ${typeFilter === t ? 'bg-primary border-primary' : 'border-gray-300 bg-white'}`}>
-                                                {typeFilter === t && <div className="w-2 h-2 rounded-full bg-white" />}
-                                            </div>
-                                            <input
-                                                type="radio"
-                                                name="type"
-                                                className="hidden"
-                                                checked={typeFilter === t}
-                                                onChange={() => setTypeFilter(t)}
-                                            />
-                                            <span className={`text-sm group-hover:text-primary transition-colors ${typeFilter === t ? 'font-semibold text-primary' : 'text-gray-600'}`}>{t}</span>
-                                        </label>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Price Filter (Volume Adjuster Style) */}
-                            <div>
-                                <div className="flex justify-between items-center mb-3">
-                                    <h4 className="font-semibold text-sm uppercase text-gray-500 tracking-wider">Max Price</h4>
-                                    <span className="text-sm font-bold text-primary">₹{priceRange.toLocaleString()}</span>
-                                </div>
+                    {/* Bottom Row: Additional Controls (Desktop inline, mobile stacked) */}
+                    <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                        {/* Price Range */}
+                        <div className="flex items-center gap-4 flex-1 max-w-md">
+                            <span className="text-sm font-semibold text-gray-600 whitespace-nowrap">Max Price: <span className="text-primary">₹{priceRange.toLocaleString()}</span></span>
+                            <div className="flex-1">
                                 <input
                                     type="range"
                                     min="10000"
@@ -91,42 +70,38 @@ const PackagesContent = () => {
                                     step="5000"
                                     value={priceRange}
                                     onChange={(e) => setPriceRange(parseInt(e.target.value))}
-                                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
+                                    className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-gray-900"
                                 />
-                                <div className="flex justify-between text-xs text-gray-400 mt-2">
-                                    <span>₹10k</span>
-                                    <span>₹2L+</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h4 className="font-semibold mb-3 text-sm uppercase text-gray-500 tracking-wider">Duration</h4>
-                                <div className="space-y-2">
-                                    {['Any', '3-5 Days', '6-10 Days', '10+ Days'].map((d, i) => (
-                                        <label key={i} className="flex items-center gap-3 cursor-pointer">
-                                            <div className="w-5 h-5 rounded border border-gray-300 bg-white" />
-                                            <span className="text-sm text-gray-600">{d}</span>
-                                        </label>
-                                    ))}
-                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    {/* Grid */}
-                    <div className="flex-1">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {filteredPackages.map(pkg => (
-                                <PackageCard key={pkg.id} packageData={pkg} />
-                            ))}
+                        {/* Note: Duration filtering logic is currently UI-only in the original code.
+                            Adding a simple UI placeholder here to maintain visual parity with requested functionality. */}
+                        <div className="flex items-center gap-2">
+                            <span className="text-sm font-semibold text-gray-600">Duration:</span>
+                            <select className="input-premium py-1.5 px-3 text-sm bg-gray-50 border-transparent">
+                                <option>Any Duration</option>
+                                <option>3-5 Days</option>
+                                <option>6-10 Days</option>
+                                <option>10+ Days</option>
+                            </select>
                         </div>
-                        {filteredPackages.length === 0 && (
-                            <div className="text-center py-20 bg-white rounded-xl border border-dashed border-gray-300">
-                                <p className="text-gray-500">No packages found for this category.</p>
-                                <button onClick={() => setTypeFilter('All')} className="text-primary font-semibold mt-2 hover:underline">Clear Filters</button>
-                            </div>
-                        )}
                     </div>
+                </div>
+
+                {/* Grid */}
+                <div className="flex-1 min-w-0">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        {filteredPackages.map(pkg => (
+                            <PackageCard key={pkg.id} packageData={pkg} />
+                        ))}
+                    </div>
+                    {filteredPackages.length === 0 && (
+                        <div className="text-center py-20 bg-white rounded-xl border border-dashed border-gray-300">
+                            <p className="text-gray-500">No packages found for this category.</p>
+                            <button onClick={() => setTypeFilter('All')} className="text-primary font-semibold mt-2 hover:underline">Clear Filters</button>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

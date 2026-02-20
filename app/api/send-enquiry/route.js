@@ -24,6 +24,7 @@ export async function POST(request) {
             message: finalMessage,
         };
 
+        // 1. Save to Supabase
         const { error } = await supabase
             .from('enquiries')
             .insert([enquiryData]);

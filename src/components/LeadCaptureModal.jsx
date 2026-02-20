@@ -44,25 +44,58 @@ const LeadCaptureModal = () => {
 
                         <form className="p-6 space-y-4" onSubmit={async (e) => {
                             e.preventDefault();
-                            const formData = new FormData(e.target);
-                            const data = Object.fromEntries(formData.entries());
 
-                            // Attach correct service_type
+                            const formElement = e.target;
+                            const submitBtn = formElement.querySelector('button[type="submit"]');
+                            const originalText = submitBtn.textContent;
+
+                            submitBtn.textContent = "Sending...";
+                            submitBtn.disabled = true;
+
+                            const formData = new FormData(formElement);
+
+                            // 1. Build Data Object for Custom API (Supabase)
+                            const data = Object.fromEntries(formData.entries());
                             if (modalType === 'hajj') {
                                 data.service_type = 'umrah';
                             }
+                            data.service_type = data.service_type || 'holiday';
 
-                            // Mock API Call
+                            // Attach context if triggered from a specific package
+                            if (prefillData?.message) {
+                                data.message = prefillData.message;
+                            }
+
+                            // 2. Append Web3Forms Key & Formatting
+                            formData.append("access_key", "fd4cbdc6-dbae-42b4-9ed9-a09170314f38");
+                            formData.append("subject", `New Lead: ${data.service_type.toUpperCase()} Enquiry from ${data.name}`);
+                            formData.append("from_name", "FLIGHT99 Website");
+
+                            if (data.message) {
+                                formData.append("message", `Context: ${data.message}`);
+                            }
+
                             try {
-                                await fetch('/api/send-enquiry', {
-                                    method: 'POST',
-                                    body: JSON.stringify(data),
-                                    headers: { 'Content-Type': 'application/json' }
-                                });
-                                alert("Enquiry Submitted! We'll contact you shortly.");
+                                // Execute Both Requests Concurrently
+                                await Promise.all([
+                                    fetch('https://api.web3forms.com/submit', {
+                                        method: 'POST',
+                                        body: formData
+                                    }),
+                                    fetch('/api/send-enquiry', {
+                                        method: 'POST',
+                                        body: JSON.stringify(data),
+                                        headers: { 'Content-Type': 'application/json' }
+                                    })
+                                ]);
+
+                                alert("Success! Your enquiry has been sent.");
                                 closeModal();
                             } catch (err) {
                                 alert("Something went wrong. Please try again.");
+                            } finally {
+                                submitBtn.textContent = originalText;
+                                submitBtn.disabled = false;
                             }
                         }}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

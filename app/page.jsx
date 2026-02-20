@@ -33,13 +33,18 @@ const Home = () => {
         <>
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-24 flex flex-col items-center">
-                {/* Parallax Background - Fixed Height Banner */}
+                {/* Parallax Background - Fixed Height Video Banner */}
                 <motion.div style={{ y: yBg }} className="absolute top-0 left-0 right-0 h-[500px] z-0 overflow-hidden rounded-b-[1.5rem] md:rounded-b-[3rem] bg-gray-900">
-                    <img
-                        src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0"
-                        alt="Travel Background"
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
                         className="w-full h-full object-cover object-center"
-                    />
+                    >
+                        <source src="/assets/clouds-video.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
 
                     {/* Dark Overlay for Text Contrast */}
                     <div className="absolute inset-0 bg-black/30 z-0" />
@@ -55,8 +60,8 @@ const Home = () => {
                         className="text-center mb-8 flex flex-col items-center"
                     >
                         <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight drop-shadow-lg text-center">
-                            The World is Waiting. <br />
-                            <span className="text-secondary italic font-serif">Go Get It.</span>
+                            Travel brings <br />
+                            <span className="text-secondary italic font-serif">pleasure</span>
                         </h1>
                         <p className="text-lg text-gray-100 max-w-2xl mx-auto drop-shadow-md text-center">
                             Discover exclusive deals on flights, premium holiday packages, and hassle-free visa services.
@@ -68,39 +73,56 @@ const Home = () => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
-                        className="w-full max-w-5xl"
+                        className="w-full max-w-5xl mt-16 md:mt-[100px]"
                     >
                         <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-black/20 overflow-hidden border border-white/40 p-5 md:p-8">
                             <div className="flex flex-col md:flex-row gap-5 md:gap-6 items-end">
-                                {/* Type Toggle */}
-                                <div className="flex w-full md:w-auto bg-gray-100 p-1 rounded-lg shrink-0">
-                                    {['International', 'Domestic'].map((type) => (
-                                        <button
-                                            key={type}
-                                            onClick={() => setSearchType(type.toLowerCase())}
-                                            className={`flex-1 md:flex-none px-6 py-2.5 rounded-md text-sm font-bold transition-all ${searchType === type.toLowerCase()
-                                                ? 'bg-white text-primary shadow-sm'
-                                                : 'text-gray-500 hover:text-gray-900'
-                                                }`}
-                                        >
-                                            {type}
-                                        </button>
-                                    ))}
+                                {/* Type Toggle Block */}
+                                <div className="flex items-end gap-3 w-full md:w-auto">
+                                    <div className="w-12 h-[52px] bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center shrink-0">
+                                        <Map className="w-6 h-6 text-primary" />
+                                    </div>
+                                    <div className="flex flex-col flex-1 md:flex-none">
+                                        <label className="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider">Trip Type</label>
+                                        <div className="flex w-full bg-gray-100 p-1 rounded-lg shrink-0 h-[52px]">
+                                            {['Domestic', 'International'].map((type) => (
+                                                <button
+                                                    key={type}
+                                                    onClick={() => setSearchType(type.toLowerCase())}
+                                                    className={`flex-1 md:w-32 px-4 rounded-md text-sm font-bold transition-all ${searchType === type.toLowerCase()
+                                                        ? 'bg-white text-primary shadow-sm'
+                                                        : 'text-gray-500 hover:text-gray-900'
+                                                        }`}
+                                                >
+                                                    {type}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
 
-                                {/* Destination Input */}
+                                {/* Destination Dropdown */}
                                 <div className="flex-1 w-full">
                                     <label className="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider">Destination</label>
                                     <div className="relative group">
-                                        <input
-                                            type="text"
-                                            placeholder={`Search ${searchType} destinations...`}
-                                            className="input-premium pl-11 w-full text-base"
+                                        <select
+                                            className="input-premium pl-11 w-full text-base appearance-none bg-white cursor-pointer"
                                             value={destination}
                                             onChange={(e) => setDestination(e.target.value)}
-                                            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-                                        />
-                                        <Map className="w-5 h-5 text-gray-400 absolute left-4 top-3.5 group-focus-within:text-primary transition-colors" />
+                                        >
+                                            <option value="">Any {searchType === 'international' ? 'International' : 'Domestic'} Destination</option>
+                                            {Array.from(new Set(
+                                                packages
+                                                    .filter(p => !searchType || p.type.toLowerCase() === searchType)
+                                                    .map(p => p.location)
+                                            )).map(loc => (
+                                                <option key={loc} value={loc}>{loc}</option>
+                                            ))}
+                                        </select>
+                                        <Map className="w-5 h-5 text-gray-400 absolute left-4 top-3.5 group-focus-within:text-primary transition-colors pointer-events-none" />
+                                        <div className="absolute right-4 top-4 pointer-events-none">
+                                            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -166,8 +188,8 @@ const Home = () => {
                         </Link>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {packages.slice(0, 3).map((pkg) => (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {packages.slice(0, 4).map((pkg) => (
                             <PackageCard key={pkg.id} packageData={pkg} />
                         ))}
                     </div>

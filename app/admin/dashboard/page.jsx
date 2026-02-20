@@ -303,6 +303,8 @@ const PackageFormModal = ({ isOpen, onClose, packageData, onSubmit }) => {
         type: 'International', // Default
         duration: '',
         description: '',
+        inclusions: packageData?.inclusions || [],
+        itinerary: packageData?.itinerary || [],
         ...packageData,
         image: packageData?.image_url || packageData?.image || 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop', // Placeholder
     });
@@ -313,6 +315,24 @@ const PackageFormModal = ({ isOpen, onClose, packageData, onSubmit }) => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    // Dynamic List Handlers for Inclusions
+    const handleAddInclusion = () => setFormData(prev => ({ ...prev, inclusions: [...prev.inclusions, ''] }));
+    const handleRemoveInclusion = (idx) => setFormData(prev => ({ ...prev, inclusions: prev.inclusions.filter((_, i) => i !== idx) }));
+    const handleInclusionChange = (idx, value) => {
+        const newInclusions = [...formData.inclusions];
+        newInclusions[idx] = value;
+        setFormData(prev => ({ ...prev, inclusions: newInclusions }));
+    };
+
+    // Dynamic List Handlers for Itinerary
+    const handleAddItinerary = () => setFormData(prev => ({ ...prev, itinerary: [...prev.itinerary, { day: `Day ${prev.itinerary.length + 1}`, title: '', description: '' }] }));
+    const handleRemoveItinerary = (idx) => setFormData(prev => ({ ...prev, itinerary: prev.itinerary.filter((_, i) => i !== idx) }));
+    const handleItineraryChange = (idx, field, value) => {
+        const newItinerary = [...formData.itinerary];
+        newItinerary[idx] = { ...newItinerary[idx], [field]: value };
+        setFormData(prev => ({ ...prev, itinerary: newItinerary }));
     };
 
     const handleImageChange = async (e) => {
@@ -414,6 +434,53 @@ const PackageFormModal = ({ isOpen, onClose, packageData, onSubmit }) => {
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
                         <textarea name="description" rows="4" required value={formData.description} onChange={handleChange} className="input-premium w-full resize-none" placeholder="Detailed description..." />
+                    </div>
+
+                    {/* Inclusions Section */}
+                    <div className="border-t border-gray-100 pt-6">
+                        <div className="flex justify-between items-center mb-3">
+                            <label className="block text-sm font-medium text-gray-700">Inclusions</label>
+                            <Button type="button" variant="outline" size="sm" onClick={handleAddInclusion} className="py-1 px-3 text-xs">+ Add Inclusion</Button>
+                        </div>
+                        <div className="space-y-3">
+                            {formData.inclusions.map((inc, idx) => (
+                                <div key={idx} className="flex gap-2 items-center">
+                                    <input type="text" value={inc} onChange={(e) => handleInclusionChange(idx, e.target.value)} className="input-premium w-full !py-2" placeholder="e.g. Return Economy Flights" required />
+                                    <button type="button" onClick={() => handleRemoveInclusion(idx)} className="p-2 text-gray-400 hover:text-red-500 bg-gray-50 hover:bg-red-50 rounded-lg transition-colors"><Trash2 className="w-4 h-4" /></button>
+                                </div>
+                            ))}
+                            {formData.inclusions.length === 0 && <p className="text-xs text-gray-400 italic">No inclusions added yet.</p>}
+                        </div>
+                    </div>
+
+                    {/* Itinerary Section */}
+                    <div className="border-t border-gray-100 pt-6">
+                        <div className="flex justify-between items-center mb-4">
+                            <label className="block text-sm font-medium text-gray-700">Detailed Itinerary</label>
+                            <Button type="button" variant="outline" size="sm" onClick={handleAddItinerary} className="py-1 px-3 text-xs">+ Add Day</Button>
+                        </div>
+                        <div className="space-y-4">
+                            {formData.itinerary.map((day, idx) => (
+                                <div key={idx} className="bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-3 relative group">
+                                    <button type="button" onClick={() => handleRemoveItinerary(idx)} className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-red-500 bg-white hover:bg-red-50 rounded-md shadow-sm transition-colors opacity-0 group-hover:opacity-100"><Trash2 className="w-3.5 h-3.5" /></button>
+                                    <div className="flex gap-3 pr-8">
+                                        <div className="w-24 shrink-0">
+                                            <label className="block text-[10px] font-bold uppercase text-gray-500 mb-1">Day Tag</label>
+                                            <input type="text" value={day.day} onChange={(e) => handleItineraryChange(idx, 'day', e.target.value)} className="input-premium w-full !py-1.5 !text-sm" placeholder="Day 1" required />
+                                        </div>
+                                        <div className="flex-1">
+                                            <label className="block text-[10px] font-bold uppercase text-gray-500 mb-1">Day Title</label>
+                                            <input type="text" value={day.title} onChange={(e) => handleItineraryChange(idx, 'title', e.target.value)} className="input-premium w-full !py-1.5 !text-sm" placeholder="e.g. Arrival & Leisure" required />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label className="block text-[10px] font-bold uppercase text-gray-500 mb-1">Details</label>
+                                        <textarea value={day.description} onChange={(e) => handleItineraryChange(idx, 'description', e.target.value)} className="input-premium w-full !py-2 !text-sm resize-none" rows="2" placeholder="Activities planned for the day..." required />
+                                    </div>
+                                </div>
+                            ))}
+                            {formData.itinerary.length === 0 && <p className="text-xs text-gray-400 italic">No itinerary days added yet.</p>}
+                        </div>
                     </div>
 
                     <div className="pt-4 flex justify-end gap-3">

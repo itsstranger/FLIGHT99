@@ -1,12 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Clock, Star, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import Button from './ui/Button';
 
 const PackageCard = ({ packageData }) => {
-    const { id, title, image, image_url, duration, price, rating, reviews, location } = packageData;
+    const { id, title, image, image_url, duration, price, location } = packageData;
     const displayImage = image_url || image;
+
+    // Determine a subtle dynamic bottom block gradient based on location length or id to mimic the reference's variety
+    const bgColors = [
+        'bg-gradient-to-br from-[#717b68] to-[#515a49]', // olive/sage green gradient
+        'bg-gradient-to-br from-[#5b7890] to-[#3a5870]', // slate blue gradient
+        'bg-gradient-to-br from-[#3891db] to-[#1e6cb0]', // bright blue gradient
+        'bg-gradient-to-br from-[#404635] to-[#252a1a]', // dark moss gradient
+        'bg-gradient-to-br from-[#3b596b] to-[#1e3240]'  // dark slate gradient
+    ];
+    // Hash string to index
+    const colorIndex = title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % bgColors.length;
+    const bottomBgColor = bgColors[colorIndex];
+
+    // Mock up a fake original price (+10% for the strike-through effect in the design)
+    const originalPrice = Math.floor(price * 1.11);
 
     return (
         <motion.div
@@ -15,56 +28,57 @@ const PackageCard = ({ packageData }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             whileHover={{ y: -5 }}
-            className="group relative overflow-hidden rounded-2xl bg-white shadow-lg border border-gray-100 transition-all hover:shadow-xl"
+            className={`group relative overflow-hidden rounded-md shadow-md hover:shadow-xl transition-all h-[420px] flex flex-col`}
         >
-            {/* Image */}
-            <div className="relative h-64 overflow-hidden">
-                <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary shadow-sm">
-                    Bestseller
-                </div>
+            {/* Top Section - Image + Title Overlay */}
+            <div className="relative h-[65%] w-full overflow-hidden shrink-0">
                 <img
                     src={displayImage}
                     alt={title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 transition-opacity group-hover:opacity-40" />
+                {/* Gradient for text readability */}
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+
+                {/* Overlaid Title */}
+                <h3 className="absolute bottom-4 left-5 right-5 text-white font-bold text-xl leading-tight drop-shadow-md line-clamp-2">
+                    {title}
+                </h3>
             </div>
 
-            {/* Content */}
-            <div className="p-6">
-                <div className="flex items-start justify-between mb-3">
-                    <div>
-                        <h3 className="line-clamp-1 text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
-                            {title}
-                        </h3>
-                        <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
-                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                            {location}
-                        </p>
-                    </div>
-                    <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg text-yellow-700 font-medium text-xs">
-                        <Star className="w-3 h-3 fill-yellow-500 text-yellow-500" />
-                        {rating}
-                    </div>
-                </div>
+            {/* Bottom Section - Info Block */}
+            <div className={`flex flex-col flex-1 p-5 ${bottomBgColor} text-white`}>
 
-                <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
-                    <div className="flex items-center gap-1.5 text-xs font-medium bg-gray-50 px-3 py-1.5 rounded-full text-gray-600">
-                        <Clock className="w-3.5 h-3.5" />
+                {/* Row 1: Duration & Location */}
+                <div className="flex items-center gap-3 mb-auto">
+                    <div className="bg-black/30 backdrop-blur-sm px-2.5 py-1.5 rounded-md text-xs font-bold tracking-wide">
                         {duration}
                     </div>
+                    <span className="text-sm font-medium text-white/90 truncate">
+                        {location}
+                    </span>
                 </div>
 
-                <div className="flex items-center justify-between mt-auto border-t border-gray-100 pt-4">
+                {/* Sep. Line (Optional, visually inferred from structured spacing) */}
+                <div className="h-px w-full bg-white/20 my-4" />
+
+                {/* Row 2: Pricing & CTA */}
+                <div className="flex items-end justify-between w-full">
                     <div className="flex flex-col">
-                        <span className="text-xs text-gray-400">Starting from</span>
-                        <span className="text-xl font-bold text-primary">₹{price.toLocaleString()}</span>
+                        {/* Struck-through original price */}
+                        <span className="text-xs text-white/60 line-through decoration-white/40 mb-0.5">
+                            ₹{originalPrice.toLocaleString()}/-
+                        </span>
+                        {/* Main Price */}
+                        <span className="text-[1.35rem] leading-none font-bold">
+                            ₹{price.toLocaleString()}/-
+                        </span>
                     </div>
 
                     <Link href={`/packages/${id}`}>
-                        <Button size="sm" variant="outline" className="text-xs px-3 group-hover:bg-primary group-hover:text-white transition-all">
-                            View Itinerary <ArrowRight className="w-3 h-3 ml-1" />
-                        </Button>
+                        <button className="bg-white text-gray-900 font-bold text-xs px-4 py-2.5 rounded-sm hover:bg-gray-100 transition-colors shadow-sm">
+                            View Details
+                        </button>
                     </Link>
                 </div>
             </div>
