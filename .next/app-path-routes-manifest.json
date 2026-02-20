@@ -1,0 +1,13 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/admin/dashboard/page": "/admin/dashboard",
+  "/admin/login/page": "/admin/login",
+  "/api/send-enquiry/route": "/api/send-enquiry",
+  "/hajj-umrah/page": "/hajj-umrah",
+  "/packages/[id]/page": "/packages/[id]",
+  "/packages/page": "/packages",
+  "/page": "/",
+  "/visa/page": "/visa"
+}

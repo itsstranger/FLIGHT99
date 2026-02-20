@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
@@ -25,11 +27,11 @@ const LeadCaptureModal = () => {
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="relative w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gray-900/5"
+                        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl ring-1 ring-gray-900/5"
                     >
-                        <div className="flex items-center justify-between border-b px-8 py-5">
+                        <div className="flex items-center justify-between border-b px-6 md:px-8 py-4 md:py-5 sticky top-0 bg-white z-10">
                             <h3 className="text-xl font-semibold text-primary">
-                                {modalType === 'customize' ? 'Customize Your Trip' : 'Plan Your Dream Trip'}
+                                {modalType === 'hajj' ? 'Plan Your Umrah Journey' : modalType === 'customize' ? 'Customize Your Trip' : 'Plan Your Dream Trip'}
                             </h3>
                             <button
                                 onClick={closeModal}
@@ -40,51 +42,94 @@ const LeadCaptureModal = () => {
                             </button>
                         </div>
 
-                        <form className="p-6 space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Enquiry Submitted! We'll call you shortly."); closeModal(); }}>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                                <input
-                                    type="text"
-                                    required
-                                    className="w-full rounded-lg border-gray-300 border px-4 py-2 focus:border-primary focus:ring-primary outline-none transition-all"
-                                    placeholder="John Doe"
-                                />
-                            </div>
+                        <form className="p-6 space-y-4" onSubmit={async (e) => {
+                            e.preventDefault();
+                            const formData = new FormData(e.target);
+                            const data = Object.fromEntries(formData.entries());
 
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                <div className="flex gap-2">
-                                    <input
-                                        type="tel"
-                                        className="w-20 rounded-lg border-gray-300 border px-3 py-2 bg-gray-50 text-center"
-                                        placeholder="+91"
-                                        defaultValue={"+91"}
-                                    />
-                                    <input
-                                        type="tel"
-                                        required
-                                        className="flex-1 rounded-lg border-gray-300 border px-4 py-2 focus:border-primary focus:ring-primary outline-none transition-all"
-                                        placeholder="98765 43210"
-                                    />
+                            // Attach correct service_type
+                            if (modalType === 'hajj') {
+                                data.service_type = 'umrah';
+                            }
+
+                            // Mock API Call
+                            try {
+                                await fetch('/api/send-enquiry', {
+                                    method: 'POST',
+                                    body: JSON.stringify(data),
+                                    headers: { 'Content-Type': 'application/json' }
+                                });
+                                alert("Enquiry Submitted! We'll contact you shortly.");
+                                closeModal();
+                            } catch (err) {
+                                alert("Something went wrong. Please try again.");
+                            }
+                        }}>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                    <input type="text" name="name" required className="input-premium w-full" placeholder="John Doe" />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                    <input type="tel" name="phone" required className="input-premium w-full" placeholder="+91 98765 43210" />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Tell us about your plans</label>
-                                <textarea
-                                    rows={4}
-                                    className="w-full rounded-lg border-gray-300 border px-4 py-2 focus:border-primary focus:ring-primary outline-none transition-all resize-none"
-                                    placeholder="Looking for a 5-day Kerala trip for 4 people in December..."
-                                    defaultValue={prefillData?.message || ''}
-                                ></textarea>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" name="email" required className="input-premium w-full" placeholder="john@example.com" />
+                            </div>
+
+                            {modalType !== 'hajj' ? (
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Travelling From</label>
+                                        <input type="text" name="from" className="input-premium w-full" placeholder="Mumbai" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Destination</label>
+                                        <input type="text" name="destination" className="input-premium w-full" placeholder="Dubai" defaultValue={prefillData?.destination || ''} />
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Number of Pilgrims</label>
+                                        <input type="number" min="1" name="persons" className="input-premium w-full" placeholder="2" defaultValue="1" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Need Hotel Booking?</label>
+                                        <select name="bookHotel" className="input-premium w-full">
+                                            <option value="Yes">Yes, include hotels</option>
+                                            <option value="No">No, only ground transport/visa</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            )}
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">{modalType === 'hajj' ? 'Start Date' : 'Travel Date'}</label>
+                                    <input type="date" name="date" required={modalType === 'hajj'} className="input-premium w-full" />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Duration (Days)</label>
+                                    <select name="duration" className="input-premium w-full">
+                                        <option>3-5 Days</option>
+                                        <option>6-10 Days</option>
+                                        <option>10-15 Days</option>
+                                        <option>15+ Days</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div className="pt-2">
                                 <Button type="submit" className="w-full" variant="secondary">
-                                    Request Callback
+                                    Send Enquiry
                                 </Button>
                                 <p className="mt-3 text-center text-xs text-gray-500">
-                                    Our experts will contact you within 2 hours.
+                                    Your details are sent directly to our expert team.
                                 </p>
                             </div>
                         </form>

@@ -1,11 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, Star, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Button from './ui/Button';
 
 const PackageCard = ({ packageData }) => {
-    const { id, title, image, duration, price, rating, reviews, location } = packageData;
+    const { id, title, image, image_url, duration, price, rating, reviews, location } = packageData;
+    const displayImage = image_url || image;
 
     return (
         <motion.div
@@ -22,7 +23,7 @@ const PackageCard = ({ packageData }) => {
                     Bestseller
                 </div>
                 <img
-                    src={image}
+                    src={displayImage}
                     alt={title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -60,7 +61,7 @@ const PackageCard = ({ packageData }) => {
                         <span className="text-xl font-bold text-primary">₹{price.toLocaleString()}</span>
                     </div>
 
-                    <Link to={`/packages/${id}`}>
+                    <Link href={`/packages/${id}`}>
                         <Button size="sm" variant="outline" className="text-xs px-3 group-hover:bg-primary group-hover:text-white transition-all">
                             View Itinerary <ArrowRight className="w-3 h-3 ml-1" />
                         </Button>

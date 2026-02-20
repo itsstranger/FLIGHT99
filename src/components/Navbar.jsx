@@ -1,14 +1,16 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, Phone } from 'lucide-react';
-import logo from '../assets/logo.png';
 import Button from './ui/Button';
 import { useModal } from '../context/ModalContext';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const location = useLocation();
+    const pathname = usePathname();
     const { openModal } = useModal();
 
     useEffect(() => {
@@ -20,15 +22,12 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Flights', path: '/' },
-        { name: 'Packages', path: '/packages' },
-        { name: 'Visa', path: '/visa' },
-        { name: 'About Us', path: '/about' },
-        { name: 'Contact', path: '/contact' },
+        { name: 'Home', path: '/' },
+        { name: 'About', path: '/about' },
+        { name: 'Visa Services', path: '/visa' },
+        { name: 'Hajj & Umrah', path: '/hajj-umrah' },
+        { name: 'Packages', path: '/packages' }, // Kept for general holiday packages
     ];
-
-    // Check if we are on home page to determining transparency
-    const isHome = location.pathname === '/';
 
     return (
         <nav
@@ -37,8 +36,13 @@ const Navbar = () => {
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex items-center justify-between">
                     {/* Logo - Clean */}
-                    <Link to="/" className="flex items-center gap-2 transition-all duration-300">
-                        <img src={logo} alt="FLIGHT99" className="h-10 w-auto object-contain drop-shadow-md" />
+                    <Link href="/" className="flex items-center gap-2 transition-transform duration-300 hover:scale-105">
+                        <img
+                            src="/assets/logo.png"
+                            alt="FLIGHT99"
+                            className="h-12 md:h-14 w-auto object-contain drop-shadow-sm"
+                            suppressHydrationWarning={true}
+                        />
                     </Link>
 
                     {/* Desktop Nav */}
@@ -46,7 +50,7 @@ const Navbar = () => {
                         {navLinks.map((link) => (
                             <Link
                                 key={link.path}
-                                to={link.path}
+                                href={link.path}
                                 className="font-medium text-sm text-gray-700 transition-colors hover:text-secondary drop-shadow-md"
                             >
                                 {link.name}
@@ -54,15 +58,24 @@ const Navbar = () => {
                         ))}
                     </div>
 
-                    {/* CTA Button */}
-                    <div className="hidden md:block">
+                    {/* CTA Buttons */}
+                    <div className="hidden md:flex items-center gap-3">
+                        <a href="tel:+919876543210">
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                className="border-gray-200 text-gray-700 hover:bg-gray-50 hover:text-primary hover:border-primary/20"
+                            >
+                                <Phone className="w-4 h-4 mr-2" /> Call Expert
+                            </Button>
+                        </a>
                         <Button
                             variant="primary"
                             size="sm"
                             className="shadow-lg shadow-primary/20"
-                            onClick={openModal}
+                            onClick={() => openModal('plan')}
                         >
-                            <Phone className="w-4 h-4 mr-2" /> Talk to an Expert
+                            Plan Your Trip
                         </Button>
                     </div>
 
@@ -82,7 +95,7 @@ const Navbar = () => {
                     {navLinks.map((link) => (
                         <Link
                             key={link.path}
-                            to={link.path}
+                            href={link.path}
                             className="text-gray-600 font-medium py-2 hover:text-primary transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >

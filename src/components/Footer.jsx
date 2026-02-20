@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
@@ -25,11 +25,11 @@ const Footer = () => {
                     <div>
                         <h3 className="text-lg font-semibold mb-6 text-secondary">Explore</h3>
                         <ul className="space-y-3 text-sm text-gray-300">
-                            <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
-                            <li><Link to="/packages" className="hover:text-white transition-colors">Holiday Packages</Link></li>
-                            <li><Link to="/flights" className="hover:text-white transition-colors">Flights</Link></li>
-                            <li><Link to="/visas" className="hover:text-white transition-colors">Visa Services</Link></li>
-                            <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
+                            <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+                            <li><Link href="/packages" className="hover:text-white transition-colors">Holiday Packages</Link></li>
+                            <li><Link href="/flights" className="hover:text-white transition-colors">Flights</Link></li>
+                            <li><Link href="/visas" className="hover:text-white transition-colors">Visa Services</Link></li>
+                            <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
                         </ul>
                     </div>
 
@@ -37,10 +37,10 @@ const Footer = () => {
                     <div>
                         <h3 className="text-lg font-semibold mb-6 text-secondary">Support</h3>
                         <ul className="space-y-3 text-sm text-gray-300">
-                            <li><Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
-                            <li><Link to="/faq" className="hover:text-white transition-colors">FAQs</Link></li>
-                            <li><Link to="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
-                            <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                            <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
+                            <li><Link href="/faq" className="hover:text-white transition-colors">FAQs</Link></li>
+                            <li><Link href="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
+                            <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
                         </ul>
                     </div>
 
