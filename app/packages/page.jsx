@@ -7,6 +7,8 @@ import { Filter, X, ChevronDown } from 'lucide-react';
 
 import { useSearchParams } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 const PackagesContent = () => {
     const searchParams = useSearchParams();
     const { packages } = usePackages();

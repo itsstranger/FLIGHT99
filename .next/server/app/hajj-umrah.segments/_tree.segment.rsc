@@ -1,2 +1,2 @@
-:HL["/_next/static/chunks/e75dc55290071a86.css","style"]
-0:{"buildId":"0fIfFyOdrxUeFYCE0zRHB","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"hajj-umrah","paramType":null,"paramKey":"hajj-umrah","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+:HL["/_next/static/chunks/5663dad9a481d3f5.css","style"]
+0:{"buildId":"nY6BQ0AQh2U_xJ-tdnwHr","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"hajj-umrah","paramType":null,"paramKey":"hajj-umrah","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
