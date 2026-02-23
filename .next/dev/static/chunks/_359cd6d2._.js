@@ -537,7 +537,7 @@ const Home = ()=>{
                                 className: "w-full max-w-5xl mt-16 md:mt-[100px]",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "bg-white rounded-3xl shadow-2xl shadow-black/10 border border-gray-100 flex flex-col md:flex-row w-full mt-4",
+                                        className: "bg-white rounded-xl shadow-2xl shadow-black/10 border border-gray-100 flex flex-col md:flex-row w-full mt-4",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 ref: typeRef,
@@ -721,7 +721,7 @@ const Home = ()=>{
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$Button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                 size: "lg",
-                                                className: "h-[80px] md:h-auto md:w-56 rounded-none rounded-b-3xl md:rounded-l-none md:rounded-r-3xl text-xl font-black tracking-wider shadow-none hover:bg-primary/90 transition-all border-none",
+                                                className: "h-[80px] md:h-auto md:w-56 rounded-none rounded-b-xl md:rounded-l-none md:rounded-r-xl text-xl font-black tracking-wider shadow-none hover:bg-primary/90 transition-all border-none",
                                                 variant: "primary",
                                                 onClick: handleSearch,
                                                 children: [

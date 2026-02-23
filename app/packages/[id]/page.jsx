@@ -8,9 +8,10 @@ import AccordionItem from '@/components/ui/AccordionItem';
 import { useModal } from '@/context/ModalContext';
 import { usePackages } from '@/context/PackageContext';
 
-const PackageDetails = () => {
-    const params = useParams();
-    const id = params?.id;
+const PackageDetails = ({ params }) => {
+    // In Next.js 15, params is a Promise that needs to be unwrapped.
+    const resolvedParams = React.use(params);
+    const id = resolvedParams?.id;
     const { packages, loading } = usePackages();
 
     // Safety check - find package

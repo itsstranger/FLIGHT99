@@ -103,7 +103,7 @@ const Home = () => {
                         transition={{ duration: 0.5, delay: 0.4 }}
                         className="w-full max-w-5xl mt-16 md:mt-[100px]"
                     >
-                        <div className="bg-white rounded-3xl shadow-2xl shadow-black/10 border border-gray-100 flex flex-col md:flex-row w-full mt-4">
+                        <div className="bg-white rounded-xl shadow-2xl shadow-black/10 border border-gray-100 flex flex-col md:flex-row w-full mt-4">
 
                             {/* Trip Type Custom Dropdown */}
                             <div
@@ -194,7 +194,7 @@ const Home = () => {
                             {/* Search Button */}
                             <Button
                                 size="lg"
-                                className="h-[80px] md:h-auto md:w-56 rounded-none rounded-b-3xl md:rounded-l-none md:rounded-r-3xl text-xl font-black tracking-wider shadow-none hover:bg-primary/90 transition-all border-none"
+                                className="h-[80px] md:h-auto md:w-56 rounded-none rounded-b-xl md:rounded-l-none md:rounded-r-xl text-xl font-black tracking-wider shadow-none hover:bg-primary/90 transition-all border-none"
                                 variant="primary"
                                 onClick={handleSearch}
                             >

@@ -79,41 +79,14 @@ const Navbar = () => {
                         </Button>
                     </div>
 
-                    {/* Mobile Menu Toggle */}
-                    <button
-                        className="md:hidden p-2"
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    >
-                        {isMobileMenuOpen ? <X className="text-gray-900" /> : <Menu className="text-gray-900" />}
-                    </button>
+                    {/* Mobile Only CTA - Call icon instead of full button for extreme cleanliness */}
+                    <div className="md:hidden flex items-center">
+                        <a href="tel:+919876543210" className="p-2 text-primary bg-primary/5 rounded-full">
+                            <Phone className="w-5 h-5" />
+                        </a>
+                    </div>
                 </div>
             </div>
-
-            {/* Mobile Menu */}
-            {isMobileMenuOpen && (
-                <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-xl p-4 flex flex-col gap-4">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.path}
-                            href={link.path}
-                            className="text-gray-600 font-medium py-2 hover:text-primary transition-colors"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                    <Button
-                        variant="primary"
-                        className="w-full justify-center"
-                        onClick={() => {
-                            openModal();
-                            setIsMobileMenuOpen(false);
-                        }}
-                    >
-                        <Phone className="w-4 h-4 mr-2" /> Talk to an Expert
-                    </Button>
-                </div>
-            )}
         </nav>
     );
 };
