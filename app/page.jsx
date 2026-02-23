@@ -1,8 +1,8 @@
 'use client'; // Client Component due to hooks
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Plane, Calendar, ShieldCheck, Map, ArrowRight, TrendingUp, Users, Globe2 } from 'lucide-react';
+import { Plane, Calendar, ShieldCheck, Map, ArrowRight, TrendingUp, Users, Globe2, ChevronDown } from 'lucide-react';
 import { usePackages } from '@/context/PackageContext';
 import PackageCard from '@/components/PackageCard';
 import Button from '@/components/ui/Button';
@@ -10,6 +10,13 @@ import ServiceBar from '@/components/ServiceBar';
 import Link from 'next/link';
 
 import { useRouter } from 'next/navigation';
+
+// Swiper imports
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 // Helper to get asset path
 const getAssetPath = (path) => `/assets/${path.split('/').pop()}`;
@@ -22,6 +29,21 @@ const Home = () => {
     const { scrollY } = useScroll();
     const yBg = useTransform(scrollY, [0, 500], [0, 200]);
 
+    // Custom Dropdown State
+    const [isTypeOpen, setIsTypeOpen] = useState(false);
+    const [isDestOpen, setIsDestOpen] = useState(false);
+    const typeRef = useRef(null);
+    const destRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (typeRef.current && !typeRef.current.contains(event.target)) setIsTypeOpen(false);
+            if (destRef.current && !destRef.current.contains(event.target)) setIsDestOpen(false);
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
     const handleSearch = () => {
         const params = new URLSearchParams();
         params.set('type', searchType);
@@ -29,12 +51,18 @@ const Home = () => {
         router.push(`/packages?${params.toString()}`);
     };
 
+    const uniqueDestinations = Array.from(new Set(
+        packages
+            .filter(p => !searchType || p.type.toLowerCase() === searchType)
+            .map(p => p.location)
+    ));
+
     return (
         <>
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-24 flex flex-col items-center">
                 {/* Parallax Background - Fixed Height Video Banner */}
-                <motion.div style={{ y: yBg }} className="absolute top-0 left-0 right-0 h-[500px] z-0 overflow-hidden rounded-b-[1.5rem] md:rounded-b-[3rem] bg-gray-900">
+                <motion.div style={{ y: yBg }} className="absolute top-0 left-0 right-0 h-[500px] z-0 overflow-hidden bg-gray-900">
                     <video
                         autoPlay
                         loop
@@ -75,67 +103,103 @@ const Home = () => {
                         transition={{ duration: 0.5, delay: 0.4 }}
                         className="w-full max-w-5xl mt-16 md:mt-[100px]"
                     >
-                        <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-black/20 overflow-hidden border border-white/40 p-5 md:p-8">
-                            <div className="flex flex-col md:flex-row gap-5 md:gap-6 items-end">
-                                {/* Type Toggle Block */}
-                                <div className="flex items-end gap-3 w-full md:w-auto">
-                                    <div className="w-12 h-[52px] bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center shrink-0">
-                                        <Map className="w-6 h-6 text-primary" />
-                                    </div>
-                                    <div className="flex flex-col flex-1 md:flex-none">
-                                        <label className="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider">Trip Type</label>
-                                        <div className="flex w-full bg-gray-100 p-1 rounded-lg shrink-0 h-[52px]">
-                                            {['Domestic', 'International'].map((type) => (
-                                                <button
-                                                    key={type}
-                                                    onClick={() => setSearchType(type.toLowerCase())}
-                                                    className={`flex-1 md:w-32 px-4 rounded-md text-sm font-bold transition-all ${searchType === type.toLowerCase()
-                                                        ? 'bg-white text-primary shadow-sm'
-                                                        : 'text-gray-500 hover:text-gray-900'
-                                                        }`}
-                                                >
-                                                    {type}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
+                        <div className="bg-white rounded-3xl shadow-2xl shadow-black/10 border border-gray-100 flex flex-col md:flex-row w-full mt-4">
+
+                            {/* Trip Type Custom Dropdown */}
+                            <div
+                                ref={typeRef}
+                                className="relative flex flex-col w-full md:w-1/3 px-6 py-5 border-b md:border-b-0 md:border-r border-gray-200 hover:bg-gray-50 transition-colors rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none cursor-pointer"
+                                onClick={() => { setIsTypeOpen(!isTypeOpen); setIsDestOpen(false); }}
+                            >
+                                <label className="flex items-center gap-2 text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider cursor-pointer">
+                                    <Map className="w-4 h-4 text-primary" /> Trip Type
+                                </label>
+                                <div className="flex items-center justify-between w-full text-lg font-bold text-gray-900 capitalize">
+                                    <span>{searchType}</span>
+                                    <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isTypeOpen ? 'rotate-180 text-primary' : ''}`} />
                                 </div>
 
-                                {/* Destination Dropdown */}
-                                <div className="flex-1 w-full">
-                                    <label className="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider">Destination</label>
-                                    <div className="relative group">
-                                        <select
-                                            className="input-premium pl-11 w-full text-base appearance-none bg-white cursor-pointer"
-                                            value={destination}
-                                            onChange={(e) => setDestination(e.target.value)}
-                                        >
-                                            <option value="">Any {searchType === 'international' ? 'International' : 'Domestic'} Destination</option>
-                                            {Array.from(new Set(
-                                                packages
-                                                    .filter(p => !searchType || p.type.toLowerCase() === searchType)
-                                                    .map(p => p.location)
-                                            )).map(loc => (
-                                                <option key={loc} value={loc}>{loc}</option>
-                                            ))}
-                                        </select>
-                                        <Map className="w-5 h-5 text-gray-400 absolute left-4 top-3.5 group-focus-within:text-primary transition-colors pointer-events-none" />
-                                        <div className="absolute right-4 top-4 pointer-events-none">
-                                            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                                        </div>
+                                {/* Dropdown Menu */}
+                                {isTypeOpen && (
+                                    <div className="absolute top-[calc(100%+8px)] left-0 w-[calc(100%+2px)] bg-white border border-gray-100 rounded-2xl shadow-xl z-50 overflow-hidden py-2 animate-in fade-in slide-in-from-top-2">
+                                        {['domestic', 'international'].map(type => (
+                                            <div
+                                                key={type}
+                                                className={`px-6 py-3 hover:bg-gray-50 cursor-pointer font-bold capitalize transition-colors ${searchType === type ? 'text-primary bg-primary/5' : 'text-gray-700'}`}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    setSearchType(type);
+                                                    setIsTypeOpen(false);
+                                                    setDestination(''); // Reset destination on type change
+                                                }}
+                                            >
+                                                {type}
+                                            </div>
+                                        ))}
                                     </div>
-                                </div>
-
-                                {/* Search Button */}
-                                <Button
-                                    size="lg"
-                                    className="h-[50px] w-full md:w-auto shadow-lg shadow-primary/30 hover:shadow-primary/50 shrink-0 md:min-w-[140px]"
-                                    variant="primary"
-                                    onClick={handleSearch}
-                                >
-                                    Search
-                                </Button>
+                                )}
                             </div>
+
+                            {/* Destination Custom Dropdown */}
+                            <div
+                                ref={destRef}
+                                className="relative flex flex-col flex-1 px-6 py-5 hover:bg-gray-50 transition-colors cursor-pointer"
+                                onClick={() => { setIsDestOpen(!isDestOpen); setIsTypeOpen(false); }}
+                            >
+                                <label className="flex items-center gap-2 text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider cursor-pointer">
+                                    <Globe2 className="w-4 h-4 text-primary" /> Destination
+                                </label>
+                                <div className="flex items-center justify-between w-full text-lg font-bold text-gray-900">
+                                    <span className={!destination ? "text-gray-400 font-medium" : ""}>
+                                        {destination || `Any ${searchType === 'international' ? 'International' : 'Domestic'} Destination`}
+                                    </span>
+                                    <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isDestOpen ? 'rotate-180 text-primary' : ''}`} />
+                                </div>
+
+                                {/* Dropdown Menu */}
+                                {isDestOpen && (
+                                    <div className="absolute top-[calc(100%+8px)] left-0 right-0 bg-white border border-gray-100 rounded-2xl shadow-xl z-50 py-2 max-h-64 overflow-y-auto animate-in fade-in slide-in-from-top-2">
+                                        <div
+                                            className={`px-6 py-3 hover:bg-gray-50 cursor-pointer font-medium transition-colors ${!destination ? 'text-primary bg-primary/5 font-bold' : 'text-gray-600'}`}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setDestination('');
+                                                setIsDestOpen(false);
+                                            }}
+                                        >
+                                            Any {searchType === 'international' ? 'International' : 'Domestic'} Destination
+                                        </div>
+                                        {uniqueDestinations.map(loc => (
+                                            <div
+                                                key={loc}
+                                                className={`px-6 py-3 hover:bg-gray-50 cursor-pointer font-bold transition-colors ${destination === loc ? 'text-primary bg-primary/5' : 'text-gray-700'}`}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    setDestination(loc);
+                                                    setIsDestOpen(false);
+                                                }}
+                                            >
+                                                {loc}
+                                            </div>
+                                        ))}
+                                        {uniqueDestinations.length === 0 && (
+                                            <div className="px-6 py-4 text-gray-400 text-sm italic text-center">
+                                                No destinations found for this type.
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Search Button */}
+                            <Button
+                                size="lg"
+                                className="h-[80px] md:h-auto md:w-56 rounded-none rounded-b-3xl md:rounded-l-none md:rounded-r-3xl text-xl font-black tracking-wider shadow-none hover:bg-primary/90 transition-all border-none"
+                                variant="primary"
+                                onClick={handleSearch}
+                            >
+                                SEARCH <ArrowRight className="w-6 h-6 ml-2" />
+                            </Button>
                         </div>
 
                         {/* Service Bar */}
@@ -175,7 +239,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Trending Grid */}
+            {/* Trending Grid as Swiper Carousel */}
             <section className="py-20 bg-gray-50/50">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="flex flex-col md:flex-row items-center justify-between mb-12 text-center md:text-left">
@@ -188,38 +252,40 @@ const Home = () => {
                         </Link>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {packages.slice(0, 4).map((pkg) => (
-                            <PackageCard key={pkg.id} packageData={pkg} />
-                        ))}
+                    <div className="-mx-4 px-4 md:mx-0 md:px-0">
+                        <Swiper
+                            modules={[Navigation, Pagination, Autoplay]}
+                            spaceBetween={24}
+                            slidesPerView={1.2}
+                            breakpoints={{
+                                640: { slidesPerView: 2.2 },
+                                1024: { slidesPerView: 3.5 },
+                                1280: { slidesPerView: 4 },
+                            }}
+                            pagination={{ clickable: true, dynamicBullets: true }}
+                            navigation
+                            autoplay={{ delay: 5000, disableOnInteraction: true }}
+                            className="!pb-12 !pt-4 [&_.swiper-button-next]:text-primary [&_.swiper-button-prev]:text-primary [&_.swiper-pagination-bullet-active]:bg-primary"
+                        >
+                            {/* We show more packages (up to 8) to make the carousel feel full */}
+                            {packages.slice(0, 8).map((pkg) => (
+                                <SwiperSlide key={pkg.id} className="h-auto">
+                                    <PackageCard packageData={pkg} />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
+
                     <div className="mt-8 text-center md:hidden">
                         <Link href="/packages">
-                            <Button variant="outline" className="w-full">View All Packages</Button>
+                            <Button variant="outline" className="w-full border-gray-300 text-gray-700">View All Packages</Button>
                         </Link>
                     </div>
                 </div>
             </section>
 
             {/* Lead Magnet / Newsletter */}
-            <section className="py-20 bg-primary text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-secondary/20 rounded-full blur-3xl mix-blend-screen" />
-                <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl mix-blend-screen" />
 
-                <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Get Exclusive Travel Deals</h2>
-                    <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">Join our newsletter and receive up to 50% off on your first booking. No spam, just adventures.</p>
-
-                    <form className="max-w-md mx-auto flex flex-col sm:flex-row gap-3 w-full" onSubmit={(e) => e.preventDefault()}>
-                        <input
-                            type="email"
-                            placeholder="Enter your email address"
-                            className="flex-1 w-full px-6 py-4 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-secondary shadow-sm"
-                        />
-                        <Button size="lg" variant="secondary" className="w-full sm:w-auto px-8 shrink-0">Subscribe</Button>
-                    </form>
-                </div>
-            </section>
         </>
     );
 };

@@ -24,6 +24,7 @@ const AdminDashboard = () => {
     const [activeTab, setActiveTab] = useState('packages'); // 'packages' | 'enquiries'
     const [viewMode, setViewMode] = useState('list'); // 'list' | 'grid'
     const [searchQuery, setSearchQuery] = useState('');
+    const [enquiryFilter, setEnquiryFilter] = useState('all');
 
     useEffect(() => {
         if (!authLoading && !session) {
@@ -134,6 +135,18 @@ const AdminDashboard = () => {
                                 </button>
                             </div>
                         )}
+                        {activeTab === 'enquiries' && (
+                            <select
+                                value={enquiryFilter}
+                                onChange={(e) => setEnquiryFilter(e.target.value)}
+                                className="pl-3 pr-8 py-2.5 bg-white text-sm rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm"
+                            >
+                                <option value="all">All Labels</option>
+                                <option value="holiday">Holiday</option>
+                                <option value="umrah">Umrah</option>
+                                <option value="visa">Visa</option>
+                            </select>
+                        )}
                     </div>
                 </div>
 
@@ -218,6 +231,7 @@ const AdminDashboard = () => {
                             </thead>
                             <tbody className="divide-y divide-gray-50">
                                 {enquiries
+                                    .filter(enq => (enquiryFilter === 'all' || enq.service_type === enquiryFilter))
                                     .filter(enq => enq.name.toLowerCase().includes(searchQuery.toLowerCase()) || enq.email.toLowerCase().includes(searchQuery.toLowerCase()))
                                     .map((enq) => (
                                         <tr key={enq.id} className="hover:bg-gray-50/50 transition-colors group">
@@ -231,7 +245,7 @@ const AdminDashboard = () => {
                                                 <div className="text-gray-500">{enq.phone}</div>
                                             </td>
                                             <td className="px-6 py-4">
-                                                <span className={`inline-block text-[11px] px-2.5 py-1 rounded-md font-semibold mb-1.5 uppercase tracking-wide ${enq.service_type === 'umrah' ? 'bg-emerald-50 text-emerald-700' : 'bg-primary/5 text-primary'}`}>
+                                                <span className={`inline-block text-[11px] px-2.5 py-1 rounded-md font-semibold mb-1.5 uppercase tracking-wide ${enq.service_type === 'umrah' ? 'bg-emerald-50 text-emerald-700' : enq.service_type === 'visa' ? 'bg-blue-50 text-blue-700' : 'bg-primary/5 text-primary'}`}>
                                                     {enq.service_type}
                                                 </span>
                                                 <div className="text-gray-600 max-w-xs truncate" title={enq.message}>

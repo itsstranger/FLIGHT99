@@ -48,7 +48,7 @@ const PackageCard = ({ packageData })=>{
         whileHover: {
             y: -5
         },
-        className: `group relative overflow-hidden rounded-md shadow-md hover:shadow-xl transition-all h-[420px] flex flex-col`,
+        className: `group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all h-[420px] flex flex-col`,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "relative h-[65%] w-full overflow-hidden shrink-0",
@@ -90,7 +90,7 @@ const PackageCard = ({ packageData })=>{
                         className: "flex items-center gap-3 mb-auto",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "bg-black/30 backdrop-blur-sm px-2.5 py-1.5 rounded-md text-xs font-bold tracking-wide",
+                                className: "bg-black/40 px-2.5 py-1.5 rounded-md text-xs font-bold tracking-wide",
                                 children: duration
                             }, void 0, false, {
                                 fileName: "[project]/src/components/PackageCard.jsx",

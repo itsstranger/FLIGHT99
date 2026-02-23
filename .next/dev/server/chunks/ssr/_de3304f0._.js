@@ -48,7 +48,7 @@ const PackageCard = ({ packageData })=>{
         whileHover: {
             y: -5
         },
-        className: `group relative overflow-hidden rounded-md shadow-md hover:shadow-xl transition-all h-[420px] flex flex-col`,
+        className: `group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all h-[420px] flex flex-col`,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "relative h-[65%] w-full overflow-hidden shrink-0",
@@ -90,7 +90,7 @@ const PackageCard = ({ packageData })=>{
                         className: "flex items-center gap-3 mb-auto",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "bg-black/30 backdrop-blur-sm px-2.5 py-1.5 rounded-md text-xs font-bold tracking-wide",
+                                className: "bg-black/40 px-2.5 py-1.5 rounded-md text-xs font-bold tracking-wide",
                                 children: duration
                             }, void 0, false, {
                                 fileName: "[project]/src/components/PackageCard.jsx",
@@ -377,7 +377,7 @@ const Home = ()=>{
                         style: {
                             y: yBg
                         },
-                        className: "absolute top-0 left-0 right-0 h-[500px] z-0 overflow-hidden rounded-b-[1.5rem] md:rounded-b-[3rem] bg-gray-900",
+                        className: "absolute top-0 left-0 right-0 h-[500px] z-0 overflow-hidden bg-gray-900",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("video", {
                                 autoPlay: true,
@@ -491,178 +491,167 @@ const Home = ()=>{
                                 className: "w-full max-w-5xl mt-16 md:mt-[100px]",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-black/20 overflow-hidden border border-white/40 p-5 md:p-8",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex flex-col md:flex-row gap-5 md:gap-6 items-end",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex items-end gap-3 w-full md:w-auto",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "w-12 h-[52px] bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center shrink-0",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$map$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Map$3e$__["Map"], {
-                                                                className: "w-6 h-6 text-primary"
+                                        className: "bg-white rounded-3xl shadow-2xl shadow-black/10 border border-gray-100 flex flex-col md:flex-row w-full mt-4",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex flex-col w-full md:w-1/3 px-6 py-5 border-b md:border-b-0 md:border-r border-gray-200 hover:bg-gray-50 transition-colors rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                        className: "flex items-center gap-2 text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$map$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Map$3e$__["Map"], {
+                                                                className: "w-4 h-4 text-primary"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/page.jsx",
-                                                                lineNumber: 83,
-                                                                columnNumber: 41
+                                                                lineNumber: 82,
+                                                                columnNumber: 37
+                                                            }, ("TURBOPACK compile-time value", void 0)),
+                                                            " Trip Type"
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/page.jsx",
+                                                        lineNumber: 81,
+                                                        columnNumber: 33
+                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                                        className: "w-full text-lg font-bold text-gray-900 appearance-none bg-transparent cursor-pointer outline-none",
+                                                        value: searchType,
+                                                        onChange: (e)=>setSearchType(e.target.value),
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                value: "domestic",
+                                                                children: "Domestic"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/page.jsx",
+                                                                lineNumber: 89,
+                                                                columnNumber: 37
+                                                            }, ("TURBOPACK compile-time value", void 0)),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                value: "international",
+                                                                children: "International"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/page.jsx",
+                                                                lineNumber: 90,
+                                                                columnNumber: 37
+                                                            }, ("TURBOPACK compile-time value", void 0))
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/page.jsx",
+                                                        lineNumber: 84,
+                                                        columnNumber: 33
+                                                    }, ("TURBOPACK compile-time value", void 0))
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/page.jsx",
+                                                lineNumber: 80,
+                                                columnNumber: 29
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex flex-col flex-1 px-6 py-5 hover:bg-gray-50 transition-colors relative",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                        className: "flex items-center gap-2 text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$earth$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Globe2$3e$__["Globe2"], {
+                                                                className: "w-4 h-4 text-primary"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/page.jsx",
+                                                                lineNumber: 97,
+                                                                columnNumber: 37
+                                                            }, ("TURBOPACK compile-time value", void 0)),
+                                                            " Destination"
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/page.jsx",
+                                                        lineNumber: 96,
+                                                        columnNumber: 33
+                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                                        className: "w-full text-lg font-bold text-gray-900 appearance-none bg-transparent cursor-pointer outline-none",
+                                                        value: destination,
+                                                        onChange: (e)=>setDestination(e.target.value),
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                value: "",
+                                                                children: [
+                                                                    "Any ",
+                                                                    searchType === 'international' ? 'International' : 'Domestic',
+                                                                    " Destination"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/page.jsx",
+                                                                lineNumber: 104,
+                                                                columnNumber: 37
+                                                            }, ("TURBOPACK compile-time value", void 0)),
+                                                            Array.from(new Set(packages.filter((p)=>!searchType || p.type.toLowerCase() === searchType).map((p)=>p.location))).map((loc)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                    value: loc,
+                                                                    children: loc
+                                                                }, loc, false, {
+                                                                    fileName: "[project]/app/page.jsx",
+                                                                    lineNumber: 110,
+                                                                    columnNumber: 41
+                                                                }, ("TURBOPACK compile-time value", void 0)))
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/page.jsx",
+                                                        lineNumber: 99,
+                                                        columnNumber: 33
+                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "absolute right-6 top-1/2 pointer-events-none text-gray-400",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                            className: "w-5 h-5",
+                                                            fill: "none",
+                                                            stroke: "currentColor",
+                                                            viewBox: "0 0 24 24",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                strokeLinecap: "round",
+                                                                strokeLinejoin: "round",
+                                                                strokeWidth: "2",
+                                                                d: "M19 9l-7 7-7-7"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/page.jsx",
+                                                                lineNumber: 114,
+                                                                columnNumber: 116
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/page.jsx",
-                                                            lineNumber: 82,
-                                                            columnNumber: 37
-                                                        }, ("TURBOPACK compile-time value", void 0)),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex flex-col flex-1 md:flex-none",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                                    className: "block text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider",
-                                                                    children: "Trip Type"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/page.jsx",
-                                                                    lineNumber: 86,
-                                                                    columnNumber: 41
-                                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "flex w-full bg-gray-100 p-1 rounded-lg shrink-0 h-[52px]",
-                                                                    children: [
-                                                                        'Domestic',
-                                                                        'International'
-                                                                    ].map((type)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                            onClick: ()=>setSearchType(type.toLowerCase()),
-                                                                            className: `flex-1 md:w-32 px-4 rounded-md text-sm font-bold transition-all ${searchType === type.toLowerCase() ? 'bg-white text-primary shadow-sm' : 'text-gray-500 hover:text-gray-900'}`,
-                                                                            children: type
-                                                                        }, type, false, {
-                                                                            fileName: "[project]/app/page.jsx",
-                                                                            lineNumber: 89,
-                                                                            columnNumber: 49
-                                                                        }, ("TURBOPACK compile-time value", void 0)))
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/page.jsx",
-                                                                    lineNumber: 87,
-                                                                    columnNumber: 41
-                                                                }, ("TURBOPACK compile-time value", void 0))
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/page.jsx",
-                                                            lineNumber: 85,
+                                                            lineNumber: 114,
                                                             columnNumber: 37
                                                         }, ("TURBOPACK compile-time value", void 0))
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/page.jsx",
-                                                    lineNumber: 81,
-                                                    columnNumber: 33
-                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex-1 w-full",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                            className: "block text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider",
-                                                            children: "Destination"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/page.jsx",
-                                                            lineNumber: 106,
-                                                            columnNumber: 37
-                                                        }, ("TURBOPACK compile-time value", void 0)),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "relative group",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                                                    className: "input-premium pl-11 w-full text-base appearance-none bg-white cursor-pointer",
-                                                                    value: destination,
-                                                                    onChange: (e)=>setDestination(e.target.value),
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                            value: "",
-                                                                            children: [
-                                                                                "Any ",
-                                                                                searchType === 'international' ? 'International' : 'Domestic',
-                                                                                " Destination"
-                                                                            ]
-                                                                        }, void 0, true, {
-                                                                            fileName: "[project]/app/page.jsx",
-                                                                            lineNumber: 113,
-                                                                            columnNumber: 45
-                                                                        }, ("TURBOPACK compile-time value", void 0)),
-                                                                        Array.from(new Set(packages.filter((p)=>!searchType || p.type.toLowerCase() === searchType).map((p)=>p.location))).map((loc)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                                value: loc,
-                                                                                children: loc
-                                                                            }, loc, false, {
-                                                                                fileName: "[project]/app/page.jsx",
-                                                                                lineNumber: 119,
-                                                                                columnNumber: 49
-                                                                            }, ("TURBOPACK compile-time value", void 0)))
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/app/page.jsx",
-                                                                    lineNumber: 108,
-                                                                    columnNumber: 41
-                                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$map$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Map$3e$__["Map"], {
-                                                                    className: "w-5 h-5 text-gray-400 absolute left-4 top-3.5 group-focus-within:text-primary transition-colors pointer-events-none"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/page.jsx",
-                                                                    lineNumber: 122,
-                                                                    columnNumber: 41
-                                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "absolute right-4 top-4 pointer-events-none",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                        className: "w-4 h-4 text-gray-400",
-                                                                        fill: "none",
-                                                                        stroke: "currentColor",
-                                                                        viewBox: "0 0 24 24",
-                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                            strokeLinecap: "round",
-                                                                            strokeLinejoin: "round",
-                                                                            strokeWidth: "2",
-                                                                            d: "M19 9l-7 7-7-7"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/app/page.jsx",
-                                                                            lineNumber: 124,
-                                                                            columnNumber: 138
-                                                                        }, ("TURBOPACK compile-time value", void 0))
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/page.jsx",
-                                                                        lineNumber: 124,
-                                                                        columnNumber: 45
-                                                                    }, ("TURBOPACK compile-time value", void 0))
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/page.jsx",
-                                                                    lineNumber: 123,
-                                                                    columnNumber: 41
-                                                                }, ("TURBOPACK compile-time value", void 0))
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/page.jsx",
-                                                            lineNumber: 107,
-                                                            columnNumber: 37
-                                                        }, ("TURBOPACK compile-time value", void 0))
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/page.jsx",
-                                                    lineNumber: 105,
-                                                    columnNumber: 33
-                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$Button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                                    size: "lg",
-                                                    className: "h-[50px] w-full md:w-auto shadow-lg shadow-primary/30 hover:shadow-primary/50 shrink-0 md:min-w-[140px]",
-                                                    variant: "primary",
-                                                    onClick: handleSearch,
-                                                    children: "Search"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/page.jsx",
-                                                    lineNumber: 130,
-                                                    columnNumber: 33
-                                                }, ("TURBOPACK compile-time value", void 0))
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/page.jsx",
-                                            lineNumber: 79,
-                                            columnNumber: 29
-                                        }, ("TURBOPACK compile-time value", void 0))
-                                    }, void 0, false, {
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/page.jsx",
+                                                        lineNumber: 113,
+                                                        columnNumber: 33
+                                                    }, ("TURBOPACK compile-time value", void 0))
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/page.jsx",
+                                                lineNumber: 95,
+                                                columnNumber: 29
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$Button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                size: "lg",
+                                                className: "h-[80px] md:h-auto md:w-56 rounded-none rounded-b-3xl md:rounded-l-none md:rounded-r-3xl text-xl font-black tracking-wider shadow-none hover:bg-primary/90 transition-all border-none",
+                                                variant: "primary",
+                                                onClick: handleSearch,
+                                                children: [
+                                                    "SEARCH ",
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
+                                                        className: "w-6 h-6 ml-2"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/page.jsx",
+                                                        lineNumber: 125,
+                                                        columnNumber: 40
+                                                    }, ("TURBOPACK compile-time value", void 0))
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/page.jsx",
+                                                lineNumber: 119,
+                                                columnNumber: 29
+                                            }, ("TURBOPACK compile-time value", void 0))
+                                        ]
+                                    }, void 0, true, {
                                         fileName: "[project]/app/page.jsx",
                                         lineNumber: 78,
                                         columnNumber: 25
@@ -671,12 +660,12 @@ const Home = ()=>{
                                         className: "mt-8",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ServiceBar$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                             fileName: "[project]/app/page.jsx",
-                                            lineNumber: 143,
+                                            lineNumber: 131,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.jsx",
-                                        lineNumber: 142,
+                                        lineNumber: 130,
                                         columnNumber: 25
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
@@ -745,12 +734,12 @@ const Home = ()=>{
                                             className: "w-7 h-7"
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.jsx",
-                                            lineNumber: 167,
+                                            lineNumber: 155,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.jsx",
-                                        lineNumber: 166,
+                                        lineNumber: 154,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -758,7 +747,7 @@ const Home = ()=>{
                                         children: item.value
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.jsx",
-                                        lineNumber: 169,
+                                        lineNumber: 157,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -766,7 +755,7 @@ const Home = ()=>{
                                         children: item.label
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.jsx",
-                                        lineNumber: 170,
+                                        lineNumber: 158,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -774,28 +763,28 @@ const Home = ()=>{
                                         children: item.desc
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.jsx",
-                                        lineNumber: 171,
+                                        lineNumber: 159,
                                         columnNumber: 33
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, idx, true, {
                                 fileName: "[project]/app/page.jsx",
-                                lineNumber: 158,
+                                lineNumber: 146,
                                 columnNumber: 29
                             }, ("TURBOPACK compile-time value", void 0)))
                     }, void 0, false, {
                         fileName: "[project]/app/page.jsx",
-                        lineNumber: 152,
+                        lineNumber: 140,
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/app/page.jsx",
-                    lineNumber: 151,
+                    lineNumber: 139,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/app/page.jsx",
-                lineNumber: 150,
+                lineNumber: 138,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -814,7 +803,7 @@ const Home = ()=>{
                                             children: "Trending Destinations"
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.jsx",
-                                            lineNumber: 183,
+                                            lineNumber: 171,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -822,13 +811,13 @@ const Home = ()=>{
                                             children: "Curated packages that are selling out fast."
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.jsx",
-                                            lineNumber: 184,
+                                            lineNumber: 172,
                                             columnNumber: 29
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/page.jsx",
-                                    lineNumber: 182,
+                                    lineNumber: 170,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -842,24 +831,24 @@ const Home = ()=>{
                                                 className: "ml-2 w-4 h-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/page.jsx",
-                                                lineNumber: 187,
+                                                lineNumber: 175,
                                                 columnNumber: 105
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/page.jsx",
-                                        lineNumber: 187,
+                                        lineNumber: 175,
                                         columnNumber: 29
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.jsx",
-                                    lineNumber: 186,
+                                    lineNumber: 174,
                                     columnNumber: 25
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/page.jsx",
-                            lineNumber: 181,
+                            lineNumber: 169,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -868,12 +857,12 @@ const Home = ()=>{
                                     packageData: pkg
                                 }, pkg.id, false, {
                                     fileName: "[project]/app/page.jsx",
-                                    lineNumber: 193,
+                                    lineNumber: 181,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)))
                         }, void 0, false, {
                             fileName: "[project]/app/page.jsx",
-                            lineNumber: 191,
+                            lineNumber: 179,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -886,28 +875,28 @@ const Home = ()=>{
                                     children: "View All Packages"
                                 }, void 0, false, {
                                     fileName: "[project]/app/page.jsx",
-                                    lineNumber: 198,
+                                    lineNumber: 186,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/app/page.jsx",
-                                lineNumber: 197,
+                                lineNumber: 185,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/app/page.jsx",
-                            lineNumber: 196,
+                            lineNumber: 184,
                             columnNumber: 21
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/page.jsx",
-                    lineNumber: 180,
+                    lineNumber: 168,
                     columnNumber: 17
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/app/page.jsx",
-                lineNumber: 179,
+                lineNumber: 167,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -917,14 +906,14 @@ const Home = ()=>{
                         className: "absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-secondary/20 rounded-full blur-3xl mix-blend-screen"
                     }, void 0, false, {
                         fileName: "[project]/app/page.jsx",
-                        lineNumber: 206,
+                        lineNumber: 194,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl mix-blend-screen"
                     }, void 0, false, {
                         fileName: "[project]/app/page.jsx",
-                        lineNumber: 207,
+                        lineNumber: 195,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -935,7 +924,7 @@ const Home = ()=>{
                                 children: "Get Exclusive Travel Deals"
                             }, void 0, false, {
                                 fileName: "[project]/app/page.jsx",
-                                lineNumber: 210,
+                                lineNumber: 198,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -943,7 +932,7 @@ const Home = ()=>{
                                 children: "Join our newsletter and receive up to 50% off on your first booking. No spam, just adventures."
                             }, void 0, false, {
                                 fileName: "[project]/app/page.jsx",
-                                lineNumber: 211,
+                                lineNumber: 199,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -956,7 +945,7 @@ const Home = ()=>{
                                         className: "flex-1 w-full px-6 py-4 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-secondary shadow-sm"
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.jsx",
-                                        lineNumber: 214,
+                                        lineNumber: 202,
                                         columnNumber: 25
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$Button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -966,25 +955,25 @@ const Home = ()=>{
                                         children: "Subscribe"
                                     }, void 0, false, {
                                         fileName: "[project]/app/page.jsx",
-                                        lineNumber: 219,
+                                        lineNumber: 207,
                                         columnNumber: 25
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/page.jsx",
-                                lineNumber: 213,
+                                lineNumber: 201,
                                 columnNumber: 21
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/page.jsx",
-                        lineNumber: 209,
+                        lineNumber: 197,
                         columnNumber: 17
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/page.jsx",
-                lineNumber: 205,
+                lineNumber: 193,
                 columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0))
         ]

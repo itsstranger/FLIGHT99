@@ -28,7 +28,7 @@ const PackageCard = ({ packageData }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             whileHover={{ y: -5 }}
-            className={`group relative overflow-hidden rounded-md shadow-md hover:shadow-xl transition-all h-[420px] flex flex-col`}
+            className={`group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all h-[420px] flex flex-col`}
         >
             {/* Top Section - Image + Title Overlay */}
             <div className="relative h-[65%] w-full overflow-hidden shrink-0">
@@ -51,7 +51,7 @@ const PackageCard = ({ packageData }) => {
 
                 {/* Row 1: Duration & Location */}
                 <div className="flex items-center gap-3 mb-auto">
-                    <div className="bg-black/30 backdrop-blur-sm px-2.5 py-1.5 rounded-md text-xs font-bold tracking-wide">
+                    <div className="bg-black/40 px-2.5 py-1.5 rounded-md text-xs font-bold tracking-wide">
                         {duration}
                     </div>
                     <span className="text-sm font-medium text-white/90 truncate">

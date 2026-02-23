@@ -3,7 +3,7 @@
 import React, { useState, Suspense } from 'react';
 import { usePackages } from '@/context/PackageContext';
 import PackageCard from '@/components/PackageCard';
-import { Filter, X, ChevronDown } from 'lucide-react';
+import { Filter, X, ChevronDown, SlidersHorizontal, Search } from 'lucide-react';
 
 import { useSearchParams } from 'next/navigation';
 
@@ -17,14 +17,16 @@ const PackagesContent = () => {
 
     const [priceRange, setPriceRange] = useState(150000); // Default max price
     const [typeFilter, setTypeFilter] = useState(initialType === 'all' ? 'All' : initialType.charAt(0).toUpperCase() + initialType.slice(1));
-    const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
+    const [showFilters, setShowFilters] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
     const filteredPackages = packages.filter(p => {
         const matchesPrice = p.price <= priceRange;
         const matchesType = typeFilter === 'All' || p.type?.toLowerCase() === typeFilter.toLowerCase();
         const matchesDest = !initialDestination || p.location.toLowerCase().includes(initialDestination.toLowerCase()) || p.title.toLowerCase().includes(initialDestination.toLowerCase());
+        const matchesQuery = !searchQuery || p.title.toLowerCase().includes(searchQuery.toLowerCase()) || p.location.toLowerCase().includes(searchQuery.toLowerCase());
 
-        return matchesPrice && matchesType && matchesDest;
+        return matchesPrice && matchesType && matchesDest && matchesQuery;
     });
 
     const types = ['All', 'International', 'Domestic'];
@@ -32,62 +34,89 @@ const PackagesContent = () => {
     return (
         <div className="pt-24 pb-20 min-h-screen bg-gray-50">
             <div className="container mx-auto px-4 md:px-6">
-                {/* Header */}
-                <div className="mb-12">
-                    <h1 className="text-4xl font-bold text-primary mb-4">Our Holiday Collections</h1>
-                    <p className="text-gray-500 max-w-2xl">Browse our handpicked itineraries designed for every type of traveler.</p>
+                {/* Header & Search */}
+                <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-gray-200 pb-6">
+                    <div className="md:w-1/2 relative z-10">
+                        <h1 className="text-4xl font-bold text-primary mb-2">Our Holiday Collections</h1>
+                        <p className="text-gray-500 max-w-2xl">Browse our handpicked itineraries designed for every type of traveler.</p>
+                    </div>
+
+                    {/* Integrated Search & Filter UI */}
+                    <div className="md:w-1/2 flex md:justify-end">
+                        <div className="relative w-full max-w-md">
+                            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <Search className="w-5 h-5 text-gray-400" />
+                            </div>
+                            <input
+                                type="text"
+                                placeholder="Search packages, destinations..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full bg-white border border-gray-200 text-gray-900 pl-11 pr-14 py-3.5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition-all shadow-sm"
+                            />
+                            <button
+                                onClick={() => setShowFilters(!showFilters)}
+                                className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-xl transition-all ${showFilters ? 'bg-primary text-white shadow-md' : 'text-gray-500 hover:bg-gray-100'}`}
+                                aria-label="Toggle Filters"
+                            >
+                                <SlidersHorizontal className="w-5 h-5" />
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Horizontal Filters (YouTube Style) */}
-                <div className="flex flex-col gap-4 mb-8">
+                {showFilters && (
+                    <div className="flex flex-col gap-4 mb-8 animate-in fade-in slide-in-from-top-4 duration-300">
 
-                    {/* Top Row: Scrollable Type Pills */}
-                    <div className="flex items-center overflow-x-auto pb-2 scrollbar-hide gap-3 w-full">
-                        {types.map(t => (
-                            <button
-                                key={t}
-                                onClick={() => setTypeFilter(t)}
-                                className={`whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium transition-all shrink-0 ${typeFilter === t
-                                    ? 'bg-gray-900 text-white shadow-md'
-                                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
-                                    }`}
-                            >
-                                {t}
-                            </button>
-                        ))}
-                    </div>
+                        {/* Top Row: Scrollable Type Pills */}
+                        <div className="flex items-center overflow-x-auto pb-2 scrollbar-hide gap-3 w-full">
+                            {types.map(t => (
+                                <button
+                                    key={t}
+                                    onClick={() => setTypeFilter(t)}
+                                    className={`whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium transition-all shrink-0 ${typeFilter === t
+                                        ? 'bg-gray-900 text-white shadow-md'
+                                        : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                                        }`}
+                                >
+                                    {t}
+                                </button>
+                            ))}
+                        </div>
 
-                    {/* Bottom Row: Additional Controls (Desktop inline, mobile stacked) */}
-                    <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-                        {/* Price Range */}
-                        <div className="flex items-center gap-4 flex-1 max-w-md">
-                            <span className="text-sm font-semibold text-gray-600 whitespace-nowrap">Max Price: <span className="text-primary">₹{priceRange.toLocaleString()}</span></span>
-                            <div className="flex-1">
-                                <input
-                                    type="range"
-                                    min="10000"
-                                    max="200000"
-                                    step="5000"
-                                    value={priceRange}
-                                    onChange={(e) => setPriceRange(parseInt(e.target.value))}
-                                    className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-gray-900"
-                                />
+                        {/* Bottom Row: Additional Controls (Desktop inline, mobile stacked) */}
+                        <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                            {/* Price Range */}
+                            <div className="flex items-center gap-4 flex-1 max-w-md">
+                                <span className="text-sm font-semibold text-gray-600 whitespace-nowrap">Max Price: <span className="text-primary">₹{priceRange.toLocaleString()}</span></span>
+                                <div className="flex-1">
+                                    <input
+                                        type="range"
+                                        min="10000"
+                                        max="200000"
+                                        step="5000"
+                                        value={priceRange}
+                                        onChange={(e) => setPriceRange(parseInt(e.target.value))}
+                                        className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-gray-900"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Note: Duration filtering logic is currently UI-only in the original code.
+                            Adding a simple UI placeholder here to maintain visual parity with requested functionality. */}
+                            <div className="flex items-center gap-2">
+                                <span className="text-sm font-semibold text-gray-600">Duration:</span>
+                                <select className="input-premium py-1.5 px-3 text-sm bg-gray-50 border-transparent">
+                                    <option>Any Duration</option>
+                                    <option>3-5 Days</option>
+                                    <option>6-10 Days</option>
+                                    <option>10+ Days</option>
+                                </select>
                             </div>
                         </div>
-
-                        {/* Note: Duration filtering logic is currently UI-only in the original code.
-                            Adding a simple UI placeholder here to maintain visual parity with requested functionality. */}
-                        <div className="flex items-center gap-2">
-                            <span className="text-sm font-semibold text-gray-600">Duration:</span>
-                            <select className="input-premium py-1.5 px-3 text-sm bg-gray-50 border-transparent">
-                                <option>Any Duration</option>
-                                <option>3-5 Days</option>
-                                <option>6-10 Days</option>
-                                <option>10+ Days</option>
-                            </select>
-                        </div>
                     </div>
-                </div>
+                )}
 
                 {/* Grid */}
                 <div className="flex-1 min-w-0">

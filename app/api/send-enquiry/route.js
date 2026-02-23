@@ -11,6 +11,8 @@ export async function POST(request) {
 
         if (service_type === 'umrah') {
             finalMessage = `Interested in Umrah. Pilgrims: ${persons || 1}. Hotel Booking: ${bookHotel || 'Yes'}. Dates: ${date || 'Flexible'}. Duration: ${duration || 'Flexible'}.`;
+        } else if (service_type === 'visa') {
+            finalMessage = `Visa Assistance for: ${destination || 'Unknown'}. Expected Travel Date: ${date || 'Flexible'}. ${message || ''}`;
         } else if (destination || date || duration) {
             finalMessage = `Interested in: ${destination || 'Any'}. Dates: ${date || 'Flexible'}. Duration: ${duration || 'Flexible'}. ${message || ''}`;
         }

@@ -723,7 +723,7 @@ const LeadCaptureModal = ()=>{
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                     className: "text-xl font-semibold text-primary",
-                                    children: modalType === 'hajj' ? 'Plan Your Umrah Journey' : modalType === 'customize' ? 'Customize Your Trip' : 'Plan Your Dream Trip'
+                                    children: modalType === 'hajj' ? 'Plan Your Umrah Journey' : modalType === 'customize' ? 'Customize Your Trip' : modalType === 'visa' ? 'Visa Assistance' : 'Plan Your Dream Trip'
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
                                     lineNumber: 33,
@@ -765,6 +765,8 @@ const LeadCaptureModal = ()=>{
                                 const data = Object.fromEntries(formData.entries());
                                 if (modalType === 'hajj') {
                                     data.service_type = 'umrah';
+                                } else if (modalType === 'visa') {
+                                    data.service_type = 'visa';
                                 }
                                 data.service_type = data.service_type || 'holiday';
                                 // Attach context if triggered from a specific package
@@ -813,7 +815,7 @@ const LeadCaptureModal = ()=>{
                                                     children: "Full Name"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 103,
+                                                    lineNumber: 105,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -824,13 +826,13 @@ const LeadCaptureModal = ()=>{
                                                     placeholder: "John Doe"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 104,
+                                                    lineNumber: 106,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                            lineNumber: 102,
+                                            lineNumber: 104,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -840,7 +842,7 @@ const LeadCaptureModal = ()=>{
                                                     children: "Phone Number"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 107,
+                                                    lineNumber: 109,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -851,19 +853,19 @@ const LeadCaptureModal = ()=>{
                                                     placeholder: "+91 98765 43210"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 108,
+                                                    lineNumber: 110,
                                                     columnNumber: 37
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                            lineNumber: 106,
+                                            lineNumber: 108,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                    lineNumber: 101,
+                                    lineNumber: 103,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -873,7 +875,7 @@ const LeadCaptureModal = ()=>{
                                             children: "Email Address"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                            lineNumber: 113,
+                                            lineNumber: 115,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -884,16 +886,78 @@ const LeadCaptureModal = ()=>{
                                             placeholder: "john@example.com"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                            lineNumber: 114,
+                                            lineNumber: 116,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                    lineNumber: 112,
+                                    lineNumber: 114,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0)),
-                                modalType !== 'hajj' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                modalType === 'visa' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "grid grid-cols-1 md:grid-cols-2 gap-4",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                    className: "block text-sm font-medium text-gray-700 mb-1",
+                                                    children: "Which Country's Visa?"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/LeadCaptureModal.jsx",
+                                                    lineNumber: 122,
+                                                    columnNumber: 41
+                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                    type: "text",
+                                                    name: "destination",
+                                                    required: true,
+                                                    className: "input-premium w-full",
+                                                    placeholder: "e.g. UAE, Schengen, USA",
+                                                    defaultValue: prefillData?.destination || ''
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/LeadCaptureModal.jsx",
+                                                    lineNumber: 123,
+                                                    columnNumber: 41
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/LeadCaptureModal.jsx",
+                                            lineNumber: 121,
+                                            columnNumber: 37
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                    className: "block text-sm font-medium text-gray-700 mb-1",
+                                                    children: "Expected Date"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/LeadCaptureModal.jsx",
+                                                    lineNumber: 126,
+                                                    columnNumber: 41
+                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                    type: "date",
+                                                    name: "date",
+                                                    required: true,
+                                                    className: "input-premium w-full"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/LeadCaptureModal.jsx",
+                                                    lineNumber: 127,
+                                                    columnNumber: 41
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/LeadCaptureModal.jsx",
+                                            lineNumber: 125,
+                                            columnNumber: 37
+                                        }, ("TURBOPACK compile-time value", void 0))
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/LeadCaptureModal.jsx",
+                                    lineNumber: 120,
+                                    columnNumber: 33
+                                }, ("TURBOPACK compile-time value", void 0)) : modalType !== 'hajj' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "grid grid-cols-1 md:grid-cols-2 gap-4",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -903,7 +967,7 @@ const LeadCaptureModal = ()=>{
                                                     children: "Travelling From"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 120,
+                                                    lineNumber: 133,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -913,13 +977,13 @@ const LeadCaptureModal = ()=>{
                                                     placeholder: "Mumbai"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 121,
+                                                    lineNumber: 134,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                            lineNumber: 119,
+                                            lineNumber: 132,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -929,7 +993,7 @@ const LeadCaptureModal = ()=>{
                                                     children: "Destination"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 124,
+                                                    lineNumber: 137,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -940,19 +1004,19 @@ const LeadCaptureModal = ()=>{
                                                     defaultValue: prefillData?.destination || ''
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 125,
+                                                    lineNumber: 138,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                            lineNumber: 123,
+                                            lineNumber: 136,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                    lineNumber: 118,
+                                    lineNumber: 131,
                                     columnNumber: 33
                                 }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "grid grid-cols-1 md:grid-cols-2 gap-4",
@@ -964,7 +1028,7 @@ const LeadCaptureModal = ()=>{
                                                     children: "Number of Pilgrims"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 131,
+                                                    lineNumber: 144,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -976,13 +1040,13 @@ const LeadCaptureModal = ()=>{
                                                     defaultValue: "1"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 132,
+                                                    lineNumber: 145,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                            lineNumber: 130,
+                                            lineNumber: 143,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -992,7 +1056,7 @@ const LeadCaptureModal = ()=>{
                                                     children: "Need Hotel Booking?"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 135,
+                                                    lineNumber: 148,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -1004,7 +1068,7 @@ const LeadCaptureModal = ()=>{
                                                             children: "Yes, include hotels"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                            lineNumber: 137,
+                                                            lineNumber: 150,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1012,28 +1076,28 @@ const LeadCaptureModal = ()=>{
                                                             children: "No, only ground transport/visa"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                            lineNumber: 138,
+                                                            lineNumber: 151,
                                                             columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 136,
+                                                    lineNumber: 149,
                                                     columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                            lineNumber: 134,
+                                            lineNumber: 147,
                                             columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                    lineNumber: 129,
+                                    lineNumber: 142,
                                     columnNumber: 33
                                 }, ("TURBOPACK compile-time value", void 0)),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                modalType !== 'visa' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "grid grid-cols-1 md:grid-cols-2 gap-4",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1043,8 +1107,8 @@ const LeadCaptureModal = ()=>{
                                                     children: modalType === 'hajj' ? 'Start Date' : 'Travel Date'
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 146,
-                                                    columnNumber: 37
+                                                    lineNumber: 160,
+                                                    columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                     type: "date",
@@ -1053,14 +1117,14 @@ const LeadCaptureModal = ()=>{
                                                     className: "input-premium w-full"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 147,
-                                                    columnNumber: 37
+                                                    lineNumber: 161,
+                                                    columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                            lineNumber: 145,
-                                            columnNumber: 33
+                                            lineNumber: 159,
+                                            columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             children: [
@@ -1069,8 +1133,8 @@ const LeadCaptureModal = ()=>{
                                                     children: "Duration (Days)"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 150,
-                                                    columnNumber: 37
+                                                    lineNumber: 164,
+                                                    columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                                     name: "duration",
@@ -1080,47 +1144,47 @@ const LeadCaptureModal = ()=>{
                                                             children: "3-5 Days"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                            lineNumber: 152,
-                                                            columnNumber: 41
+                                                            lineNumber: 166,
+                                                            columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                             children: "6-10 Days"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                            lineNumber: 153,
-                                                            columnNumber: 41
+                                                            lineNumber: 167,
+                                                            columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                             children: "10-15 Days"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                            lineNumber: 154,
-                                                            columnNumber: 41
+                                                            lineNumber: 168,
+                                                            columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                             children: "15+ Days"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                            lineNumber: 155,
-                                                            columnNumber: 41
+                                                            lineNumber: 169,
+                                                            columnNumber: 45
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                                    lineNumber: 151,
-                                                    columnNumber: 37
+                                                    lineNumber: 165,
+                                                    columnNumber: 41
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                            lineNumber: 149,
-                                            columnNumber: 33
+                                            lineNumber: 163,
+                                            columnNumber: 37
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                    lineNumber: 144,
-                                    columnNumber: 29
+                                    lineNumber: 158,
+                                    columnNumber: 33
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "pt-2",
@@ -1132,7 +1196,7 @@ const LeadCaptureModal = ()=>{
                                             children: "Send Enquiry"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                            lineNumber: 161,
+                                            lineNumber: 176,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1140,13 +1204,13 @@ const LeadCaptureModal = ()=>{
                                             children: "Your details are sent directly to our expert team."
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                            lineNumber: 164,
+                                            lineNumber: 179,
                                             columnNumber: 33
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/LeadCaptureModal.jsx",
-                                    lineNumber: 160,
+                                    lineNumber: 175,
                                     columnNumber: 29
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]

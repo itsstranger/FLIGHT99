@@ -31,7 +31,7 @@ const LeadCaptureModal = () => {
                     >
                         <div className="flex items-center justify-between border-b px-6 md:px-8 py-4 md:py-5 sticky top-0 bg-white z-10">
                             <h3 className="text-xl font-semibold text-primary">
-                                {modalType === 'hajj' ? 'Plan Your Umrah Journey' : modalType === 'customize' ? 'Customize Your Trip' : 'Plan Your Dream Trip'}
+                                {modalType === 'hajj' ? 'Plan Your Umrah Journey' : modalType === 'customize' ? 'Customize Your Trip' : modalType === 'visa' ? 'Visa Assistance' : 'Plan Your Dream Trip'}
                             </h3>
                             <button
                                 onClick={closeModal}
@@ -58,6 +58,8 @@ const LeadCaptureModal = () => {
                             const data = Object.fromEntries(formData.entries());
                             if (modalType === 'hajj') {
                                 data.service_type = 'umrah';
+                            } else if (modalType === 'visa') {
+                                data.service_type = 'visa';
                             }
                             data.service_type = data.service_type || 'holiday';
 
@@ -114,7 +116,18 @@ const LeadCaptureModal = () => {
                                 <input type="email" name="email" required className="input-premium w-full" placeholder="john@example.com" />
                             </div>
 
-                            {modalType !== 'hajj' ? (
+                            {modalType === 'visa' ? (
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Which Country's Visa?</label>
+                                        <input type="text" name="destination" required className="input-premium w-full" placeholder="e.g. UAE, Schengen, USA" defaultValue={prefillData?.destination || ''} />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Expected Date</label>
+                                        <input type="date" name="date" required className="input-premium w-full" />
+                                    </div>
+                                </div>
+                            ) : modalType !== 'hajj' ? (
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Travelling From</label>
@@ -141,21 +154,23 @@ const LeadCaptureModal = () => {
                                 </div>
                             )}
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">{modalType === 'hajj' ? 'Start Date' : 'Travel Date'}</label>
-                                    <input type="date" name="date" required={modalType === 'hajj'} className="input-premium w-full" />
+                            {modalType !== 'visa' && (
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">{modalType === 'hajj' ? 'Start Date' : 'Travel Date'}</label>
+                                        <input type="date" name="date" required={modalType === 'hajj'} className="input-premium w-full" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Duration (Days)</label>
+                                        <select name="duration" className="input-premium w-full">
+                                            <option>3-5 Days</option>
+                                            <option>6-10 Days</option>
+                                            <option>10-15 Days</option>
+                                            <option>15+ Days</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Duration (Days)</label>
-                                    <select name="duration" className="input-premium w-full">
-                                        <option>3-5 Days</option>
-                                        <option>6-10 Days</option>
-                                        <option>10-15 Days</option>
-                                        <option>15+ Days</option>
-                                    </select>
-                                </div>
-                            </div>
+                            )}
 
                             <div className="pt-2">
                                 <Button type="submit" className="w-full" variant="secondary">
