@@ -123,7 +123,7 @@ const About = ()=>{
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-xl text-gray-200 max-w-2xl mx-auto",
-                                children: "Your trusted partner in global travel for over 25 years."
+                                children: "Your trusted TRAVEL partner over 25 years."
                             }, void 0, false, {
                                 fileName: "[project]/app/about/page.jsx",
                                 lineNumber: 14,
@@ -159,7 +159,7 @@ const About = ()=>{
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-gray-600 leading-relaxed mb-6",
-                                        children: "Established in 1999, FLIGHT99 has grown from a small ticketing agency to a comprehensive travel management company. With over two decades of industry experience, we specialize in curating seamless travel experiences for leisure and business travelers alike."
+                                        children: "FLIGHT99 Travel Enterprises has grown from a small ticketing agency to a comprehensive travel management company. With over two decades of industry experience, we specialize in curating seamless travel experiences for leisure and business travelers alike."
                                     }, void 0, false, {
                                         fileName: "[project]/app/about/page.jsx",
                                         lineNumber: 23,
@@ -167,7 +167,7 @@ const About = ()=>{
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-gray-600 leading-relaxed mb-6",
-                                        children: 'Our commitment to "100% Trustability" and "Genuine Service" isn\'t just a slogan; it\'s the foundation of every booking we handle. From complex visa processing to luxury holiday packages, our expert team ensures every detail is perfect.'
+                                        children: 'Our commitment to "Absolute Trustability" and "Genuine Service" isn\'t just a slogan; it\'s the foundation of every booking we handle. From complex visa processing to luxury holiday packages, our expert team ensures every detail is perfect.'
                                     }, void 0, false, {
                                         fileName: "[project]/app/about/page.jsx",
                                         lineNumber: 26,
@@ -206,7 +206,7 @@ const About = ()=>{
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                                         className: "text-4xl font-bold text-primary mb-2",
-                                                        children: "1M+"
+                                                        children: "50+"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.jsx",
                                                         lineNumber: 35,
@@ -214,7 +214,7 @@ const About = ()=>{
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         className: "text-sm font-semibold text-gray-500 uppercase",
-                                                        children: "Happy Travelers"
+                                                        children: "Global Destinations"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/about/page.jsx",
                                                         lineNumber: 36,
@@ -264,7 +264,7 @@ const About = ()=>{
                         children: [
                             {
                                 icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2d$check$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__ShieldCheck$3e$__["ShieldCheck"],
-                                title: "100% Trustability",
+                                title: "Absolute Trustability",
                                 desc: "We operate with total transparency and integrity in pricing and services."
                             },
                             {

@@ -26,6 +26,8 @@ const Home = () => {
     const { packages } = usePackages();
     const [searchType, setSearchType] = useState('international');
     const [destination, setDestination] = useState('');
+    const [activeTab, setActiveTab] = useState('packages');
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const { scrollY } = useScroll();
     const yBg = useTransform(scrollY, [0, 500], [0, 200]);
 
@@ -48,7 +50,37 @@ const Home = () => {
         const params = new URLSearchParams();
         params.set('type', searchType);
         if (destination) params.set('destination', destination);
-        router.push(`/packages?${params.toString()}`);
+        router.push(`/tour-packages?${params.toString()}`);
+    };
+
+    const handleFlightSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        const formElement = e.target;
+        const formData = new FormData(formElement);
+        const data = Object.fromEntries(formData.entries());
+        data.service_type = 'flight';
+
+        formData.append("access_key", "fd4cbdc6-dbae-42b4-9ed9-a09170314f38");
+        formData.append("subject", `New Flight Enquiry from ${data.name} to ${data.to}`);
+        formData.append("from_name", "FLIGHT99 Website");
+
+        try {
+            await Promise.all([
+                fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData }),
+                fetch('/api/send-enquiry', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: { 'Content-Type': 'application/json' }
+                })
+            ]);
+            alert("Success! Your flight ticket request has been sent.");
+            formElement.reset();
+        } catch (err) {
+            alert("Something went wrong. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const uniqueDestinations = Array.from(new Set(
@@ -103,104 +135,165 @@ const Home = () => {
                         transition={{ duration: 0.5, delay: 0.4 }}
                         className="w-full max-w-5xl mt-16 md:mt-[100px]"
                     >
-                        <div className="bg-white rounded-xl shadow-2xl shadow-black/10 border border-gray-100 flex flex-col md:flex-row w-full mt-4">
-
-                            {/* Trip Type Custom Dropdown */}
-                            <div
-                                ref={typeRef}
-                                className="relative flex flex-col w-full md:w-1/3 px-6 py-5 border-b md:border-b-0 md:border-r border-gray-200 hover:bg-gray-50 transition-colors rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none cursor-pointer"
-                                onClick={() => { setIsTypeOpen(!isTypeOpen); setIsDestOpen(false); }}
-                            >
-                                <label className="flex items-center gap-2 text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider cursor-pointer">
-                                    <Map className="w-4 h-4 text-primary" /> Trip Type
-                                </label>
-                                <div className="flex items-center justify-between w-full text-lg font-bold text-gray-900 capitalize">
-                                    <span>{searchType}</span>
-                                    <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isTypeOpen ? 'rotate-180 text-primary' : ''}`} />
-                                </div>
-
-                                {/* Dropdown Menu */}
-                                {isTypeOpen && (
-                                    <div className="absolute top-[calc(100%+8px)] left-0 w-[calc(100%+2px)] bg-white border border-gray-100 rounded-2xl shadow-xl z-50 overflow-hidden py-2 animate-in fade-in slide-in-from-top-2">
-                                        {['domestic', 'international'].map(type => (
-                                            <div
-                                                key={type}
-                                                className={`px-6 py-3 hover:bg-gray-50 cursor-pointer font-bold capitalize transition-colors ${searchType === type ? 'text-primary bg-primary/5' : 'text-gray-700'}`}
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    setSearchType(type);
-                                                    setIsTypeOpen(false);
-                                                    setDestination(''); // Reset destination on type change
-                                                }}
-                                            >
-                                                {type}
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
+                        {/* Tabs */}
+                        <div className="flex justify-center mb-6">
+                            <div className="bg-gray-900/40 backdrop-blur-md p-1.5 rounded-full inline-flex gap-2">
+                                <button
+                                    onClick={() => setActiveTab('packages')}
+                                    className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all ${activeTab === 'packages' ? 'bg-primary text-white shadow-md' : 'text-gray-200 hover:text-white'}`}
+                                >
+                                    Tour Packages
+                                </button>
+                                <button
+                                    onClick={() => setActiveTab('flights')}
+                                    className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all ${activeTab === 'flights' ? 'bg-primary text-white shadow-md' : 'text-gray-200 hover:text-white'}`}
+                                >
+                                    Flight Tickets
+                                </button>
                             </div>
+                        </div>
 
-                            {/* Destination Custom Dropdown */}
-                            <div
-                                ref={destRef}
-                                className="relative flex flex-col flex-1 px-6 py-5 hover:bg-gray-50 transition-colors cursor-pointer"
-                                onClick={() => { setIsDestOpen(!isDestOpen); setIsTypeOpen(false); }}
-                            >
-                                <label className="flex items-center gap-2 text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider cursor-pointer">
-                                    <Globe2 className="w-4 h-4 text-primary" /> Destination
-                                </label>
-                                <div className="flex items-center justify-between w-full text-lg font-bold text-gray-900">
-                                    <span className={!destination ? "text-gray-400 font-medium" : ""}>
-                                        {destination || `Any ${searchType === 'international' ? 'International' : 'Domestic'} Destination`}
-                                    </span>
-                                    <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isDestOpen ? 'rotate-180 text-primary' : ''}`} />
+                        {activeTab === 'packages' ? (
+                            <div className="bg-white rounded-xl shadow-2xl shadow-black/10 border border-gray-100 flex flex-col md:flex-row w-full mt-4">
+
+                                {/* Trip Type Custom Dropdown */}
+                                <div
+                                    ref={typeRef}
+                                    className="relative flex flex-col w-full md:w-1/3 px-6 py-5 border-b md:border-b-0 md:border-r border-gray-200 hover:bg-gray-50 transition-colors rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none cursor-pointer"
+                                    onClick={() => { setIsTypeOpen(!isTypeOpen); setIsDestOpen(false); }}
+                                >
+                                    <label className="flex items-center gap-2 text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider cursor-pointer">
+                                        <Map className="w-4 h-4 text-primary" /> Trip Type
+                                    </label>
+                                    <div className="flex items-center justify-between w-full text-lg font-bold text-gray-900 capitalize">
+                                        <span>{searchType}</span>
+                                        <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isTypeOpen ? 'rotate-180 text-primary' : ''}`} />
+                                    </div>
+
+                                    {/* Dropdown Menu */}
+                                    {isTypeOpen && (
+                                        <div className="absolute top-[calc(100%+8px)] left-0 w-[calc(100%+2px)] bg-white border border-gray-100 rounded-2xl shadow-xl z-50 overflow-hidden py-2 animate-in fade-in slide-in-from-top-2">
+                                            {['domestic', 'international'].map(type => (
+                                                <div
+                                                    key={type}
+                                                    className={`px-6 py-3 hover:bg-gray-50 cursor-pointer font-bold capitalize transition-colors ${searchType === type ? 'text-primary bg-primary/5' : 'text-gray-700'}`}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setSearchType(type);
+                                                        setIsTypeOpen(false);
+                                                        setDestination(''); // Reset destination on type change
+                                                    }}
+                                                >
+                                                    {type}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
 
-                                {/* Dropdown Menu */}
-                                {isDestOpen && (
-                                    <div className="absolute top-[calc(100%+8px)] left-0 right-0 bg-white border border-gray-100 rounded-2xl shadow-xl z-50 py-2 max-h-64 overflow-y-auto animate-in fade-in slide-in-from-top-2">
-                                        <div
-                                            className={`px-6 py-3 hover:bg-gray-50 cursor-pointer font-medium transition-colors ${!destination ? 'text-primary bg-primary/5 font-bold' : 'text-gray-600'}`}
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                setDestination('');
-                                                setIsDestOpen(false);
-                                            }}
-                                        >
-                                            Any {searchType === 'international' ? 'International' : 'Domestic'} Destination
-                                        </div>
-                                        {uniqueDestinations.map(loc => (
+                                {/* Destination Custom Dropdown */}
+                                <div
+                                    ref={destRef}
+                                    className="relative flex flex-col flex-1 px-6 py-5 hover:bg-gray-50 transition-colors cursor-pointer"
+                                    onClick={() => { setIsDestOpen(!isDestOpen); setIsTypeOpen(false); }}
+                                >
+                                    <label className="flex items-center gap-2 text-xs font-bold uppercase text-gray-500 mb-2 tracking-wider cursor-pointer">
+                                        <Globe2 className="w-4 h-4 text-primary" /> Destination
+                                    </label>
+                                    <div className="flex items-center justify-between w-full text-lg font-bold text-gray-900">
+                                        <span className={!destination ? "text-gray-400 font-medium" : ""}>
+                                            {destination || `Any ${searchType === 'international' ? 'International' : 'Domestic'} Destination`}
+                                        </span>
+                                        <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isDestOpen ? 'rotate-180 text-primary' : ''}`} />
+                                    </div>
+
+                                    {/* Dropdown Menu */}
+                                    {isDestOpen && (
+                                        <div className="absolute top-[calc(100%+8px)] left-0 right-0 bg-white border border-gray-100 rounded-2xl shadow-xl z-50 py-2 max-h-64 overflow-y-auto animate-in fade-in slide-in-from-top-2">
                                             <div
-                                                key={loc}
-                                                className={`px-6 py-3 hover:bg-gray-50 cursor-pointer font-bold transition-colors ${destination === loc ? 'text-primary bg-primary/5' : 'text-gray-700'}`}
+                                                className={`px-6 py-3 hover:bg-gray-50 cursor-pointer font-medium transition-colors ${!destination ? 'text-primary bg-primary/5 font-bold' : 'text-gray-600'}`}
                                                 onClick={(e) => {
                                                     e.stopPropagation();
-                                                    setDestination(loc);
+                                                    setDestination('');
                                                     setIsDestOpen(false);
                                                 }}
                                             >
-                                                {loc}
+                                                Any {searchType === 'international' ? 'International' : 'Domestic'} Destination
                                             </div>
-                                        ))}
-                                        {uniqueDestinations.length === 0 && (
-                                            <div className="px-6 py-4 text-gray-400 text-sm italic text-center">
-                                                No destinations found for this type.
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
-                            </div>
+                                            {uniqueDestinations.map(loc => (
+                                                <div
+                                                    key={loc}
+                                                    className={`px-6 py-3 hover:bg-gray-50 cursor-pointer font-bold transition-colors ${destination === loc ? 'text-primary bg-primary/5' : 'text-gray-700'}`}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setDestination(loc);
+                                                        setIsDestOpen(false);
+                                                    }}
+                                                >
+                                                    {loc}
+                                                </div>
+                                            ))}
+                                            {uniqueDestinations.length === 0 && (
+                                                <div className="px-6 py-4 text-gray-400 text-sm italic text-center">
+                                                    No destinations found for this type.
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
 
-                            {/* Search Button */}
-                            <Button
-                                size="lg"
-                                className="h-[80px] md:h-auto md:w-56 rounded-none rounded-b-xl md:rounded-l-none md:rounded-r-xl text-xl font-black tracking-wider shadow-none hover:bg-primary/90 transition-all border-none"
-                                variant="primary"
-                                onClick={handleSearch}
+                                {/* Search Button */}
+                                <Button
+                                    size="lg"
+                                    className="h-[80px] md:h-auto md:w-56 rounded-none rounded-b-xl md:rounded-l-none md:rounded-r-xl text-xl font-black tracking-wider shadow-none hover:bg-primary/90 transition-all border-none"
+                                    variant="primary"
+                                    onClick={handleSearch}
+                                >
+                                    SEARCH <ArrowRight className="w-6 h-6 ml-2" />
+                                </Button>
+                            </div>
+                        ) : (
+                            <form
+                                onSubmit={handleFlightSubmit}
+                                className="bg-white rounded-xl shadow-2xl shadow-black/10 border border-gray-100 p-6 md:p-8 flex flex-col w-full"
                             >
-                                SEARCH <ArrowRight className="w-6 h-6 ml-2" />
-                            </Button>
-                        </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                                    <div className="flex flex-col">
+                                        <label className="text-xs font-bold uppercase text-gray-500 mb-2">From</label>
+                                        <input type="text" name="from" required className="px-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none text-gray-900 bg-gray-50/50" placeholder="Departure City" />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <label className="text-xs font-bold uppercase text-gray-500 mb-2">To</label>
+                                        <input type="text" name="to" required className="px-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none text-gray-900 bg-gray-50/50" placeholder="Arrival City" />
+                                    </div>
+                                    <div className="flex flex-col lg:col-span-2">
+                                        <label className="text-xs font-bold uppercase text-gray-500 mb-2">When</label>
+                                        <input type="date" name="date" required className="px-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none text-gray-900 bg-gray-50/50" />
+                                    </div>
+                                    <div className="flex flex-col lg:col-span-2">
+                                        <label className="text-xs font-bold uppercase text-gray-500 mb-2">Priorities / Class</label>
+                                        <input type="text" name="priorities" className="px-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none text-gray-900 bg-gray-50/50" placeholder="Economy, Business, Direct flight..." />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <label className="text-xs font-bold uppercase text-gray-500 mb-2">Name</label>
+                                        <input type="text" name="name" required className="px-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none text-gray-900 bg-gray-50/50" placeholder="Your Name" />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <label className="text-xs font-bold uppercase text-gray-500 mb-2">Phone</label>
+                                        <input type="tel" name="phone" required className="px-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none text-gray-900 bg-gray-50/50" placeholder="+91 XXXXX XXXXX" />
+                                    </div>
+                                    <div className="flex flex-col lg:col-span-4 mt-2">
+                                        <label className="text-xs font-bold uppercase text-gray-500 mb-2">Email</label>
+                                        <input type="email" name="email" required className="px-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none text-gray-900 bg-gray-50/50" placeholder="your@email.com" />
+                                    </div>
+                                </div>
+                                <div className="flex justify-end mt-4">
+                                    <Button type="submit" disabled={isSubmitting} variant="primary" className="w-full md:w-auto px-10 py-4 rounded-xl text-lg font-bold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30">
+                                        {isSubmitting ? 'Sending Request...' : 'Request Flight Tickets'}
+                                    </Button>
+                                </div>
+                            </form>
+                        )}
 
                         {/* Service Bar */}
                         <div className="mt-8">
@@ -216,7 +309,7 @@ const Home = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-100">
                         {[
                             { icon: Globe2, value: "25+", label: "Years Experience", desc: "Serving the industry since 1999." },
-                            { icon: ShieldCheck, value: "100%", label: "Trustability", desc: "Transparent dealings & secure payments." },
+                            { icon: ShieldCheck, value: "Absolute", label: "Trustability", desc: "Transparent dealings & secure payments." },
                             { icon: Users, value: "Genuine", label: "Service", desc: "Real support by real experts." },
                         ].map((item, idx) => (
                             <motion.div
@@ -247,7 +340,7 @@ const Home = () => {
                             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-3">Trending Destinations</h2>
                             <p className="text-gray-500">Curated packages that are selling out fast.</p>
                         </div>
-                        <Link href="/packages">
+                        <Link href="/tour-packages">
                             <Button variant="ghost" className="hidden md:inline-flex">View All Packages <ArrowRight className="ml-2 w-4 h-4" /></Button>
                         </Link>
                     </div>
@@ -277,7 +370,7 @@ const Home = () => {
                     </div>
 
                     <div className="mt-8 text-center md:hidden">
-                        <Link href="/packages">
+                        <Link href="/tour-packages">
                             <Button variant="outline" className="w-full border-gray-300 text-gray-700">View All Packages</Button>
                         </Link>
                     </div>

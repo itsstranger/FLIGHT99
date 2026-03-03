@@ -22,12 +22,12 @@
   },
   "dynamicRoutes": [
     {
-      "page": "/packages/[id]",
-      "regex": "^/packages/([^/]+?)(?:/)?$",
+      "page": "/tour-packages/[id]",
+      "regex": "^/tour\\-packages/([^/]+?)(?:/)?$",
       "routeKeys": {
         "nxtPid": "nxtPid"
       },
-      "namedRegex": "^/packages/(?<nxtPid>[^/]+?)(?:/)?$"
+      "namedRegex": "^/tour\\-packages/(?<nxtPid>[^/]+?)(?:/)?$"
     }
   ],
   "staticRoutes": [
@@ -80,10 +80,10 @@
       "namedRegex": "^/hajj\\-umrah(?:/)?$"
     },
     {
-      "page": "/packages",
-      "regex": "^/packages(?:/)?$",
+      "page": "/tour-packages",
+      "regex": "^/tour\\-packages(?:/)?$",
       "routeKeys": {},
-      "namedRegex": "^/packages(?:/)?$"
+      "namedRegex": "^/tour\\-packages(?:/)?$"
     },
     {
       "page": "/visa",

@@ -1,10 +1,19 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
+    const pathname = usePathname();
+    const isHomeOrAbout = pathname === '/' || pathname === '/about';
+
+    // Hide footer on mobile screens unless we are on Home or About page
+    const visibilityClass = isHomeOrAbout ? '' : 'hidden md:block';
+
     return (
-        <footer className="bg-primary text-white pt-16 pb-8">
+        <footer className={`bg-primary text-white pt-16 pb-8 ${visibilityClass}`}>
             <div className="container mx-auto px-4 md:px-6">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                     {/* Brand Column */}
@@ -26,7 +35,7 @@ const Footer = () => {
                         <h3 className="text-lg font-semibold mb-6 text-secondary">Explore</h3>
                         <ul className="space-y-3 text-sm text-gray-300">
                             <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-                            <li><Link href="/packages" className="hover:text-white transition-colors">Holiday Packages</Link></li>
+                            <li><Link href="/tour-packages" className="hover:text-white transition-colors">Tour Packages</Link></li>
                             <li><Link href="/flights" className="hover:text-white transition-colors">Flights</Link></li>
                             <li><Link href="/visas" className="hover:text-white transition-colors">Visa Services</Link></li>
                             <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
@@ -54,7 +63,7 @@ const Footer = () => {
                             </li>
                             <li className="flex items-center gap-3">
                                 <Phone className="w-5 h-5 text-secondary shrink-0" />
-                                <span>+971 4 123 4567</span>
+                                <span>+91 73564 09377</span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Mail className="w-5 h-5 text-secondary shrink-0" />

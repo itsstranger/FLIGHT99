@@ -1,9 +1,4 @@
 {
   "/admin/dashboard/page": "app/admin/dashboard/page.js",
-  "/admin/login/page": "app/admin/login/page.js",
-  "/api/send-enquiry/route": "app/api/send-enquiry/route.js",
-  "/hajj-umrah/page": "app/hajj-umrah/page.js",
-  "/packages/page": "app/packages/page.js",
-  "/page": "app/page.js",
-  "/visa/page": "app/visa/page.js"
+  "/page": "app/page.js"
 }

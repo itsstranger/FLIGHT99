@@ -630,23 +630,54 @@ const Navbar = ()=>{
                         columnNumber: 21
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "md:hidden flex items-center",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                            href: "tel:+919876543210",
-                            className: "p-2 text-primary bg-primary/5 rounded-full",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$phone$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Phone$3e$__["Phone"], {
-                                className: "w-5 h-5"
+                        className: "md:hidden flex items-center gap-2",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                href: "https://wa.me/+919876543210?text=Hello%20FLIGHT99%2C%20I%20need%20help%20planning%20a%20trip%21",
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                                className: "p-2 text-[#25D366] bg-[#25D366]/10 rounded-full hover:scale-105 transition-transform",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                    width: "20",
+                                    height: "20",
+                                    viewBox: "0 0 24 24",
+                                    fill: "none",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                        d: "M17.472 14.382C17.155 14.223 15.594 13.454 15.303 13.349C15.012 13.243 14.801 13.19 14.59 13.507C14.378 13.824 13.77 14.537 13.585 14.749C13.4 14.96 13.216 14.986 12.899 14.828C12.582 14.669 11.558 14.335 10.347 13.255C9.395 12.404 8.756 11.365 8.571 11.048C8.386 10.73 8.552 10.559 8.71 10.401C8.854 10.259 9.028 10.033 9.186 9.848C9.345 9.662 9.398 9.53 9.503 9.319C9.609 9.108 9.556 8.923 9.477 8.764C9.398 8.606 8.764 7.046 8.5 6.411C8.243 5.798 7.978 5.881 7.788 5.871C7.618 5.862 7.407 5.861 7.195 5.861C6.984 5.861 6.64 5.94 6.35 6.257C6.059 6.574 5.24 7.34 5.24 8.9C5.24 10.459 6.376 11.966 6.534 12.177C6.693 12.389 8.744 15.683 12.028 17.103C12.809 17.441 13.418 17.643 13.896 17.795C14.68 18.043 15.395 18.006 15.968 17.917C16.608 17.818 17.94 17.103 18.23 16.31C18.521 15.518 18.521 14.857 18.442 14.751C18.363 14.645 18.152 14.593 17.834 14.434L17.472 14.382ZM11.988 22.094C10.284 22.094 8.647 21.636 7.228 20.8L6.87 20.588L3.25 21.537L4.223 18L3.99 17.632C3.056 16.142 2.537 14.364 2.537 12.484C2.537 7.245 6.791 2.99 12.035 2.99C14.575 2.992 16.963 3.982 18.756 5.776C20.548 7.57 21.536 9.959 21.536 12.497C21.536 17.736 17.28 21.99 12.036 21.99L11.988 22.094Z",
+                                        fill: "currentColor"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Navbar.jsx",
+                                        lineNumber: 91,
+                                        columnNumber: 33
+                                    }, ("TURBOPACK compile-time value", void 0))
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/Navbar.jsx",
+                                    lineNumber: 90,
+                                    columnNumber: 29
+                                }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Navbar.jsx",
-                                lineNumber: 85,
-                                columnNumber: 29
+                                lineNumber: 84,
+                                columnNumber: 25
+                            }, ("TURBOPACK compile-time value", void 0)),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                href: "tel:+919876543210",
+                                className: "p-2 text-primary bg-primary/5 rounded-full hover:scale-105 transition-transform",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$phone$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Phone$3e$__["Phone"], {
+                                    className: "w-5 h-5"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/Navbar.jsx",
+                                    lineNumber: 95,
+                                    columnNumber: 29
+                                }, ("TURBOPACK compile-time value", void 0))
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/Navbar.jsx",
+                                lineNumber: 94,
+                                columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0))
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/Navbar.jsx",
-                            lineNumber: 84,
-                            columnNumber: 25
-                        }, ("TURBOPACK compile-time value", void 0))
-                    }, void 0, false, {
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/src/components/Navbar.jsx",
                         lineNumber: 83,
                         columnNumber: 21
@@ -1360,9 +1391,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$compass$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Compass$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/compass.js [app-client] (ecmascript) <export default as Compass>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$map$2d$pin$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MapPin$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/map-pin.js [app-client] (ecmascript) <export default as MapPin>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/search.js [app-client] (ecmascript) <export default as Search>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
+;
 ;
 ;
 ;
@@ -1401,27 +1434,40 @@ const BottomNav = ()=>{
                 const isActive = pathname === item.path || item.path !== '/' && pathname?.startsWith(item.path);
                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                     href: item.path,
-                    className: `flex flex-col items-center justify-center w-[72px] h-full transition-all duration-300 relative ${isActive ? 'text-primary' : 'text-gray-500 hover:text-gray-900'}`,
+                    className: `flex flex-1 flex-col items-center justify-center h-full transition-all duration-300 relative ${isActive ? 'text-primary' : 'text-gray-500 hover:text-gray-900'}`,
                     children: [
                         isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "absolute -top-5 left-1/2 -translate-x-1/2 w-14 h-14 bg-white rounded-full p-1 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] border-t border-gray-100 flex items-center justify-center z-10",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "w-full h-full bg-primary rounded-full flex items-center justify-center shadow-md",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
-                                    className: "w-6 h-6 text-white stroke-[2]"
+                            className: "absolute -top-5 left-0 right-0 flex justify-center z-10 pointer-events-none",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                layoutId: "bottomNavIndicator",
+                                transition: {
+                                    type: "spring",
+                                    stiffness: 300,
+                                    damping: 30
+                                },
+                                className: "w-14 h-14 bg-white rounded-full p-1 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] border-t border-gray-100 flex items-center justify-center pointer-events-auto",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "w-full h-full bg-primary rounded-full flex items-center justify-center shadow-md",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
+                                        className: "w-6 h-6 text-white stroke-[2]"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/BottomNav.jsx",
+                                        lineNumber: 42,
+                                        columnNumber: 45
+                                    }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/BottomNav.jsx",
-                                    lineNumber: 36,
+                                    lineNumber: 41,
                                     columnNumber: 41
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/BottomNav.jsx",
-                                lineNumber: 35,
+                                lineNumber: 36,
                                 columnNumber: 37
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/components/BottomNav.jsx",
-                            lineNumber: 34,
+                            lineNumber: 35,
                             columnNumber: 33
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1430,12 +1476,12 @@ const BottomNav = ()=>{
                                 className: "w-6 h-6 stroke-[1.5]"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/BottomNav.jsx",
-                                lineNumber: 43,
+                                lineNumber: 50,
                                 columnNumber: 47
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/components/BottomNav.jsx",
-                            lineNumber: 42,
+                            lineNumber: 49,
                             columnNumber: 29
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1443,24 +1489,24 @@ const BottomNav = ()=>{
                             children: item.name
                         }, void 0, false, {
                             fileName: "[project]/src/components/BottomNav.jsx",
-                            lineNumber: 47,
+                            lineNumber: 54,
                             columnNumber: 29
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, item.path, true, {
                     fileName: "[project]/src/components/BottomNav.jsx",
-                    lineNumber: 26,
+                    lineNumber: 27,
                     columnNumber: 25
                 }, ("TURBOPACK compile-time value", void 0));
             })
         }, void 0, false, {
             fileName: "[project]/src/components/BottomNav.jsx",
-            lineNumber: 20,
+            lineNumber: 21,
             columnNumber: 13
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/src/components/BottomNav.jsx",
-        lineNumber: 19,
+        lineNumber: 20,
         columnNumber: 9
     }, ("TURBOPACK compile-time value", void 0));
 };

@@ -6,8 +6,8 @@
   "/admin/login/page": "/admin/login",
   "/api/send-enquiry/route": "/api/send-enquiry",
   "/hajj-umrah/page": "/hajj-umrah",
-  "/packages/[id]/page": "/packages/[id]",
-  "/packages/page": "/packages",
   "/page": "/",
+  "/tour-packages/[id]/page": "/tour-packages/[id]",
+  "/tour-packages/page": "/tour-packages",
   "/visa/page": "/visa"
 }

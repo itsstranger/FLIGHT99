@@ -75,7 +75,7 @@ const PackageCard = ({ packageData }) => {
                         </span>
                     </div>
 
-                    <Link href={`/packages/${id}`}>
+                    <Link href={`/tour-packages/${id}`}>
                         <button className="bg-white text-gray-900 font-bold text-xs px-4 py-2.5 rounded-sm hover:bg-gray-100 transition-colors shadow-sm">
                             View Details
                         </button>

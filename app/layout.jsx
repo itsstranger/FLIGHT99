@@ -3,11 +3,7 @@ import { PackageProvider } from '@/context/PackageContext';
 import { ModalProvider } from '@/context/ModalContext';
 import { AuthProvider } from '@/context/AuthContext';
 import { EnquiryProvider } from '@/context/EnquiryContext';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import LeadCaptureModal from '@/components/LeadCaptureModal';
-import WhatsAppFloat from '@/components/WhatsAppFloat';
-import BottomNav from '@/components/BottomNav';
+import LayoutWrapper from '@/components/LayoutWrapper';
 
 export const metadata = {
     title: 'FLIGHT99 - Your Trusted Travel Partner',
@@ -22,14 +18,9 @@ export default function RootLayout({ children }) {
                     <EnquiryProvider>
                         <PackageProvider>
                             <ModalProvider>
-                                <Navbar />
-                                <BottomNav />
-                                <main className="min-h-screen">
+                                <LayoutWrapper>
                                     {children}
-                                </main>
-                                <Footer />
-                                <LeadCaptureModal />
-                                <WhatsAppFloat />
+                                </LayoutWrapper>
                             </ModalProvider>
                         </PackageProvider>
                     </EnquiryProvider>
