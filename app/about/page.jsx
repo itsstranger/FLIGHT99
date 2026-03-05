@@ -20,20 +20,20 @@ const About = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
                     <div>
                         <h2 className="text-3xl font-bold text-gray-900 mb-6">Experience & Excellence</h2>
-                        <p className="text-gray-600 leading-relaxed mb-6">
+                        <p className="font-secondary text-gray-600 leading-relaxed mb-6">
                             FLIGHT99 Travel Enterprises has grown from a small ticketing agency to a comprehensive travel management company. With over two decades of industry experience, we specialize in curating seamless travel experiences for leisure and business travelers alike.
                         </p>
-                        <p className="text-gray-600 leading-relaxed mb-6">
+                        <p className="font-secondary text-gray-600 leading-relaxed mb-6">
                             Our commitment to "Absolute Trustability" and "Genuine Service" isn't just a slogan; it's the foundation of every booking we handle. From complex visa processing to luxury holiday packages, our expert team ensures every detail is perfect.
                         </p>
                         <div className="grid grid-cols-2 gap-6">
                             <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
                                 <h3 className="text-4xl font-bold text-primary mb-2">25+</h3>
-                                <p className="text-sm font-semibold text-gray-500 uppercase">Years Experience</p>
+                                <p className="font-secondary text-sm font-semibold text-gray-500 uppercase">Years Experience</p>
                             </div>
                             <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
                                 <h3 className="text-4xl font-bold text-primary mb-2">50+</h3>
-                                <p className="text-sm font-semibold text-gray-500 uppercase">Global Destinations</p>
+                                <p className="font-secondary text-sm font-semibold text-gray-500 uppercase">Global Destinations</p>
                             </div>
                         </div>
                     </div>

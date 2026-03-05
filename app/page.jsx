@@ -307,10 +307,10 @@ const Home = () => {
                             <div className="bg-white rounded-xl shadow-2xl flex flex-col md:flex-row relative items-stretch border border-gray-100 min-h-[95px]">
 
                                 {/* From */}
-                                <div className="flex-[1.2] flex flex-col justify-center px-4 md:px-5 py-3 hover:bg-blue-50/40 transition-colors rounded-t-xl md:rounded-l-xl md:rounded-tr-none border-b md:border-b-0 md:border-r border-gray-200 cursor-text group relative">
-                                    <label className="text-gray-500 text-xs font-semibold mb-0.5 cursor-text group-hover:text-primary transition-colors">From</label>
-                                    <input type="text" name="from" value={flightFrom} onChange={(e) => setFlightFrom(e.target.value)} required={!showContactPrompt} className="w-full text-[16px] md:text-lg font-bold text-gray-900 outline-none bg-transparent placeholder-gray-300 truncate md:pr-4" placeholder="Mumbai" />
-                                    <span className="text-[11px] text-gray-500 mt-0.5 truncate block group-hover:text-gray-600 transition-colors font-medium">Enter city or airport</span>
+                                <div className="flex-[1.2] flex flex-col justify-center px-3 py-2 md:px-5 md:py-3 hover:bg-blue-50/40 transition-colors rounded-t-xl md:rounded-l-xl md:rounded-tr-none border-b md:border-b-0 md:border-r border-gray-200 cursor-text group relative">
+                                    <label className="text-[10px] md:text-xs text-gray-500 font-semibold mb-0.5 cursor-text group-hover:text-primary transition-colors">From</label>
+                                    <input type="text" name="from" value={flightFrom} onChange={(e) => setFlightFrom(e.target.value)} required={!showContactPrompt} className="w-full text-[14px] md:text-lg font-bold text-gray-900 outline-none bg-transparent placeholder-gray-300 truncate md:pr-4" placeholder="Mumbai" />
+                                    <span className="text-[10px] md:text-[11px] text-gray-500 mt-0.5 md:mt-1 truncate block group-hover:text-gray-600 transition-colors font-medium">Enter city or airport</span>
 
                                     {/* Swap Icon */}
                                     <div className="absolute left-1/2 bottom-0 translate-y-1/2 md:top-1/2 md:-translate-y-1/2 md:left-auto md:right-0 md:translate-x-1/2 -translate-x-1/2 z-20 w-8 h-8 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.12)] rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors border border-gray-100 text-[#32315c] hover:text-[#32315c]/80" onClick={() => { const temp = flightFrom; setFlightFrom(flightTo); setFlightTo(temp); }}>
@@ -319,45 +319,45 @@ const Home = () => {
                                 </div>
 
                                 {/* To */}
-                                <div className="flex-[1.2] flex flex-col justify-center px-4 md:px-5 py-3 hover:bg-blue-50/40 transition-colors border-b md:border-b-0 md:border-r border-gray-200 cursor-text pl-4 md:pl-8 pt-5 md:pt-3 group relative">
-                                    <label className="text-gray-500 text-xs font-semibold mb-0.5 cursor-text group-hover:text-primary transition-colors">To</label>
-                                    <input type="text" name="to" value={flightTo} onChange={(e) => setFlightTo(e.target.value)} required={!showContactPrompt} className="w-full text-[16px] md:text-lg font-bold text-gray-900 outline-none bg-transparent placeholder-gray-300 truncate" placeholder="New Delhi" />
-                                    <span className="text-[11px] text-gray-500 mt-0.5 truncate block group-hover:text-gray-600 transition-colors font-medium">Enter city or airport</span>
+                                <div className="flex-[1.2] flex flex-col justify-center px-3 py-2 md:px-5 md:py-3 hover:bg-blue-50/40 transition-colors border-b md:border-b-0 md:border-r border-gray-200 cursor-text pl-4 md:pl-8 pt-4 md:pt-3 group relative">
+                                    <label className="text-[10px] md:text-xs text-gray-500 font-semibold mb-0.5 cursor-text group-hover:text-primary transition-colors">To</label>
+                                    <input type="text" name="to" value={flightTo} onChange={(e) => setFlightTo(e.target.value)} required={!showContactPrompt} className="w-full text-[14px] md:text-lg font-bold text-gray-900 outline-none bg-transparent placeholder-gray-300 truncate" placeholder="New Delhi" />
+                                    <span className="text-[10px] md:text-[11px] text-gray-500 mt-0.5 md:mt-1 truncate block group-hover:text-gray-600 transition-colors font-medium">Enter city or airport</span>
                                 </div>
 
                                 {/* Departure */}
-                                <div className="flex-[0.9] flex flex-col justify-center px-4 md:px-5 py-3 hover:bg-blue-50/40 transition-colors border-b md:border-b-0 md:border-r border-gray-200 cursor-text bg-blue-50/20 group relative overflow-hidden">
-                                    <label className="text-gray-500 text-xs font-semibold mb-0.5 flex items-center gap-1 cursor-text group-hover:text-primary transition-colors">
+                                <div className="flex-[0.9] flex flex-col justify-center px-3 py-2 md:px-5 md:py-3 hover:bg-blue-50/40 transition-colors border-b md:border-b-0 md:border-r border-gray-200 cursor-text bg-blue-50/20 group relative overflow-hidden">
+                                    <label className="text-[10px] md:text-xs text-gray-500 font-semibold mb-0.5 flex items-center gap-1 cursor-text group-hover:text-primary transition-colors">
                                         <Calendar className="w-3 h-3" /> Departure
                                         <ChevronDown className="w-3 h-3 ml-0.5 opacity-50" />
                                     </label>
                                     <div className="relative w-full">
-                                        <input type="date" name="date" required={!showContactPrompt} className="w-full text-[14px] md:text-[15px] font-bold text-gray-900 outline-none bg-transparent mt-0.5 z-10 cursor-pointer relative [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:cursor-pointer" />
+                                        <input type="date" name="date" required={!showContactPrompt} className="w-full text-[13px] md:text-[15px] font-bold text-gray-900 outline-none bg-transparent mt-0.5 z-10 cursor-pointer relative [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:cursor-pointer" />
                                     </div>
                                 </div>
 
                                 {/* Return */}
-                                <div className={`flex-[0.9] flex flex-col justify-center px-4 md:px-5 py-3 transition-colors border-b md:border-b-0 md:border-r border-gray-200 cursor-text group relative ${flightTripType === 'round-trip' ? 'hover:bg-blue-50/40 bg-white' : 'bg-gray-50/80 opacity-60 hover:opacity-100 hover:bg-gray-50'}`}>
-                                    <label className="text-gray-500 text-xs font-semibold mb-0.5 flex items-center gap-1 cursor-text group-hover:text-primary transition-colors relative w-full">
+                                <div className={`flex-[0.9] flex flex-col justify-center px-3 py-2 md:px-5 md:py-3 transition-colors border-b md:border-b-0 md:border-r border-gray-200 cursor-text group relative ${flightTripType === 'round-trip' ? 'hover:bg-blue-50/40 bg-white' : 'bg-gray-50/80 opacity-60 hover:opacity-100 hover:bg-gray-50'}`}>
+                                    <label className="text-[10px] md:text-xs text-gray-500 font-semibold mb-0.5 flex items-center gap-1 cursor-text group-hover:text-primary transition-colors relative w-full">
                                         <Calendar className="w-3 h-3" /> Return
                                         <ChevronDown className="w-3 h-3 ml-0.5 opacity-50" />
                                     </label>
                                     {flightTripType === 'round-trip' ? (
                                         <div className="relative w-full">
-                                            <input type="date" name="return_date" required={flightTripType === 'round-trip' && !showContactPrompt} className="w-full text-[14px] md:text-[15px] font-bold text-gray-900 outline-none bg-transparent mt-0.5 relative z-10 cursor-pointer animate-in fade-in [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:cursor-pointer" />
+                                            <input type="date" name="return_date" required={flightTripType === 'round-trip' && !showContactPrompt} className="w-full text-[13px] md:text-[15px] font-bold text-gray-900 outline-none bg-transparent mt-0.5 relative z-10 cursor-pointer animate-in fade-in [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:cursor-pointer" />
                                         </div>
                                     ) : (
-                                        <div className="text-[11px] text-gray-400 mt-1.5 font-medium leading-tight cursor-pointer relative z-10 h-[22px] flex items-center" onClick={() => setFlightTripType('round-trip')}>
+                                        <div className="text-[10px] md:text-[11px] text-gray-400 mt-1 md:mt-1.5 font-medium leading-tight cursor-pointer relative z-10 h-[22px] flex items-center" onClick={() => setFlightTripType('round-trip')}>
                                             Tap to add a return date
                                         </div>
                                     )}
                                 </div>
 
                                 {/* Travellers & Class */}
-                                <div className="flex-[1] flex flex-col justify-center px-5 py-3 hover:bg-blue-50/40 transition-colors cursor-text group">
-                                    <label className="text-gray-500 text-xs font-semibold mb-0.5 cursor-text group-hover:text-primary transition-colors">Travellers & Class</label>
-                                    <input type="text" name="passengers" required={!showContactPrompt} className="w-full text-[15px] md:text-[16px] font-bold text-gray-900 outline-none bg-transparent placeholder-gray-800 truncate" placeholder="1 Traveller, Economy" defaultValue="1 Traveller" />
-                                    <span className="text-[11px] text-gray-500 mt-0.5 block font-medium truncate">Economy/Business</span>
+                                <div className="flex-[1] flex flex-col justify-center px-3 py-2 md:px-5 md:py-3 hover:bg-blue-50/40 transition-colors cursor-text group">
+                                    <label className="text-[10px] md:text-xs text-gray-500 font-semibold mb-0.5 cursor-text group-hover:text-primary transition-colors">Travellers & Class</label>
+                                    <input type="text" name="passengers" required={!showContactPrompt} className="w-full text-[14px] md:text-[16px] font-bold text-gray-900 outline-none bg-transparent placeholder-gray-800 truncate" placeholder="1 Traveller, Economy" defaultValue="1 Traveller" />
+                                    <span className="text-[10px] md:text-[11px] text-gray-500 mt-0.5 block font-medium truncate">Economy/Business</span>
                                 </div>
 
                                 {/* Primary Desktop Book Button */}
@@ -378,8 +378,8 @@ const Home = () => {
                             </div>
 
                             {/* Mobile Book Button */}
-                            <div className="lg:hidden mt-4">
-                                <button type="submit" disabled={showContactPrompt && isSubmitting} className="w-full py-4 bg-[#32315c] hover:bg-[#201d46] rounded-xl text-white font-bold text-xl tracking-wide shadow-md">
+                            <div className="lg:hidden mt-3 px-2">
+                                <button type="submit" disabled={showContactPrompt && isSubmitting} className="w-full py-3 bg-[#32315c] hover:bg-[#201d46] rounded-xl text-white font-bold text-lg tracking-wide shadow-md">
                                     {isSubmitting && !showContactPrompt ? 'SENDING...' : 'BOOKING'}
                                 </button>
                             </div>
@@ -413,26 +413,26 @@ const Home = () => {
                                             </button>
                                         </div>
 
-                                        <div className="p-6">
-                                            <p className="text-gray-600 text-sm mb-5">Please provide your contact details so our travel experts can send you the best flight itineraries and confirm your booking.</p>
+                                        <div className="p-4 md:p-6">
+                                            <p className="text-gray-600 text-[13px] md:text-sm mb-4 md:mb-5">Please provide your contact details so our travel experts can send you the best flight itineraries and confirm your booking.</p>
 
-                                            <div className="flex flex-col gap-4">
+                                            <div className="flex flex-col gap-2.5 md:gap-4">
                                                 <div>
-                                                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block">Full Name</label>
-                                                    <input type="text" name="name" form="flight-form" required className="w-full bg-gray-50 px-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 shadow-sm font-medium text-gray-900 placeholder-gray-400" placeholder="John Doe" />
+                                                    <label className="text-[11px] md:text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block">Full Name</label>
+                                                    <input type="text" name="name" form="flight-form" required className="w-full bg-gray-50 px-3 py-2.5 md:px-4 md:py-3 rounded-lg border border-gray-200 outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 shadow-sm font-medium text-gray-900 placeholder-gray-400 text-sm md:text-base" placeholder="John Doe" />
                                                 </div>
                                                 <div>
-                                                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block">Phone Number</label>
-                                                    <input type="tel" name="phone" form="flight-form" required className="w-full bg-gray-50 px-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 shadow-sm font-medium text-gray-900 placeholder-gray-400" placeholder="+91 98765 43210" />
+                                                    <label className="text-[11px] md:text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block">Phone Number</label>
+                                                    <input type="tel" name="phone" form="flight-form" required className="w-full bg-gray-50 px-3 py-2.5 md:px-4 md:py-3 rounded-lg border border-gray-200 outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 shadow-sm font-medium text-gray-900 placeholder-gray-400 text-sm md:text-base" placeholder="+91 98765 43210" />
                                                 </div>
                                                 <div>
-                                                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block">Email Address</label>
-                                                    <input type="email" name="email" form="flight-form" required className="w-full bg-gray-50 px-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 shadow-sm font-medium text-gray-900 placeholder-gray-400" placeholder="john@example.com" />
+                                                    <label className="text-[11px] md:text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block">Email Address</label>
+                                                    <input type="email" name="email" form="flight-form" required className="w-full bg-gray-50 px-3 py-2.5 md:px-4 md:py-3 rounded-lg border border-gray-200 outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 shadow-sm font-medium text-gray-900 placeholder-gray-400 text-sm md:text-base" placeholder="john@example.com" />
                                                 </div>
                                             </div>
 
-                                            <div className="mt-8">
-                                                <button type="submit" form="flight-form" disabled={isSubmitting} className="w-full py-4 bg-primary hover:bg-primary/90 rounded-xl text-white font-black text-[17px] tracking-widest shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5 uppercase flex items-center justify-center gap-2">
+                                            <div className="mt-5 md:mt-8">
+                                                <button type="submit" form="flight-form" disabled={isSubmitting} className="w-full py-3.5 md:py-4 bg-primary hover:bg-primary/90 rounded-xl text-white font-black text-[15px] md:text-[17px] tracking-widest shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5 uppercase flex items-center justify-center gap-2">
                                                     {isSubmitting ? 'PROCESSING...' : 'CONFIRM FLIGHT BOOKING'}
                                                 </button>
                                             </div>
@@ -479,9 +479,9 @@ const Home = () => {
             </div>
 
             {/* Dynamic Trust Stats Section */}
-            <section className="pt-8 pb-16 bg-white relative z-20 rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] border-t border-gray-100">
+            <section className="pt-12 pb-16 bg-[#32315c] relative z-20">
                 <div className="container mx-auto px-4 md:px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/10">
                         {[
                             { icon: Globe2, value: "25+", label: "Years Experience", desc: "Serving the industry since 1999." },
                             { icon: ShieldCheck, value: "Absolute", label: "Trustability", desc: "Transparent dealings & secure payments." },
@@ -495,12 +495,12 @@ const Home = () => {
                                 transition={{ delay: idx * 0.2 }}
                                 className="px-8 py-4 flex flex-col items-center text-center group"
                             >
-                                <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 text-primary">
-                                    <item.icon className="w-7 h-7" />
+                                <div className="mb-4 group-hover:scale-110 transition-transform duration-300 text-[#e6a810]">
+                                    <item.icon className="w-10 h-10" strokeWidth={1.5} />
                                 </div>
-                                <h3 className="text-3xl font-extrabold text-primary mb-1">{item.value}</h3>
-                                <p className="text-sm font-bold text-gray-900 uppercase tracking-wide mb-2">{item.label}</p>
-                                <p className="text-gray-500 text-sm">{item.desc}</p>
+                                <h3 className="text-3xl font-extrabold text-white mb-1">{item.value}</h3>
+                                <p className="text-sm font-bold text-[#e6a810] uppercase tracking-wide mb-2">{item.label}</p>
+                                <p className="text-white/70 text-sm">{item.desc}</p>
                             </motion.div>
                         ))}
                     </div>

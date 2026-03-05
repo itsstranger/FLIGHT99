@@ -42,7 +42,7 @@ const LeadCaptureModal = () => {
                             </button>
                         </div>
 
-                        <form className="p-6 space-y-4" onSubmit={async (e) => {
+                        <form className="p-4 sm:p-6 space-y-3 sm:space-y-4" onSubmit={async (e) => {
                             e.preventDefault();
 
                             const formElement = e.target;
@@ -100,7 +100,7 @@ const LeadCaptureModal = () => {
                                 submitBtn.disabled = false;
                             }
                         }}>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                                     <input type="text" name="name" required className="input-premium w-full" placeholder="John Doe" />
@@ -117,7 +117,7 @@ const LeadCaptureModal = () => {
                             </div>
 
                             {modalType === 'visa' ? (
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Which Country's Visa?</label>
                                         <input type="text" name="destination" required className="input-premium w-full" placeholder="e.g. UAE, Schengen, USA" defaultValue={prefillData?.destination || ''} />
@@ -128,7 +128,7 @@ const LeadCaptureModal = () => {
                                     </div>
                                 </div>
                             ) : modalType !== 'hajj' ? (
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Travelling From</label>
                                         <input type="text" name="from" className="input-premium w-full" placeholder="Mumbai" />
@@ -139,7 +139,7 @@ const LeadCaptureModal = () => {
                                     </div>
                                 </div>
                             ) : (
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Number of Pilgrims</label>
                                         <input type="number" min="1" name="persons" className="input-premium w-full" placeholder="2" defaultValue="1" />
@@ -155,7 +155,7 @@ const LeadCaptureModal = () => {
                             )}
 
                             {modalType !== 'visa' && (
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">{modalType === 'hajj' ? 'Start Date' : 'Travel Date'}</label>
                                         <input type="date" name="date" required={modalType === 'hajj'} className="input-premium w-full" />

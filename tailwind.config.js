@@ -12,7 +12,8 @@ export default {
         secondary: "#C89F39", // Premium Gold
       },
       fontFamily: {
-        sans: ["Inter", "DM Sans", "sans-serif"],
+        sans: ["var(--font-montserrat)", "sans-serif"],
+        heading: ["var(--font-toroka)", "sans-serif"],
       },
       boxShadow: {
         'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
