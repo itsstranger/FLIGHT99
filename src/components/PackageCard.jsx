@@ -6,17 +6,8 @@ const PackageCard = ({ packageData }) => {
     const { id, title, image, image_url, duration, price, location } = packageData;
     const displayImage = image_url || image;
 
-    // Determine a subtle dynamic bottom block gradient based on location length or id to mimic the reference's variety
-    const bgColors = [
-        'bg-gradient-to-br from-[#717b68] to-[#515a49]', // olive/sage green gradient
-        'bg-gradient-to-br from-[#5b7890] to-[#3a5870]', // slate blue gradient
-        'bg-gradient-to-br from-[#3891db] to-[#1e6cb0]', // bright blue gradient
-        'bg-gradient-to-br from-[#404635] to-[#252a1a]', // dark moss gradient
-        'bg-gradient-to-br from-[#3b596b] to-[#1e3240]'  // dark slate gradient
-    ];
-    // Hash string to index
-    const colorIndex = title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % bgColors.length;
-    const bottomBgColor = bgColors[colorIndex];
+    // Premium Glassmorphism Bottom Panel
+    const bottomBgColor = 'bg-white/90 backdrop-blur-xl border-t border-white/60 text-gray-900';
 
     // Mock up a fake original price (+10% for the strike-through effect in the design)
     const originalPrice = Math.floor(price * 1.11);
@@ -51,32 +42,32 @@ const PackageCard = ({ packageData }) => {
 
                 {/* Row 1: Duration & Location */}
                 <div className="flex items-center gap-3 mb-auto">
-                    <div className="bg-black/40 px-2.5 py-1.5 rounded-md text-xs font-bold tracking-wide">
+                    <div className="bg-primary/10 text-primary px-2.5 py-1.5 rounded-md text-xs font-bold tracking-wide">
                         {duration}
                     </div>
-                    <span className="text-sm font-medium text-white/90 truncate">
+                    <span className="text-sm font-medium text-gray-600 truncate">
                         {location}
                     </span>
                 </div>
 
                 {/* Sep. Line (Optional, visually inferred from structured spacing) */}
-                <div className="h-px w-full bg-white/20 my-4" />
+                <div className="h-px w-full bg-gray-200 my-4" />
 
                 {/* Row 2: Pricing & CTA */}
                 <div className="flex items-end justify-between w-full">
                     <div className="flex flex-col">
                         {/* Struck-through original price */}
-                        <span className="text-xs text-white/60 line-through decoration-white/40 mb-0.5">
+                        <span className="text-xs text-gray-400 line-through decoration-gray-400/40 mb-0.5">
                             ₹{originalPrice.toLocaleString()}/-
                         </span>
                         {/* Main Price */}
-                        <span className="text-[1.35rem] leading-none font-bold">
+                        <span className="text-[1.35rem] leading-none font-black text-primary">
                             ₹{price.toLocaleString()}/-
                         </span>
                     </div>
 
                     <Link href={`/tour-packages/${id}`}>
-                        <button className="bg-white text-gray-900 font-bold text-xs px-4 py-2.5 rounded-sm hover:bg-gray-100 transition-colors shadow-sm">
+                        <button className="bg-primary text-white font-bold text-xs px-5 py-2.5 rounded-xl hover:bg-primary/90 transition-all shadow-md hover:shadow-lg">
                             View Details
                         </button>
                     </Link>

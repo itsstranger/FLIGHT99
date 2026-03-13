@@ -59,12 +59,18 @@ const AdminDashboard = () => {
     );
 
     const filteredEnquiries = enquiries
+        .filter(enq => enq.service_type !== 'general_contact')
         .filter(enq => (enquiryFilter === 'all' || enq.service_type === enquiryFilter))
+        .filter(enq => enq.name.toLowerCase().includes(searchQuery.toLowerCase()) || enq.email.toLowerCase().includes(searchQuery.toLowerCase()));
+
+    const filteredMessages = enquiries
+        .filter(enq => enq.service_type === 'general_contact')
         .filter(enq => enq.name.toLowerCase().includes(searchQuery.toLowerCase()) || enq.email.toLowerCase().includes(searchQuery.toLowerCase()));
 
     // Stats calculations
     const uniqueLocations = new Set(packages.map(p => p.location)).size;
-    const newLeadsCount = enquiries.filter(e => e.status === 'new').length;
+    const newLeadsCount = enquiries.filter(e => e.status === 'new' && e.service_type !== 'general_contact').length;
+    const newMessagesCount = enquiries.filter(e => e.status === 'new' && e.service_type === 'general_contact').length;
     const resolvedLeadsCount = enquiries.filter(e => e.status === 'resolved').length;
 
     if (authLoading || !session) {
@@ -75,6 +81,7 @@ const AdminDashboard = () => {
         { name: 'Overview', id: 'dashboard', icon: LayoutDashboard },
         { name: 'Holiday Packages', id: 'packages', icon: PackageIcon },
         { name: 'Customer Leads', id: 'enquiries', icon: Users, badge: newLeadsCount > 0 ? newLeadsCount : null },
+        { name: 'Messages', id: 'messages', icon: MessageCircle, badge: newMessagesCount > 0 ? newMessagesCount : null },
         { name: 'Settings', id: 'settings', icon: Settings, disabled: true }
     ];
 
@@ -468,6 +475,81 @@ const AdminDashboard = () => {
                                             </div>
                                             <h3 className="text-base font-bold text-gray-900">Inbox Zero</h3>
                                             <p className="text-sm text-gray-500 mt-1 max-w-sm">No customer leads found matching your criteria.</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* --- MESSAGES VIEW --- */}
+                        {activeMenu === 'messages' && (
+                            <div className="bg-white lg:rounded-[20px] lg:border border-gray-100 lg:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] lg:p-6 lg:min-h-[calc(100vh-120px)]">
+                                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                                    <h3 className="text-lg font-bold text-gray-900 hidden lg:block">Inbox Messages</h3>
+                                </div>
+
+                                <div className="space-y-4">
+                                    {filteredMessages.map((msg) => (
+                                        <div key={msg.id} className="bg-white border border-gray-100 rounded-[16px] p-5 shadow-sm hover:border-gray-300 transition-colors flex flex-col md:flex-row gap-5 relative group overflow-hidden">
+                                            {/* Status indicator line */}
+                                            <div className={`absolute left-0 top-0 bottom-0 w-1 ${msg.status === 'new' ? 'bg-red-500' : msg.status === 'resolved' ? 'bg-green-500' : 'bg-yellow-500'}`} />
+
+                                            <div className="flex-1">
+                                                <div className="flex items-center gap-3 mb-2">
+                                                    <h4 className="font-bold text-gray-900 text-lg">{msg.name}</h4>
+                                                    <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wide bg-blue-50 text-blue-700`}>
+                                                        Contact Form
+                                                    </span>
+                                                    <span className="text-xs text-gray-400 font-medium ml-auto">
+                                                        {new Date(msg.created_at).toLocaleDateString()}
+                                                    </span>
+                                                </div>
+
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6 text-sm mb-4 bg-gray-50 p-3 rounded-xl border border-gray-100">
+                                                    <div className="flex items-center gap-2 text-gray-600">
+                                                        <Mail className="w-4 h-4 text-gray-400" />
+                                                        <a href={`mailto:${msg.email}`} className="hover:text-primary transition-colors">{msg.email || 'N/A'}</a>
+                                                    </div>
+                                                    <div className="flex items-center gap-2 text-gray-600">
+                                                        <Phone className="w-4 h-4 text-gray-400" />
+                                                        <a href={`tel:${msg.phone}`} className="hover:text-primary transition-colors">{msg.phone}</a>
+                                                    </div>
+                                                </div>
+
+                                                <div className="bg-white p-4 rounded-xl border border-gray-100 relative">
+                                                    <h5 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Message Body</h5>
+                                                    <p className="text-gray-700 font-medium whitespace-pre-wrap text-sm leading-relaxed">{msg.message}</p>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-row md:flex-col justify-between md:items-end border-t md:border-t-0 md:border-l border-gray-100 pt-4 md:pt-0 md:pl-5">
+                                                <div className="w-full md:w-32">
+                                                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">Status</label>
+                                                    <select
+                                                        value={msg.status}
+                                                        onChange={(e) => updateEnquiryStatus(msg.id, e.target.value)}
+                                                        className={`w-full text-sm rounded-xl px-3 py-2 font-bold border border-transparent focus:ring-2 focus:ring-primary/20 cursor-pointer transition-colors outline-none ${msg.status === 'new' ? 'bg-red-50 text-red-700 hover:bg-red-100 border-red-100' :
+                                                            msg.status === 'contacted' ? 'bg-yellow-50 text-yellow-700 hover:bg-yellow-100 border-yellow-100' : 'bg-green-50 text-green-700 hover:bg-green-100 border-green-100'
+                                                            }`}
+                                                    >
+                                                        <option value="new">🔴 Unread</option>
+                                                        <option value="contacted">🟡 Replying</option>
+                                                        <option value="resolved">🟢 Resolved</option>
+                                                    </select>
+                                                </div>
+                                                <button onClick={() => confirm('Delete this message forever?') && deleteEnquiry(msg.id)} className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all self-end md:self-auto md:w-full md:flex md:justify-center md:items-center mt-auto md:mt-2">
+                                                    <Trash2 className="w-4 h-4 md:mr-2 md:inline-block block" /> <span className="hidden md:inline-block text-xs font-bold">Delete</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    {filteredMessages.length === 0 && (
+                                        <div className="py-20 flex flex-col items-center justify-center text-center">
+                                            <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mb-4">
+                                                <MessageCircle className="w-8 h-8 text-gray-300" />
+                                            </div>
+                                            <h3 className="text-base font-bold text-gray-900">Inbox Zero</h3>
+                                            <p className="text-sm text-gray-500 mt-1 max-w-sm">You have no general contact messages.</p>
                                         </div>
                                     )}
                                 </div>

@@ -38,6 +38,36 @@ export async function POST(request) {
             return NextResponse.json({ success: false, error: error.message }, { status: 500 });
         }
 
+        // 2. Forward to Email via Web3Forms (Background process)
+        try {
+            await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: "fd4cbdc6-dbae-42b4-9ed9-a09170314f38",
+                    subject: `New Lead: ${service_type?.toUpperCase() || 'GENERAL'} - ${name || 'Unknown'}`,
+                    from_name: "FLIGHT99 System",
+                    name: name || "Website Visitor",
+                    email: email || "no-reply@flight99.com",
+                    message: `New Enquiry Received via FLIGHT99 Website:
+
+Name: ${name || 'N/A'}
+Phone: ${phone || 'N/A'}
+Email: ${email || 'N/A'}
+Service Type: ${service_type || 'General'}
+
+Client Request / Details:
+${finalMessage}`
+                })
+            });
+        } catch (emailError) {
+            console.error("Failed to forward email via Web3Forms:", emailError);
+            // We do not fail the request if just the email fails
+        }
+
         return NextResponse.json({ success: true, message: "Enquiry saved successfully" });
 
     } catch (error) {

@@ -10,12 +10,14 @@ const Footer = () => {
     const isHomeOrAbout = pathname === '/' || pathname === '/about';
 
     // Hide footer on mobile screens unless we are on Home or About page
-    const visibilityClass = isHomeOrAbout ? '' : 'hidden md:block';
+    const visibilityClass = isHomeOrAbout ? '' : 'hidden md:grid';
 
     return (
-        <footer className={`bg-primary text-white pt-16 pb-8 ${visibilityClass}`}>
+        <footer className="bg-[#0a1128] text-white">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+
+                {/* Main Footer Content - Hidden on mobile for non-essential pages */}
+                <div className={`grid grid-cols-1 md:grid-cols-4 gap-12 pt-16 pb-12 ${visibilityClass}`}>
                     {/* Brand Column */}
                     <div className="space-y-4">
                         <h2 className="text-2xl font-bold tracking-tight">FLIGHT99</h2>
@@ -73,12 +75,11 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-sm text-gray-400">© {new Date().getFullYear()} FLIGHT99 Travel Enterprises. All rights reserved.</p>
+                {/* Copyright & IATA - Always visible on all pages */}
+                <div className={`border-white/10 pt-6 pb-24 lg:pb-8 flex flex-col md:flex-row justify-between items-center gap-4 ${isHomeOrAbout ? 'border-t' : 'border-t-0 md:border-t'}`}>
+                    <p className="text-sm text-gray-400 text-center md:text-left">© {new Date().getFullYear()} FLIGHT99 Travel Enterprises. All rights reserved.</p>
                     <div className="flex items-center gap-4">
-                        <span className="text-xs text-gray-500 uppercase tracking-wider">IATA Accredited</span>
-                        {/* Simple IATA Placeholder */}
-                        {/* <img src="/iata-logo.png" alt="IATA" className="h-8 opacity-50 grayscale hover:grayscale-0 transition-all" /> */}
+                        <span className="text-xs text-gray-500 uppercase tracking-wider font-bold">IATA Accredited</span>
                     </div>
                 </div>
             </div>

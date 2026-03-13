@@ -18,6 +18,14 @@ export default {
       boxShadow: {
         'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
       },
+      keyframes: {
+        shimmer: {
+          '100%': { transform: 'translateX(100%)' },
+        }
+      },
+      animation: {
+        shimmer: 'shimmer 2s infinite',
+      }
     },
   },
   plugins: [],

@@ -10,7 +10,7 @@ const PlanTripFloat = () => {
     return (
         <button
             onClick={() => openModal('plan')}
-            className="fixed bottom-24 md:bottom-8 right-4 md:right-8 z-[60] flex lg:hidden items-center justify-center px-5 py-3.5 bg-primary text-white font-bold rounded-full shadow-lg hover:scale-105 hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)] transition-all duration-300 gap-2 border border-white/10"
+            className="fixed bottom-6 right-4 lg:bottom-8 lg:right-8 z-[60] flex lg:hidden items-center justify-center px-5 py-3.5 bg-[#32315c] text-white font-bold rounded-full shadow-xl hover:scale-105 hover:shadow-[0_10px_25px_rgba(50,49,92,0.25)] transition-all duration-300 gap-2 border border-white/10"
             aria-label="Plan Your Trip"
         >
             <Sparkles className="w-5 h-5 fill-white/20" />

@@ -34,18 +34,34 @@ const PackagesContent = () => {
     const types = ['All', 'International', 'Domestic'];
 
     return (
-        <div className="pt-24 pb-20 min-h-screen bg-gray-50">
-            <div className="container mx-auto px-4 md:px-6">
-                {/* Header & Search */}
-                <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-gray-200 pb-6">
-                    <div className="md:w-1/2 relative z-10">
-                        <h1 className="text-4xl font-bold text-primary mb-2">Our Holiday Collections</h1>
-                        <p className="text-gray-500 max-w-2xl">Browse our handpicked itineraries designed for every type of traveler.</p>
-                    </div>
+        <div className="min-h-screen bg-gray-50 flex flex-col pt-16 selection:bg-primary/20">
+            {/* Cinematic Hero */}
+            <div className="relative pt-10 pb-8 md:pt-16 md:pb-12 lg:pt-20 lg:pb-16 overflow-hidden flex items-center justify-center bg-[#0f172a] rounded-b-[2rem] md:rounded-b-[3rem] shadow-2xl z-10">
+                {/* Advanced Glowing Orbs */}
+                <div className="absolute top-0 right-0 w-[50vw] max-w-[600px] aspect-square bg-[#e6a810]/20 rounded-full blur-[100px] md:blur-[140px] -translate-y-[30%] translate-x-[30%] pointer-events-none mix-blend-screen mix-blend-color-dodge"></div>
+                <div className="absolute bottom-0 left-0 w-[30vw] max-w-[400px] aspect-square bg-blue-500/30 rounded-full blur-[80px] md:blur-[100px] translate-y-[10%] -translate-x-[10%] pointer-events-none mix-blend-screen mix-blend-color-dodge"></div>
 
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20 pointer-events-none mix-blend-overlay"></div>
+
+                <div className="container mx-auto px-6 md:px-8 relative z-10 text-center flex flex-col items-center">
+                    <span className="inline-block py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#e6a810] font-bold text-xs md:text-sm tracking-[0.1618em] uppercase mb-[2vh] shadow-[0_0_20px_rgba(230,168,16,0.2)]">
+                        Explore the World
+                    </span>
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 tracking-tight leading-[1.1] drop-shadow-2xl">
+                        Our Holiday Collections
+                    </h1>
+                    <p className="text-[1rem] md:text-[1.2rem] text-white/80 max-w-[61.8%] min-w-[300px] mx-auto font-secondary leading-[1.618] font-medium drop-shadow-md">
+                        Browse our handpicked itineraries designed for every type of traveler.
+                    </p>
+                </div>
+            </div>
+
+            <div className="container mx-auto px-4 md:px-6 py-8 relative z-30 flex-1">
+                {/* Header & Search */}
+                <div className="mb-8 flex flex-col md:flex-row md:items-center justify-end gap-6 border-b border-gray-200 pb-6">
                     {/* Integrated Search & Filter UI */}
-                    <div className="md:w-1/2 flex md:justify-end">
-                        <div className="relative w-full max-w-md">
+                    <div className="w-full md:w-auto flex md:justify-end flex-grow max-w-2xl">
+                        <div className="relative w-full">
                             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                 <Search className="w-5 h-5 text-gray-400" />
                             </div>
@@ -54,7 +70,7 @@ const PackagesContent = () => {
                                 placeholder="Search packages, destinations..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full bg-white border border-gray-200 text-gray-900 pl-11 pr-14 py-3.5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition-all shadow-sm"
+                                className="w-full bg-white/70 backdrop-blur-md border border-gray-200 text-gray-900 pl-11 pr-14 py-3.5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition-all shadow-sm font-medium"
                             />
                             <button
                                 onClick={() => setShowFilters(!showFilters)}
@@ -104,7 +120,7 @@ const PackagesContent = () => {
                         </div>
 
                         {/* Bottom Row: Additional Controls (Desktop inline, mobile stacked) */}
-                        <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                        <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between bg-white/60 backdrop-blur-xl p-4 rounded-2xl shadow-sm border border-white/40">
                             {/* Price Range */}
                             <div className="flex items-center gap-4 flex-1 max-w-md">
                                 <span className="text-sm font-semibold text-gray-600 whitespace-nowrap">Max Price: <span className="text-primary">₹{priceRange.toLocaleString()}</span></span>

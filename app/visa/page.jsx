@@ -9,13 +9,26 @@ const VisaServices = () => {
     const { openModal } = useModal();
     return (
         <div className="pt-20 min-h-screen bg-gray-50">
-            {/* Header */}
-            <section className="bg-primary text-white py-20">
-                <div className="container mx-auto px-4 text-center">
-                    <h1 className="text-4xl font-bold mb-4">Global Visa Services</h1>
-                    <p className="max-w-xl mx-auto text-blue-100">Hassle-free visa processing for over 50 countries. We handle the paperwork so you can travel with peace of mind.</p>
+            {/* Cinematic Hero */}
+            <div className="relative pt-10 pb-8 md:pt-16 md:pb-12 lg:pt-20 lg:pb-16 -mt-20 overflow-hidden flex items-center justify-center bg-[#0f172a] rounded-b-[2rem] md:rounded-b-[3rem] shadow-2xl">
+                {/* Advanced Glowing Orbs (Golden Ratio positioned) */}
+                <div className="absolute top-0 right-0 w-[61.8vw] max-w-[800px] aspect-square bg-blue-500/20 rounded-full blur-[100px] md:blur-[160px] -translate-y-[38.2%] translate-x-[38.2%] pointer-events-none mix-blend-screen mix-blend-color-dodge"></div>
+                <div className="absolute bottom-0 left-0 w-[38.2vw] max-w-[600px] aspect-square bg-purple-500/20 rounded-full blur-[80px] md:blur-[120px] translate-y-[16.18%] -translate-x-[16.18%] pointer-events-none mix-blend-screen mix-blend-color-dodge"></div>
+
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none mix-blend-overlay"></div>
+
+                <div className="container mx-auto px-6 md:px-8 relative z-10 text-center flex flex-col items-center pt-20">
+                    <span className="inline-block py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-blue-300 font-bold text-xs md:text-sm tracking-[0.1618em] uppercase mb-[2.618vh] shadow-[0_0_20px_rgba(59,130,246,0.2)]">
+                        Global Coverage
+                    </span>
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 tracking-tight leading-[1.1] drop-shadow-2xl">
+                        Visa Services
+                    </h1>
+                    <p className="text-[1rem] md:text-[1.618rem] text-white/80 max-w-[61.8%] min-w-[300px] mx-auto font-secondary leading-[1.618] font-medium drop-shadow-md">
+                        Hassle-free visa processing for over 50 countries. We handle the paperwork so you can travel with peace of mind.
+                    </p>
                 </div>
-            </section>
+            </div>
 
             <div className="container mx-auto px-4 md:px-6 py-16">
                 <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col md:flex-row">

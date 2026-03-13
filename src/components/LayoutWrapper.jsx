@@ -6,7 +6,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
 import PlanTripFloat from '@/components/PlanTripFloat';
-import BottomNav from '@/components/BottomNav';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
 
 const LayoutWrapper = ({ children }) => {
@@ -24,7 +23,6 @@ const LayoutWrapper = ({ children }) => {
     return (
         <>
             <Navbar />
-            <BottomNav />
             <main className="min-h-screen">
                 {children}
             </main>
