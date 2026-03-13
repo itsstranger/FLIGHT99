@@ -10,7 +10,7 @@ import {
     Plus, Edit, Trash2, X, Upload, Loader2, LayoutGrid, List, Search,
     LogOut, Package as PackageIcon, Users, LayoutDashboard, Settings,
     TrendingUp, MapPin, CheckCircle2, CircleDashed, ChevronRight, Menu, Image as ImageIcon, MessageCircle,
-    Mail, Phone
+    Mail, Phone, User, Clock, Calendar
 } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
@@ -26,6 +26,7 @@ const AdminDashboard = () => {
     const router = useRouter();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentPackage, setCurrentPackage] = useState(null);
+    const [viewingEnquiry, setViewingEnquiry] = useState(null);
 
     const { settings, updateSettings } = useSettings();
     const [settingsForm, setSettingsForm] = useState(settings || {});
@@ -488,8 +489,14 @@ const AdminDashboard = () => {
                                             >
                                                 {isNew && <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary rounded-r" />}
 
+                                                {/* Clickable Area for Details */}
+                                                <div
+                                                    className="absolute inset-0 cursor-pointer z-10 md:right-[200px]"
+                                                    onClick={() => setViewingEnquiry(enq)}
+                                                />
+
                                                 {/* Col 1: Avatar + Name + Tag */}
-                                                <div className="flex items-center gap-3 min-w-0">
+                                                <div className="flex items-center gap-3 min-w-0 relative z-0">
                                                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-black shrink-0 ${isNew ? 'bg-primary text-white' : 'bg-gray-100 text-gray-500'}`}>
                                                         {initials}
                                                     </div>
@@ -502,19 +509,19 @@ const AdminDashboard = () => {
                                                 </div>
 
                                                 {/* Col 2: Message preview */}
-                                                <div className="flex items-center min-w-0">
+                                                <div className="flex items-center min-w-0 relative z-0">
                                                     <p className="text-xs text-gray-500 truncate">{enq.message || '—'}</p>
                                                 </div>
 
                                                 {/* Col 3: Contact + Date */}
-                                                <div className="flex flex-col justify-center gap-0.5 min-w-0">
-                                                    <a href={`mailto:${enq.email}`} className="text-xs text-gray-600 hover:text-primary transition-colors truncate">{enq.email}</a>
-                                                    <a href={`tel:${enq.phone}`} className="text-xs text-gray-500 hover:text-primary transition-colors">{enq.phone}</a>
+                                                <div className="flex flex-col justify-center gap-0.5 min-w-0 relative z-0">
+                                                    <a href={`mailto:${enq.email}`} className="text-xs text-gray-600 hover:text-primary transition-colors truncate relative z-20">{enq.email}</a>
+                                                    <a href={`tel:${enq.phone}`} className="text-xs text-gray-500 hover:text-primary transition-colors relative z-20">{enq.phone}</a>
                                                     <span className="text-[10px] text-gray-400">{new Date(enq.created_at).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })}</span>
                                                 </div>
 
-                                                {/* Col 4: Status + Delete */}
-                                                <div className="flex items-center gap-1.5 shrink-0">
+                                                {/* Col 4: Status + Actions */}
+                                                <div className="flex items-center gap-1.5 shrink-0 relative z-20">
                                                     {/* Quick Contact Actions */}
                                                     <div className="flex items-center gap-1 mr-2 transition-all">
                                                         <a
@@ -746,6 +753,125 @@ const AdminDashboard = () => {
                         </span>
                     </button>
                 </nav>
+                {/* Lead Details Modal */}
+                {viewingEnquiry && (
+                    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+                        <div className="absolute inset-0 bg-[#0a1128]/60 backdrop-blur-md" onClick={() => setViewingEnquiry(null)} />
+                        <div className="relative bg-white w-full max-w-2xl rounded-[32px] shadow-2xl overflow-hidden border border-white/20 animate-in fade-in zoom-in duration-300">
+                            {/* Header */}
+                            <div className="p-8 border-b border-gray-100 flex justify-between items-start bg-gray-50/50">
+                                <div className="flex gap-5 items-center">
+                                    <div className="w-16 h-16 rounded-2xl bg-primary text-white flex items-center justify-center text-2xl font-black shadow-lg shadow-primary/20">
+                                        {viewingEnquiry.name?.charAt(0).toUpperCase() || 'U'}
+                                    </div>
+                                    <div>
+                                        <h3 className="text-2xl font-black text-gray-900">{viewingEnquiry.name || 'Anonymous User'}</h3>
+                                        <div className="flex gap-2 mt-1">
+                                            <span className="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest">{viewingEnquiry.service_type}</span>
+                                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest ${viewingEnquiry.status === 'new' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+                                                {viewingEnquiry.status}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button
+                                    onClick={() => setViewingEnquiry(null)}
+                                    className="p-2 bg-white hover:bg-gray-100 text-gray-400 rounded-xl transition-all border border-gray-100 shadow-sm"
+                                >
+                                    <X className="w-5 h-5" />
+                                </button>
+                            </div>
+
+                            {/* Content */}
+                            <div className="p-8 space-y-8">
+                                {/* Message Section */}
+                                <div>
+                                    <h4 className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 mb-4">
+                                        <MessageCircle className="w-3.5 h-3.5" />
+                                        Client Message
+                                    </h4>
+                                    <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                                        <p className="text-gray-700 leading-relaxed font-medium whitespace-pre-wrap italic">
+                                            "{viewingEnquiry.message || 'No message provided.'}"
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    {/* Contact Info */}
+                                    <div>
+                                        <h4 className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 mb-4">
+                                            <User className="w-3.5 h-3.5" />
+                                            Contact Details
+                                        </h4>
+                                        <div className="space-y-3">
+                                            <a href={`mailto:${viewingEnquiry.email}`} className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100 hover:border-primary/30 hover:bg-white transition-all group">
+                                                <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                                                    <Mail className="w-4 h-4" />
+                                                </div>
+                                                <span className="text-sm font-semibold text-gray-700 group-hover:text-primary">{viewingEnquiry.email}</span>
+                                            </a>
+                                            <a href={`tel:${viewingEnquiry.phone}`} className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100 hover:border-primary/30 hover:bg-white transition-all group">
+                                                <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+                                                    <Phone className="w-4 h-4" />
+                                                </div>
+                                                <span className="text-sm font-semibold text-gray-700 group-hover:text-primary">{viewingEnquiry.phone}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    {/* Metadata Info */}
+                                    <div>
+                                        <h4 className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 mb-4">
+                                            <Clock className="w-3.5 h-3.5" />
+                                            Submission Info
+                                        </h4>
+                                        <div className="space-y-3">
+                                            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                                                <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center shrink-0">
+                                                    <Calendar className="w-4 h-4" />
+                                                </div>
+                                                <div>
+                                                    <span className="block text-[10px] font-bold text-gray-400 uppercase leading-none">Submitted On</span>
+                                                    <span className="text-sm font-bold text-gray-700">{new Date(viewingEnquiry.created_at).toLocaleDateString([], { dateStyle: 'long' })}</span>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                                                <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                                                    <Clock className="w-4 h-4" />
+                                                </div>
+                                                <div>
+                                                    <span className="block text-[10px] font-bold text-gray-400 uppercase leading-none">Time</span>
+                                                    <span className="text-sm font-bold text-gray-700">{new Date(viewingEnquiry.created_at).toLocaleTimeString([], { timeStyle: 'short' })}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Footer / Actions */}
+                            <div className="p-6 bg-gray-50 border-t border-gray-100 flex justify-between items-center">
+                                <Button
+                                    variant="outline"
+                                    onClick={() => {
+                                        if (confirm('Delete this lead?')) {
+                                            deleteEnquiry(viewingEnquiry.id);
+                                            setViewingEnquiry(null);
+                                        }
+                                    }}
+                                    className="text-red-500 hover:text-white hover:bg-red-500 border-red-100"
+                                >
+                                    <Trash2 className="w-4 h-4 mr-2" />
+                                    Delete Lead
+                                </Button>
+                                <Button variant="primary" onClick={() => setViewingEnquiry(null)}>
+                                    Close Details
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </main>
             {/* Edit/Add Modal Wrapper */}
             {isModalOpen && (

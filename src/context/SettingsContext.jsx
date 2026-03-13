@@ -59,7 +59,7 @@ export const SettingsProvider = ({ children }) => {
                 return { success: true };
             }
         } catch (error) {
-            console.error('Error updating settings:', error);
+            console.error('Error updating settings:', error.message || error);
             return { error };
         }
     };
