@@ -23,7 +23,11 @@ const titlesToDelete = [
     "Maldives Luxury Escape",
     "Swiss Alpine Adventure",
     "Dubai Desert & City Lights",
-    "Kashmir Paradise Tour"
+    "Kashmir Paradise Tour",
+    "Thailand: Exotic Bangkok & Pattaya",
+    "Malaysia: Kuala Lumpur Highlights",
+    "Georgia: Caucasus Scenic Tour",
+    "Lakshadeep: Pristine Island Getaway"
 ];
 
 const dummyPackages = [
@@ -78,8 +82,61 @@ const dummyPackages = [
         itinerary: [
             { day: "Day 1", title: "Arrival in Srinagar", description: "Arrive at Srinagar airport. Transfer to a premium houseboat on Dal Lake." }
         ]
+    },
+    {
+        title: "Thailand: Exotic Bangkok & Pattaya",
+        location: "Thailand",
+        price: 45000,
+        type: "International",
+        duration: "5 Days / 4 Nights",
+        description: "Explore the vibrant streets of Bangkok and the beautiful beaches of Pattaya. This package offers a perfect mix of cultural exploration and seaside relaxation.",
+        image_url: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1200&auto=format&fit=crop",
+        inclusions: ["4-Star Hotel Accommodation", "Guided Bangkok City Tour", "Coral Island Speedboat Tour", "Daily Buffet Breakfast", "Private Airport Transfers"],
+        itinerary: [
+            { day: "Day 1", title: "Bangkok Arrival", description: "Arrive at Suvarnabhumi Airport, Bangkok. Transfer to your hotel. Evening at leisure." }
+        ]
+    },
+    {
+        title: "Malaysia: Kuala Lumpur Highlights",
+        location: "Malaysia",
+        price: 38000,
+        type: "International",
+        duration: "4 Days / 3 Nights",
+        description: "Discover the best of Malaysia's capital city. Visit the iconic Petronas Twin Towers, explore Batu Caves, and enjoy a day at Genting Highlands.",
+        image_url: "https://images.unsplash.com/photo-1596422846543-75c6fc1855ea?w=1200&auto=format&fit=crop",
+        inclusions: ["City Center Hotel Stay", "Kuala Lumpur Half-Day City Tour", "Genting Highlands Day Trip with Cable Car", "Batu Caves Visit", "Return Airport Transfers"],
+        itinerary: [
+            { day: "Day 1", title: "Kuala Lumpur Arrival", description: "Arrive in Kuala Lumpur. Meet our representative and transfer to hotel." }
+        ]
+    },
+    {
+        title: "Georgia: Caucasus Scenic Tour",
+        location: "Georgia",
+        price: 85000,
+        type: "International",
+        duration: "6 Days / 5 Nights",
+        description: "Experience the unique beauty of Georgia. From the historic streets of Tbilisi to the breathtaking Caucasus mountains, discover this hidden gem of Europe.",
+        image_url: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1200&auto=format&fit=crop",
+        inclusions: ["Premium Boutique Hotel Stay", "Tbilisi City Walking Tour", "Kazbegi and Ananuri Mountain Trip", "Wine Tasting in Kakheti", "Daily Georgian Breakfast"],
+        itinerary: [
+            { day: "Day 1", title: "Arrival in Tbilisi", description: "Welcome to Georgia! Transfer to your hotel and evening exploring the Old Town." }
+        ]
+    },
+    {
+        title: "Lakshadeep: Pristine Island Getaway",
+        location: "Lakshadeep, India",
+        price: 42000,
+        type: "Domestic",
+        duration: "5 Days / 4 Nights",
+        description: "Escape to the untouched coral islands of Lakshadweep. Enjoy crystal clear lagoons, white sandy beaches, and incredible water sports experiences.",
+        image_url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop",
+        inclusions: ["Beach Front Cottage Stay", "All Meals Included (Island Buffet)", "Snorkeling and Glass Bottom Boat Ride", "Agatti Island Sightseeing", "Return Flight from Kochi"],
+        itinerary: [
+            { day: "Day 1", title: "Arrival at Agatti", description: "Arrive at Agatti Airport. Check-in to your resort and enjoy sunset on the beach." }
+        ]
     }
 ];
+
 
 
 async function run() {
