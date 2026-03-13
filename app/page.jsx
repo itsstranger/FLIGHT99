@@ -68,22 +68,26 @@ const Home = () => {
 
     const handleFlightSubmit = async (e) => {
         e.preventDefault();
+
+        // Step 1: Show contact prompt first to collect Name/Phone/Email
+        if (!showContactPrompt) {
+            setShowContactPrompt(true);
+            return;
+        }
+
         setIsSubmitting(true);
-        const formData = new FormData(e.target);
+        const formElement = e.target;
+        const formData = new FormData(formElement);
         const data = Object.fromEntries(formData);
 
         if (data.countryCode) {
             data.phone = `${data.countryCode} ${data.phone}`;
         }
 
-        // The original code had `data.service_type = 'flight';`
-        // The provided snippet introduces `flightData` but doesn't use it for the fetch calls.
-        // To maintain existing functionality and avoid undefined variables (`searchParams`, `dateStatus`, `passengers`),
-        // we will keep the original `data.service_type` assignment and integrate the phone number logic.
         data.service_type = 'flight';
 
         // Enrich priorities with trip details for backend and email
-        let tripDetails = data.trip_type === 'round-trip' ? `Round Trip (Return: ${data.return_date || 'N/A'})` : 'One Way';
+        let tripDetails = flightTripType === 'round-trip' ? `Round Trip (Return: ${data.return_date || 'N/A'})` : flightTripType === 'multi-city' ? 'Multi City' : 'One Way';
         data.priorities = `Passengers/Class: ${data.passengers || 'N/A'}. Trip Type: ${tripDetails}`;
         // Update the FormData object for the email submission as well
         formData.set('priorities', data.priorities);
@@ -93,7 +97,7 @@ const Home = () => {
         formData.append("from_name", "FLIGHT99 Website");
 
         try {
-            await Promise.all([
+            const [web3Res, internalRes] = await Promise.all([
                 fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData }),
                 fetch('/api/send-enquiry', {
                     method: 'POST',
@@ -101,15 +105,22 @@ const Home = () => {
                     headers: { 'Content-Type': 'application/json' }
                 })
             ]);
+
+            const internalData = await internalRes.json();
+            console.log("Submission response:", { web3: web3Res.status, internal: internalData });
+
+            if (!web3Res.ok || !internalRes.ok) throw new Error("Submission failed");
+
             setShowSuccess(true);
             setShowContactPrompt(false);
-            formElement.reset();
+            if (formElement) formElement.reset();
 
             // Auto hide success overlay after 3.5 seconds
             setTimeout(() => {
                 setShowSuccess(false);
             }, 3500);
         } catch (err) {
+            console.error(err);
             alert("Something went wrong. Please try again.");
         } finally {
             setIsSubmitting(false);
@@ -382,7 +393,7 @@ const Home = () => {
                                 {/* Primary Desktop Book Button */}
                                 <div className="hidden lg:flex flex-col">
                                     <button type="submit" disabled={showContactPrompt && isSubmitting} className="h-full w-40 bg-[#32315c] hover:bg-[#201d46] rounded-r-xl text-white font-bold text-[19px] tracking-wide flex items-center justify-center transition-all shadow-md group-hover:shadow-lg">
-                                        {isSubmitting && !showContactPrompt ? '...' : 'BOOKING'}
+                                        {isSubmitting && !showContactPrompt ? '...' : 'BOOK'}
                                     </button>
                                 </div>
 
@@ -399,7 +410,7 @@ const Home = () => {
                             {/* Mobile Book Button */}
                             <div className="lg:hidden mt-3 px-2">
                                 <button type="submit" disabled={showContactPrompt && isSubmitting} className="w-full py-3 bg-[#32315c] hover:bg-[#201d46] rounded-xl text-white font-bold text-lg tracking-wide shadow-md">
-                                    {isSubmitting && !showContactPrompt ? 'SENDING...' : 'BOOKING'}
+                                    {isSubmitting && !showContactPrompt ? 'SENDING...' : 'BOOK'}
                                 </button>
                             </div>
 
@@ -461,7 +472,7 @@ const Home = () => {
 
                                             <div className="mt-5 md:mt-8">
                                                 <button type="submit" form="flight-form" disabled={isSubmitting} className="w-full py-3.5 md:py-4 bg-primary hover:bg-primary/90 rounded-xl text-white font-black text-[15px] md:text-[17px] tracking-widest shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5 uppercase flex items-center justify-center gap-2">
-                                                    {isSubmitting ? 'PROCESSING...' : 'CONFIRM FLIGHT BOOKING'}
+                                                    {isSubmitting ? 'PROCESSING...' : 'BOOK NOW'}
                                                 </button>
                                             </div>
                                         </div>
@@ -480,6 +491,14 @@ const Home = () => {
                                         transition={{ type: "spring", damping: 25, stiffness: 300 }}
                                         className="bg-white rounded-[2rem] p-8 md:p-10 flex flex-col items-center shadow-2xl relative z-10 max-w-sm w-full text-center border-t-8 border-green-500"
                                     >
+                                        {/* Close Button */}
+                                        <button
+                                            onClick={() => setShowSuccess(false)}
+                                            className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                                        >
+                                            <X className="w-5 h-5" />
+                                        </button>
+
                                         <motion.div
                                             initial={{ scale: 0, rotate: -45 }}
                                             animate={{ scale: 1, rotate: 0 }}
@@ -492,6 +511,12 @@ const Home = () => {
                                         <p className="text-gray-500 font-medium leading-relaxed">
                                             Your flight details have been securely sent. A travel expert will be in touch shortly with the best options.
                                         </p>
+                                        <button
+                                            onClick={() => setShowSuccess(false)}
+                                            className="mt-8 px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg transition-colors shadow-lg"
+                                        >
+                                            Dismiss
+                                        </button>
                                     </motion.div>
                                 </div>,
                                 document.body
