@@ -2,9 +2,11 @@
 
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
+import { useSettings } from '@/context/SettingsContext';
 
 export default function ContactPage() {
     const [status, setStatus] = useState('idle');
+    const { settings } = useSettings();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -83,7 +85,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-gray-900 mb-1 font-secondary text-[1rem] md:text-[1.1rem] group-hover:text-primary transition-colors">Call Us Directly</h4>
-                                    <a href="tel:+917356409377" className="text-gray-600 font-secondary text-[1rem] hover:text-primary transition-colors inline-block">+91 73564 09377</a>
+                                    <a href={`tel:${settings.whatsapp_number?.replace(/\s+/g, '')}`} className="text-gray-600 font-secondary text-[1rem] hover:text-primary transition-colors inline-block">{settings.whatsapp_number}</a>
                                     <p className="text-gray-400 text-[0.75rem] mt-[0.382rem] uppercase tracking-[0.1em] font-bold">Available Mon-Sat, 9AM to 7PM</p>
                                 </div>
                             </div>
@@ -95,7 +97,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-gray-900 mb-1 font-secondary text-[1rem] md:text-[1.1rem] group-hover:text-[#e6a810] transition-colors">Email Us</h4>
-                                    <a href="mailto:info@flight99.com" className="text-gray-600 font-secondary text-[1rem] hover:text-[#e6a810] transition-colors inline-block">info@flight99.com</a>
+                                    <a href={`mailto:${settings.support_email}`} className="text-gray-600 font-secondary text-[1rem] hover:text-[#e6a810] transition-colors inline-block">{settings.support_email}</a>
                                     <p className="text-gray-400 text-[0.75rem] mt-[0.382rem] uppercase tracking-[0.1em] font-bold">We reply within 24 hours</p>
                                 </div>
                             </div>
@@ -107,10 +109,8 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-gray-900 mb-1 font-secondary text-[1rem] md:text-[1.1rem] group-hover:text-indigo-500 transition-colors">Visit Our Office</h4>
-                                    <p className="text-gray-600 font-secondary leading-[1.618] text-[1rem] group-hover:text-gray-900 transition-colors">
-                                        FLIGHT99 Travel Enterprises<br />
-                                        Corporate Headquarters<br />
-                                        Mumbai, India
+                                    <p className="text-gray-600 font-secondary leading-[1.618] text-[1rem] group-hover:text-gray-900 transition-colors whitespace-pre-line">
+                                        {settings.physical_address}
                                     </p>
                                 </div>
                             </div>

@@ -3,12 +3,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { usePackages } from '@/context/PackageContext';
 import { useEnquiries } from '@/context/EnquiryContext';
+import { useSettings } from '@/context/SettingsContext';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/lib/supabase';
 import {
     Plus, Edit, Trash2, X, Upload, Loader2, LayoutGrid, List, Search,
     LogOut, Package as PackageIcon, Users, LayoutDashboard, Settings,
-    TrendingUp, MapPin, CheckCircle2, CircleDashed, ChevronRight, Menu, Image as ImageIcon
+    TrendingUp, MapPin, CheckCircle2, CircleDashed, ChevronRight, Menu, Image as ImageIcon, MessageCircle
 } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
@@ -23,6 +24,22 @@ const AdminDashboard = () => {
     const router = useRouter();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentPackage, setCurrentPackage] = useState(null);
+
+    const { settings, updateSettings } = useSettings();
+    const [settingsForm, setSettingsForm] = useState(settings || {});
+    const [isSavingSettings, setIsSavingSettings] = useState(false);
+
+    useEffect(() => {
+        if (settings) setSettingsForm(settings);
+    }, [settings]);
+
+    const handleSaveSettings = async (e) => {
+        e.preventDefault();
+        setIsSavingSettings(true);
+        await updateSettings(settingsForm);
+        setIsSavingSettings(false);
+        alert('Global Settings synced thoroughly!');
+    };
 
     // UI State
     const [activeMenu, setActiveMenu] = useState('dashboard'); // 'dashboard', 'packages', 'enquiries'
@@ -82,7 +99,7 @@ const AdminDashboard = () => {
         { name: 'Holiday Packages', id: 'packages', icon: PackageIcon },
         { name: 'Customer Leads', id: 'enquiries', icon: Users, badge: newLeadsCount > 0 ? newLeadsCount : null },
         { name: 'Messages', id: 'messages', icon: MessageCircle, badge: newMessagesCount > 0 ? newMessagesCount : null },
-        { name: 'Settings', id: 'settings', icon: Settings, disabled: true }
+        { name: 'Settings', id: 'settings', icon: Settings }
     ];
 
     return (
@@ -552,6 +569,63 @@ const AdminDashboard = () => {
                                             <p className="text-sm text-gray-500 mt-1 max-w-sm">You have no general contact messages.</p>
                                         </div>
                                     )}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* --- SETTINGS VIEW --- */}
+                        {activeMenu === 'settings' && (
+                            <div className="max-w-3xl mx-auto space-y-6 pb-20">
+                                <div className="bg-white rounded-[20px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden">
+                                    <div className="p-6 border-b border-gray-100">
+                                        <h2 className="text-lg font-bold text-gray-900">Global Site Settings</h2>
+                                        <p className="text-sm text-gray-500 mt-1">Manage physical addresses, emails, and social media links.</p>
+                                    </div>
+                                    <form onSubmit={handleSaveSettings} className="p-6 space-y-6">
+
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div className="space-y-2">
+                                                <label className="text-sm font-semibold text-gray-700">Support Email</label>
+                                                <input type="email" value={settingsForm.support_email || ''} onChange={(e) => setSettingsForm({ ...settingsForm, support_email: e.target.value })} className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all" />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-sm font-semibold text-gray-700">WhatsApp / Phone Number</label>
+                                                <input type="text" value={settingsForm.whatsapp_number || ''} onChange={(e) => setSettingsForm({ ...settingsForm, whatsapp_number: e.target.value })} className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all" />
+                                            </div>
+                                            <div className="space-y-2 md:col-span-2">
+                                                <label className="text-sm font-semibold text-gray-700">Physical Address</label>
+                                                <input type="text" value={settingsForm.physical_address || ''} onChange={(e) => setSettingsForm({ ...settingsForm, physical_address: e.target.value })} className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all" />
+                                            </div>
+                                        </div>
+
+                                        <div className="pt-6 border-t border-gray-100">
+                                            <h3 className="text-md font-bold text-gray-900 mb-4">Social Media Links</h3>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                <div className="space-y-2">
+                                                    <label className="text-sm font-semibold text-gray-700">Facebook URL</label>
+                                                    <input type="url" value={settingsForm.facebook_url || ''} onChange={(e) => setSettingsForm({ ...settingsForm, facebook_url: e.target.value })} className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="https://facebook.com/..." />
+                                                </div>
+                                                <div className="space-y-2">
+                                                    <label className="text-sm font-semibold text-gray-700">Twitter (X) URL</label>
+                                                    <input type="url" value={settingsForm.twitter_url || ''} onChange={(e) => setSettingsForm({ ...settingsForm, twitter_url: e.target.value })} className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="https://twitter.com/..." />
+                                                </div>
+                                                <div className="space-y-2">
+                                                    <label className="text-sm font-semibold text-gray-700">Instagram URL</label>
+                                                    <input type="url" value={settingsForm.instagram_url || ''} onChange={(e) => setSettingsForm({ ...settingsForm, instagram_url: e.target.value })} className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="https://instagram.com/..." />
+                                                </div>
+                                                <div className="space-y-2">
+                                                    <label className="text-sm font-semibold text-gray-700">LinkedIn URL</label>
+                                                    <input type="url" value={settingsForm.linkedin_url || ''} onChange={(e) => setSettingsForm({ ...settingsForm, linkedin_url: e.target.value })} className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="https://linkedin.com/..." />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="pt-6 flex justify-end">
+                                            <Button type="submit" disabled={isSavingSettings} className="px-8 bg-primary hover:bg-primary-dark">
+                                                {isSavingSettings ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Save Settings'}
+                                            </Button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         )}

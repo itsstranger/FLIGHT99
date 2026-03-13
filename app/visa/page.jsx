@@ -36,7 +36,7 @@ const VisaServices = () => {
                         <div className="inline-block px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm font-semibold mb-6 w-fit">
                             Global Coverage
                         </div>
-                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Expert Visa Assistance for All Destinations</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Expert Visa <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#e6a810]">Assistance</span> for All Destinations</h2>
                         <p className="text-gray-600 mb-8 leading-relaxed">
                             Planning an international trip? Don't let visa complexities hold you back.
                             FLIGHT99 provides comprehensive visa services for tourists and business travelers.
@@ -71,7 +71,7 @@ const VisaServices = () => {
                     </div>
                     <div className="md:w-1/2 bg-gray-100 relative min-h-[400px]">
                         <img
-                            src="https://images.unsplash.com/photo-1554463529-e27854014799?q=80&w=2070&auto=format&fit=crop"
+                            src="https://images.unsplash.com/photo-1559828485-6101a0735d47?q=80&w=2070&auto=format&fit=crop"
                             alt="Passport and Visa"
                             className="absolute inset-0 w-full h-full object-cover"
                         />

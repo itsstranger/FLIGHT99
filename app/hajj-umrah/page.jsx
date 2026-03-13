@@ -36,7 +36,7 @@ const HajjUmrah = () => {
                         <div className="inline-block px-3 py-1 bg-emerald-50 text-emerald-800 rounded-full text-sm font-semibold mb-6 w-fit border border-emerald-100">
                             Sacred Pilgrimage
                         </div>
-                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Embark on Your Spiritual Journey with Peace of Mind</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Embark on Your Spiritual <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#e6a810]">Journey</span> with Peace of Mind</h2>
                         <p className="text-gray-600 mb-8 leading-relaxed">
                             Focus on your worship while we handle the logistics. FLIGHT99 offers comprehensive Hajj and Umrah services tailored to your needs.
                             From visa processing and flight bookings to comfortable accommodation near the Haram, our dedicated team ensures a hassle-free experience.
@@ -69,7 +69,7 @@ const HajjUmrah = () => {
                     </div>
                     <div className="md:w-1/2 bg-gray-100 relative min-h-[400px]">
                         <img
-                            src="https://images.unsplash.com/photo-1565552629477-ff14d7db481f?q=80&w=1974&auto=format&fit=crop"
+                            src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=2070&auto=format&fit=crop"
                             alt="Kaaba Makkah"
                             className="absolute inset-0 w-full h-full object-cover"
                         />

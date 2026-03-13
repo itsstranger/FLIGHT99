@@ -72,7 +72,7 @@ const Navbar = () => {
 
                     {/* CTA Buttons */}
                     <div className="hidden md:flex items-center gap-3 lg:gap-4 flex-shrink-0">
-                        <a href="tel:+917356409377" className="group flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-all px-3 lg:px-4 py-2 rounded-xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-primary/5 hover:shadow-md whitespace-nowrap">
+                        <a href="tel:+917356409377" className="group flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-all px-3 lg:px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-primary/5 hover:shadow-md whitespace-nowrap">
                             <div className="bg-primary/10 p-1.5 rounded-full text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 shadow-sm group-hover:shadow-[0_0_15px_rgba(48,53,114,0.4)] flex-shrink-0">
                                 <Phone className="w-3.5 h-3.5" />
                             </div>

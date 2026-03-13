@@ -3,6 +3,7 @@ import { PackageProvider } from '@/context/PackageContext';
 import { ModalProvider } from '@/context/ModalContext';
 import { AuthProvider } from '@/context/AuthContext';
 import { EnquiryProvider } from '@/context/EnquiryContext';
+import { SettingsProvider } from '@/context/SettingsContext';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import localFont from 'next/font/local';
 import { Montserrat } from 'next/font/google';
@@ -31,11 +32,13 @@ export default function RootLayout({ children }) {
                 <AuthProvider>
                     <EnquiryProvider>
                         <PackageProvider>
-                            <ModalProvider>
-                                <LayoutWrapper>
-                                    {children}
-                                </LayoutWrapper>
-                            </ModalProvider>
+                            <SettingsProvider>
+                                <ModalProvider>
+                                    <LayoutWrapper>
+                                        {children}
+                                    </LayoutWrapper>
+                                </ModalProvider>
+                            </SettingsProvider>
                         </PackageProvider>
                     </EnquiryProvider>
                 </AuthProvider>

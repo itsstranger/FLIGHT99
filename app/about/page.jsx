@@ -30,7 +30,7 @@ const About = () => {
             <section className="py-20 container mx-auto px-4 md:px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
                     <div>
-                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Experience & Excellence</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-6">Experience & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#e6a810]">Excellence</span></h2>
                         <p className="font-secondary text-gray-600 leading-relaxed mb-6">
                             FLIGHT99 Travel Enterprises has grown from a small ticketing agency to a comprehensive travel management company. With over two decades of industry experience, we specialize in curating seamless travel experiences for leisure and business travelers alike.
                         </p>
@@ -49,9 +49,11 @@ const About = () => {
                         </div>
                     </div>
                     <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-                        <div className="absolute inset-0 bg-gray-200 flex items-center justify-center text-gray-400">
-                            [Office/Team Image Placeholder]
-                        </div>
+                        <img
+                            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
+                            alt="FLIGHT99 Agency Team"
+                            className="absolute inset-0 w-full h-full object-cover"
+                        />
                     </div>
                 </div>
 

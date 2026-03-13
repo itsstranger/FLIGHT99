@@ -514,7 +514,7 @@ const Home = () => {
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="flex flex-col md:flex-row items-center justify-between mb-12 text-center md:text-left">
                         <div className="mb-4 md:mb-0">
-                            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-3">Trending Destinations</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3"><span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#e6a810]">Trending</span> Destinations</h2>
                             <p className="text-gray-500">Curated packages that are selling out fast.</p>
                         </div>
                         <Link href="/tour-packages">

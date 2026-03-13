@@ -4,17 +4,26 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { useSettings } from '@/context/SettingsContext';
 
 const Footer = () => {
     const pathname = usePathname();
+    const { settings } = useSettings();
     const isHomeOrAbout = pathname === '/' || pathname === '/about';
 
     // Hide footer on mobile screens unless we are on Home or About page
     const visibilityClass = isHomeOrAbout ? '' : 'hidden md:grid';
 
     return (
-        <footer className="bg-[#0a1128] text-white">
-            <div className="container mx-auto px-4 md:px-6">
+        <footer className="relative bg-gradient-to-b from-[#1b2b5a] via-[#0a1128] to-[#040712] text-white overflow-hidden">
+            {/* Subtle Glowing Mesh Overlay */}
+            <div className="absolute inset-0 pointer-events-none z-0">
+                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#2a4696]/40 to-transparent"></div>
+                <div className="absolute top-[-30%] left-[-10%] w-[60%] h-[60%] bg-[#2a4696]/20 blur-[130px] rounded-full mix-blend-screen"></div>
+                <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-[#e6a810]/5 blur-[100px] rounded-full mix-blend-screen"></div>
+            </div>
+
+            <div className="relative z-10 container mx-auto px-4 md:px-6">
 
                 {/* Main Footer Content - Hidden on mobile for non-essential pages */}
                 <div className={`grid grid-cols-1 md:grid-cols-4 gap-12 pt-16 pb-12 ${visibilityClass}`}>
@@ -25,10 +34,10 @@ const Footer = () => {
                             Experience the world with premium travel packages tailored just for you. From boutique stays to exclusive excursions, we handle it all.
                         </p>
                         <div className="flex gap-4">
-                            <a href="#" className="text-gray-400 hover:text-secondary transition-colors"><Facebook className="w-5 h-5" /></a>
-                            <a href="#" className="text-gray-400 hover:text-secondary transition-colors"><Twitter className="w-5 h-5" /></a>
-                            <a href="#" className="text-gray-400 hover:text-secondary transition-colors"><Instagram className="w-5 h-5" /></a>
-                            <a href="#" className="text-gray-400 hover:text-secondary transition-colors"><Linkedin className="w-5 h-5" /></a>
+                            {settings?.facebook_url && <a href={settings.facebook_url} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-secondary transition-colors"><Facebook className="w-5 h-5" /></a>}
+                            {settings?.twitter_url && <a href={settings.twitter_url} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-secondary transition-colors"><Twitter className="w-5 h-5" /></a>}
+                            {settings?.instagram_url && <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-secondary transition-colors"><Instagram className="w-5 h-5" /></a>}
+                            {settings?.linkedin_url && <a href={settings.linkedin_url} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-secondary transition-colors"><Linkedin className="w-5 h-5" /></a>}
                         </div>
                     </div>
 
@@ -61,15 +70,15 @@ const Footer = () => {
                         <ul className="space-y-4 text-sm text-gray-300">
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-5 h-5 text-secondary shrink-0" />
-                                <span>123, Premium Tower, Business Bay, Dubai, UAE</span>
+                                <span className="whitespace-pre-line">{settings?.physical_address}</span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Phone className="w-5 h-5 text-secondary shrink-0" />
-                                <span>+91 73564 09377</span>
+                                <span>{settings?.whatsapp_number}</span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Mail className="w-5 h-5 text-secondary shrink-0" />
-                                <span>hello@flight99.com</span>
+                                <span>{settings?.support_email}</span>
                             </li>
                         </ul>
                     </div>
