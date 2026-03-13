@@ -107,12 +107,15 @@ const PackageDetails = ({ params }) => {
                                     <input type="date" className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:outline-none" />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Guests</label>
-                                    <select className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:outline-none">
-                                        <option>2 Adults</option>
-                                        <option>2 Adults, 1 Child</option>
-                                        <option>4 Adults</option>
-                                    </select>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Number of Travellers</label>
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        max="50"
+                                        defaultValue="1"
+                                        placeholder="e.g. 2"
+                                        className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:outline-none"
+                                    />
                                 </div>
                             </div>
 

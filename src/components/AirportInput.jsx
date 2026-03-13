@@ -99,13 +99,13 @@ export default function AirportInput({ value, onChange, placeholder = 'City or A
                 className="w-full text-[14px] md:text-lg font-bold text-gray-900 outline-none bg-transparent placeholder-gray-300 truncate"
             />
 
-            {/* Suggestions Dropdown */}
+            {/* Suggestions Dropdown — flat & light */}
             {isOpen && (
-                <div className="absolute top-[calc(100%+10px)] left-0 z-[999] w-[280px] md:w-[320px] bg-white border border-gray-100 rounded-2xl shadow-2xl overflow-hidden">
+                <div className="absolute top-[calc(100%+6px)] left-0 z-[999] w-[260px] md:w-[300px] bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden">
                     {loading ? (
-                        <div className="px-5 py-4 text-sm text-gray-400 flex items-center gap-2">
-                            <div className="w-3.5 h-3.5 rounded-full border-2 border-gray-200 border-t-primary animate-spin" />
-                            Searching airports...
+                        <div className="px-4 py-3 text-xs text-gray-400 flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full border-2 border-gray-300 border-t-primary animate-spin" />
+                            Searching...
                         </div>
                     ) : (
                         suggestions.map((place, i) => {
@@ -118,17 +118,15 @@ export default function AirportInput({ value, onChange, placeholder = 'City or A
                                     key={`${code}-${i}`}
                                     type="button"
                                     onClick={() => handleSelect(place)}
-                                    className="w-full text-left px-4 py-3 hover:bg-primary/5 transition-colors flex items-center gap-3 group border-b border-gray-50 last:border-0"
+                                    className="w-full text-left px-4 py-2.5 hover:bg-gray-50 transition-colors flex items-center gap-2.5 border-b border-gray-100 last:border-0"
                                 >
-                                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 text-base group-hover:bg-primary/20 transition-colors">
-                                        {getIcon(type)}
-                                    </div>
+                                    <span className="text-gray-400 text-xs w-4 shrink-0">{type === 'city' ? '🏙' : '✈'}</span>
                                     <div className="min-w-0">
-                                        <p className="text-sm font-bold text-gray-900 truncate">
+                                        <p className="text-sm font-semibold text-gray-800 truncate">
                                             {name}
-                                            {code && <span className="ml-2 text-xs font-black text-primary bg-primary/10 px-1.5 py-0.5 rounded">{code}</span>}
+                                            {code && <span className="ml-1.5 text-[10px] font-bold text-primary/80">{code}</span>}
                                         </p>
-                                        <p className="text-xs text-gray-400 truncate capitalize">{type} · {country}</p>
+                                        <p className="text-[11px] text-gray-400 truncate capitalize">{country}</p>
                                     </div>
                                 </button>
                             );

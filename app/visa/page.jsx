@@ -71,7 +71,7 @@ const VisaServices = () => {
                     </div>
                     <div className="md:w-1/2 bg-gray-100 relative min-h-[400px]">
                         <img
-                            src="https://images.unsplash.com/photo-1559828485-6101a0735d47?q=80&w=2070&auto=format&fit=crop"
+                            src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1600&auto=format&fit=crop"
                             alt="Passport and Visa"
                             className="absolute inset-0 w-full h-full object-cover"
                         />

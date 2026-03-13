@@ -38,7 +38,7 @@ const dummyPackages = [
         type: "International",
         duration: "5 Days / 4 Nights",
         description: "Experience the ultimate luxury in our carefully curated overwater villas, complete with private pools and direct lagoon access. Perfect for honeymooners and couples looking for a romantic getaway.",
-        image_url: "https://images.unsplash.com/photo-1573843981267-be1480e3b77e?w=1200&auto=format&fit=crop",
+        image_url: "https://images.unsplash.com/photo-1540202404-1b927e27fa8b?w=1200&auto=format&fit=crop",
         inclusions: ["5-Star Beach Villa Accommodation", "Return Seaplane Transfers from Male", "All-inclusive Meal Plan (Breakfast, Lunch, Dinner)", "Guided Snorkeling Excursion", "Couples Spa Treatment (60 mins)"],
         itinerary: [
             { day: "Day 1", title: "Arrival in Paradise", description: "Arrive at Male International Airport. Transfer via seaplane to your exclusive 5-star island resort. Welcome drinks upon check-in and leisure time." }
@@ -103,7 +103,7 @@ const dummyPackages = [
         type: "International",
         duration: "4 Days / 3 Nights",
         description: "Discover the best of Malaysia's capital city. Visit the iconic Petronas Twin Towers, explore Batu Caves, and enjoy a day at Genting Highlands.",
-        image_url: "https://images.unsplash.com/photo-1596422846543-75c6fc1855ea?w=1200&auto=format&fit=crop",
+        image_url: "https://images.unsplash.com/photo-1515266591878-f93e32bc5937?w=1200&auto=format&fit=crop",
         inclusions: ["City Center Hotel Stay", "Kuala Lumpur Half-Day City Tour", "Genting Highlands Day Trip with Cable Car", "Batu Caves Visit", "Return Airport Transfers"],
         itinerary: [
             { day: "Day 1", title: "Kuala Lumpur Arrival", description: "Arrive in Kuala Lumpur. Meet our representative and transfer to hotel." }
