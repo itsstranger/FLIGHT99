@@ -9,7 +9,8 @@ import { supabase } from '@/lib/supabase';
 import {
     Plus, Edit, Trash2, X, Upload, Loader2, LayoutGrid, List, Search,
     LogOut, Package as PackageIcon, Users, LayoutDashboard, Settings,
-    TrendingUp, MapPin, CheckCircle2, CircleDashed, ChevronRight, Menu, Image as ImageIcon, MessageCircle
+    TrendingUp, MapPin, CheckCircle2, CircleDashed, ChevronRight, Menu, Image as ImageIcon, MessageCircle,
+    Mail, Phone
 } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
@@ -514,6 +515,33 @@ const AdminDashboard = () => {
 
                                                 {/* Col 4: Status + Delete */}
                                                 <div className="flex items-center gap-1.5 shrink-0">
+                                                    {/* Quick Contact Actions */}
+                                                    <div className="flex items-center gap-1 mr-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                        <a
+                                                            href={`https://wa.me/${enq.phone?.replace(/[^0-9]/g, '')}`}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="p-1.5 text-emerald-500 hover:bg-emerald-50 rounded-lg transition-all"
+                                                            title="WhatsApp"
+                                                        >
+                                                            <MessageCircle className="w-3.5 h-3.5" />
+                                                        </a>
+                                                        <a
+                                                            href={`tel:${enq.phone}`}
+                                                            className="p-1.5 text-blue-500 hover:bg-blue-50 rounded-lg transition-all"
+                                                            title="Call"
+                                                        >
+                                                            <Phone className="w-3.5 h-3.5" />
+                                                        </a>
+                                                        <a
+                                                            href={`mailto:${enq.email}`}
+                                                            className="p-1.5 text-amber-500 hover:bg-amber-50 rounded-lg transition-all"
+                                                            title="Email"
+                                                        >
+                                                            <Mail className="w-3.5 h-3.5" />
+                                                        </a>
+                                                    </div>
+
                                                     <select
                                                         value={enq.status}
                                                         onChange={(e) => updateEnquiryStatus(enq.id, e.target.value)}
