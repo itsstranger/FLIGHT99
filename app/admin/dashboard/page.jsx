@@ -516,26 +516,26 @@ const AdminDashboard = () => {
                                                 {/* Col 4: Status + Delete */}
                                                 <div className="flex items-center gap-1.5 shrink-0">
                                                     {/* Quick Contact Actions */}
-                                                    <div className="flex items-center gap-1 mr-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    <div className="flex items-center gap-1 mr-2 transition-all">
                                                         <a
                                                             href={`https://wa.me/${enq.phone?.replace(/[^0-9]/g, '')}`}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
-                                                            className="p-1.5 text-emerald-500 hover:bg-emerald-50 rounded-lg transition-all"
+                                                            className="p-1.5 text-emerald-500/40 hover:text-emerald-500 hover:bg-emerald-50 hover:scale-110 rounded-lg transition-all"
                                                             title="WhatsApp"
                                                         >
                                                             <MessageCircle className="w-3.5 h-3.5" />
                                                         </a>
                                                         <a
                                                             href={`tel:${enq.phone}`}
-                                                            className="p-1.5 text-blue-500 hover:bg-blue-50 rounded-lg transition-all"
+                                                            className="p-1.5 text-blue-500/40 hover:text-blue-500 hover:bg-blue-50 hover:scale-110 rounded-lg transition-all"
                                                             title="Call"
                                                         >
                                                             <Phone className="w-3.5 h-3.5" />
                                                         </a>
                                                         <a
                                                             href={`mailto:${enq.email}`}
-                                                            className="p-1.5 text-amber-500 hover:bg-amber-50 rounded-lg transition-all"
+                                                            className="p-1.5 text-amber-500/40 hover:text-amber-500 hover:bg-amber-50 hover:scale-110 rounded-lg transition-all"
                                                             title="Email"
                                                         >
                                                             <Mail className="w-3.5 h-3.5" />
@@ -553,7 +553,7 @@ const AdminDashboard = () => {
                                                     </select>
                                                     <button
                                                         onClick={() => confirm('Delete this lead?') && deleteEnquiry(enq.id)}
-                                                        className="p-1.5 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all opacity-0 group-hover:opacity-100"
+                                                        className="p-1.5 text-gray-300 hover:text-red-500 hover:bg-red-50 hover:scale-110 rounded-lg transition-all"
                                                         title="Delete"
                                                     >
                                                         <Trash2 className="w-3.5 h-3.5" />
