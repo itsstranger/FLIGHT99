@@ -65,16 +65,18 @@ const Home = () => {
 
     const handleFlightSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
 
-        if (!showContactPrompt) {
-            setShowContactPrompt(true);
-            return;
+        if (data.countryCode) {
+            data.phone = `${data.countryCode} ${data.phone}`;
         }
 
-        setIsSubmitting(true);
-        const formElement = e.target;
-        const formData = new FormData(formElement);
-        const data = Object.fromEntries(formData.entries());
+        // The original code had `data.service_type = 'flight';`
+        // The provided snippet introduces `flightData` but doesn't use it for the fetch calls.
+        // To maintain existing functionality and avoid undefined variables (`searchParams`, `dateStatus`, `passengers`),
+        // we will keep the original `data.service_type` assignment and integrate the phone number logic.
         data.service_type = 'flight';
 
         // Enrich priorities with trip details for backend and email
@@ -421,15 +423,24 @@ const Home = () => {
                                             <div className="flex flex-col gap-2.5 md:gap-4">
                                                 <div>
                                                     <label className="text-[11px] md:text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block">Full Name</label>
-                                                    <input type="text" name="name" form="flight-form" required className="w-full bg-gray-50 px-3 py-2.5 md:px-4 md:py-3 rounded-lg border border-gray-200 outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 shadow-sm font-medium text-gray-900 placeholder-gray-400 text-sm md:text-base" placeholder="John Doe" />
+                                                    <input type="text" name="name" form="flight-form" required className="w-full bg-gray-50 px-3 py-2.5 md:px-4 md:py-3 rounded-lg border border-gray-200 outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 shadow-sm font-medium text-gray-900 placeholder-gray-400 text-sm md:text-base" placeholder="Name" />
                                                 </div>
                                                 <div>
                                                     <label className="text-[11px] md:text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block">Phone Number</label>
-                                                    <input type="tel" name="phone" form="flight-form" required className="w-full bg-gray-50 px-3 py-2.5 md:px-4 md:py-3 rounded-lg border border-gray-200 outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 shadow-sm font-medium text-gray-900 placeholder-gray-400 text-sm md:text-base" placeholder="+91 98765 43210" />
+                                                    <div className="flex items-center w-full bg-gray-50 rounded-lg border border-gray-200 overflow-hidden focus-within:ring-2 focus-within:ring-primary/40 focus-within:border-primary/40 shadow-sm transition-all hover:bg-white">
+                                                        <select name="countryCode" form="flight-form" className="bg-transparent border-none outline-none py-2.5 md:py-3 pl-3 pr-1 text-gray-700 font-medium text-xs md:text-sm border-r border-gray-200 focus:ring-0 shrink-0 cursor-pointer hover:bg-gray-100 transition-colors">
+                                                            <option value="+91">🇮🇳 +91</option>
+                                                            <option value="+971">🇦🇪 +971</option>
+                                                            <option value="+1">🇺🇸 +1</option>
+                                                            <option value="+44">🇬🇧 +44</option>
+                                                            <option value="+61">🇦🇺 +61</option>
+                                                        </select>
+                                                        <input type="tel" name="phone" form="flight-form" required className="bg-transparent border-none outline-none flex-1 min-w-0 px-3 py-2.5 md:py-3 font-medium text-gray-900 placeholder-gray-400 focus:ring-0 text-sm md:text-base" placeholder="Phone Number" />
+                                                    </div>
                                                 </div>
                                                 <div>
                                                     <label className="text-[11px] md:text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block">Email Address</label>
-                                                    <input type="email" name="email" form="flight-form" required className="w-full bg-gray-50 px-3 py-2.5 md:px-4 md:py-3 rounded-lg border border-gray-200 outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 shadow-sm font-medium text-gray-900 placeholder-gray-400 text-sm md:text-base" placeholder="john@example.com" />
+                                                    <input type="email" name="email" form="flight-form" required className="w-full bg-gray-50 px-3 py-2.5 md:px-4 md:py-3 rounded-lg border border-gray-200 outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40 shadow-sm font-medium text-gray-900 placeholder-gray-400 text-sm md:text-base" placeholder="Email Address" />
                                                 </div>
                                             </div>
 

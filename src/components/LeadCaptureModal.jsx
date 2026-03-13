@@ -55,7 +55,14 @@ const LeadCaptureModal = () => {
                             const formData = new FormData(formElement);
 
                             // 1. Build Data Object for Custom API (Supabase)
-                            const data = Object.fromEntries(formData.entries());
+                            const data = Object.fromEntries(formData);
+
+                            // Merge Country Code and Phone
+                            if (data.countryCode) {
+                                data.phone = `${data.countryCode} ${data.phone}`;
+                                formData.set('phone', data.phone);
+                            }
+
                             if (modalType === 'hajj') {
                                 data.service_type = 'umrah';
                             } else if (modalType === 'visa') {
@@ -103,17 +110,26 @@ const LeadCaptureModal = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                                    <input type="text" name="name" required className="input-premium w-full" placeholder="John Doe" />
+                                    <input type="text" name="name" required className="input-premium w-full" placeholder="Name" />
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                    <input type="tel" name="phone" required className="input-premium w-full" placeholder="+91 98765 43210" />
+                                    <div className="flex items-center bg-white rounded-xl border border-gray-200 overflow-hidden focus-within:ring-2 focus-within:ring-primary/40 focus-within:border-primary/40 shadow-sm transition-all hover:bg-white/90">
+                                        <select name="countryCode" className="bg-transparent border-none outline-none py-3 pl-3 pr-1 text-gray-700 font-medium text-sm border-r border-gray-200 focus:ring-0 shrink-0 cursor-pointer hover:bg-gray-50 transition-colors">
+                                            <option value="+91">🇮🇳 +91</option>
+                                            <option value="+971">🇦🇪 +971</option>
+                                            <option value="+1">🇺🇸 +1</option>
+                                            <option value="+44">🇬🇧 +44</option>
+                                            <option value="+61">🇦🇺 +61</option>
+                                        </select>
+                                        <input type="tel" name="phone" required className="bg-transparent border-none outline-none flex-1 min-w-0 py-3 px-3 font-medium text-gray-900 placeholder-gray-400 focus:ring-0 text-sm" placeholder="Phone Number" />
+                                    </div>
                                 </div>
                             </div>
 
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                <input type="email" name="email" required className="input-premium w-full" placeholder="john@example.com" />
+                                <input type="email" name="email" required className="input-premium w-full" placeholder="Email Address" />
                             </div>
 
                             {modalType === 'visa' ? (

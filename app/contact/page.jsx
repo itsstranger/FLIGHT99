@@ -10,11 +10,18 @@ export default function ContactPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setStatus('submitting');
+        setStatus('submitting'); // Changed from setSubmitStatus('loading') to match existing state variable
 
         try {
             const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData.entries());
+            const data = Object.fromEntries(formData.entries()); // Keep original extraction for clarity
+
+            if (data.countryCode) {
+                data.phone = `${data.countryCode} ${data.phone}`;
+                // No need to update formData if we're using 'data' object for JSON.stringify
+                delete data.countryCode; // Remove countryCode as a separate field
+            }
+
             data.service_type = 'general_contact';
 
             const response = await fetch('/api/send-enquiry', {
@@ -136,19 +143,28 @@ export default function ContactPage() {
                                     {/* Glass Input 1 */}
                                     <div>
                                         <label htmlFor="name" className="text-gray-500 font-bold uppercase tracking-[0.1em] text-[0.618rem] md:text-[0.75rem] ml-[1rem] mb-[0.618rem] block transition-colors">Full Name</label>
-                                        <input type="text" name="name" required id="name" className="w-full bg-gray-50/60 hover:bg-gray-50 px-[1.618rem] py-[1rem] rounded-[1.2rem] border border-gray-100 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 focus:bg-white transition-all font-semibold text-gray-900 text-[1rem]" placeholder="John Doe" />
+                                        <input type="text" name="name" required id="name" className="w-full bg-gray-50/60 hover:bg-gray-50 px-[1.618rem] py-[1rem] rounded-[1.2rem] border border-gray-100 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 focus:bg-white transition-all font-semibold text-gray-900 text-[1rem]" placeholder="Name" />
                                     </div>
                                     {/* Glass Input 2 */}
                                     <div>
                                         <label htmlFor="phone" className="text-gray-500 font-bold uppercase tracking-[0.1em] text-[0.618rem] md:text-[0.75rem] ml-[1rem] mb-[0.618rem] block transition-colors">Phone Number</label>
-                                        <input type="tel" name="phone" required id="phone" className="w-full bg-gray-50/60 hover:bg-gray-50 px-[1.618rem] py-[1rem] rounded-[1.2rem] border border-gray-100 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 focus:bg-white transition-all font-semibold text-gray-900 text-[1rem]" placeholder="+91 98765 43210" />
+                                        <div className="flex items-center w-full bg-gray-50/60 hover:bg-gray-50 rounded-[1.2rem] border border-gray-100 overflow-hidden focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/50 focus-within:bg-white transition-all group">
+                                            <select name="countryCode" className="bg-transparent border-none outline-none py-[1rem] pl-[1.2rem] md:pl-[1.618rem] pr-2 text-gray-700 font-semibold text-[0.9rem] md:text-[1rem] border-r border-gray-200 focus:ring-0 shrink-0 cursor-pointer">
+                                                <option value="+91">🇮🇳 +91</option>
+                                                <option value="+971">🇦🇪 +971</option>
+                                                <option value="+1">🇺🇸 +1</option>
+                                                <option value="+44">🇬🇧 +44</option>
+                                                <option value="+61">🇦🇺 +61</option>
+                                            </select>
+                                            <input type="tel" name="phone" required id="phone" className="bg-transparent border-none outline-none flex-1 min-w-0 py-[1rem] px-[1rem] font-semibold text-gray-900 text-[0.9rem] md:text-[1rem] focus:ring-0" placeholder="Phone Number" />
+                                        </div>
                                     </div>
                                 </div>
 
                                 {/* Glass Input 3 */}
                                 <div>
                                     <label htmlFor="email" className="text-gray-500 font-bold uppercase tracking-[0.1em] text-[0.618rem] md:text-[0.75rem] ml-[1rem] mb-[0.618rem] block transition-colors">Email Address <span className="lowercase font-normal opacity-70">(Optional)</span></label>
-                                    <input type="email" name="email" id="email" className="w-full bg-gray-50/60 hover:bg-gray-50 px-[1.618rem] py-[1rem] rounded-[1.2rem] border border-gray-100 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 focus:bg-white transition-all font-semibold text-gray-900 text-[1rem]" placeholder="john@example.com" />
+                                    <input type="email" name="email" id="email" className="w-full bg-gray-50/60 hover:bg-gray-50 px-[1.618rem] py-[1rem] rounded-[1.2rem] border border-gray-100 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 focus:bg-white transition-all font-semibold text-gray-900 text-[1rem]" placeholder="Email Address" />
                                 </div>
 
                                 {/* Glass Textarea */}

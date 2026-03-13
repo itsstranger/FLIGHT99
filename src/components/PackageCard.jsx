@@ -61,9 +61,11 @@ const PackageCard = ({ packageData }) => {
                             ₹{originalPrice.toLocaleString()}/-
                         </span>
                         {/* Main Price */}
-                        <span className="text-[1.35rem] leading-none font-black text-primary">
-                            ₹{price.toLocaleString()}/-
-                        </span>
+                        <div className="flex items-baseline gap-1">
+                            <span className="text-xl lg:text-2xl leading-none font-semibold tracking-tight text-primary">
+                                ₹{price.toLocaleString()}/-
+                            </span>
+                        </div>
                     </div>
 
                     <Link href={`/tour-packages/${id}`}>
