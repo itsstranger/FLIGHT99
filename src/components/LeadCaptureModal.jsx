@@ -27,10 +27,10 @@ const LeadCaptureModal = () => {
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="relative w-full max-w-lg md:max-w-[70vw] max-h-[90vh] overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gray-900/5 flex"
+                        className="relative w-full max-w-lg md:max-w-3xl max-h-[90vh] overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gray-900/5 flex"
                     >
                         {/* Image Panel — desktop only */}
-                        <div className="hidden md:flex relative w-56 shrink-0 flex-col justify-end overflow-hidden">
+                        <div className="hidden md:flex relative w-80 shrink-0 flex-col justify-end overflow-hidden">
                             <img
                                 src="https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=800&auto=format&fit=crop"
                                 alt="Travel destination"

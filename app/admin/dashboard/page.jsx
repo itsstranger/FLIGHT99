@@ -436,75 +436,111 @@ const AdminDashboard = () => {
 
                         {/* --- ENQUIRIES VIEW --- */}
                         {activeMenu === 'enquiries' && (
-                            <div className="bg-white lg:rounded-[20px] lg:border border-gray-100 lg:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] lg:p-6 lg:min-h-[calc(100vh-120px)]">
-                                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-                                    <h3 className="text-lg font-bold text-gray-900 hidden lg:block">Customer Leads</h3>
-                                    <div className="flex bg-gray-50 p-1.5 rounded-xl border border-gray-100 w-full sm:w-auto overflow-x-auto no-scrollbar">
+                            <div className="bg-white lg:rounded-[20px] lg:border border-gray-100 lg:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] lg:min-h-[calc(100vh-120px)] overflow-hidden">
+                                {/* Toolbar */}
+                                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 px-5 py-4 border-b border-gray-100">
+                                    <h3 className="text-base font-bold text-gray-900 hidden lg:flex items-center gap-2">
+                                        Customer Leads
+                                        {filteredEnquiries.filter(e => e.status === 'new').length > 0 && (
+                                            <span className="ml-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                                                {filteredEnquiries.filter(e => e.status === 'new').length} new
+                                            </span>
+                                        )}
+                                    </h3>
+                                    <div className="flex bg-gray-50 p-1 rounded-xl border border-gray-100 w-full sm:w-auto overflow-x-auto no-scrollbar gap-0.5">
                                         {['all', 'holiday', 'flight', 'umrah', 'visa'].map(filter => (
                                             <button
                                                 key={filter}
                                                 onClick={() => setEnquiryFilter(filter)}
-                                                className={`px-4 py-2 font-semibold text-xs rounded-lg capitalize whitespace-nowrap transition-all ${enquiryFilter === filter ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                                                className={`px-3 py-1.5 font-semibold text-xs rounded-lg capitalize whitespace-nowrap transition-all ${enquiryFilter === filter ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
                                             >
-                                                {filter}
+                                                {filter === 'all' ? 'All' : filter.charAt(0).toUpperCase() + filter.slice(1)}
                                             </button>
                                         ))}
                                     </div>
                                 </div>
 
-                                <div className="space-y-4">
-                                    {filteredEnquiries.map((enq) => (
-                                        <div key={enq.id} className="bg-white border border-gray-100 rounded-[16px] p-5 shadow-sm hover:border-gray-300 transition-colors flex flex-col md:flex-row gap-5 relative group overflow-hidden">
-                                            {/* Status indicator line */}
-                                            <div className={`absolute left-0 top-0 bottom-0 w-1 ${enq.status === 'new' ? 'bg-red-500' : enq.status === 'resolved' ? 'bg-green-500' : 'bg-yellow-500'}`} />
+                                {/* Table Column Headers */}
+                                <div className="hidden md:grid grid-cols-[2fr_2.5fr_1.5fr_auto] gap-4 px-5 py-2 text-[10px] font-bold text-gray-400 uppercase tracking-wider border-b border-gray-100 bg-gray-50/60">
+                                    <span>Lead</span>
+                                    <span>Message Preview</span>
+                                    <span>Contact</span>
+                                    <span>Actions</span>
+                                </div>
 
-                                            <div className="flex-1">
-                                                <div className="flex items-center gap-3 mb-2">
-                                                    <h4 className="font-bold text-gray-900 text-lg">{enq.name}</h4>
-                                                    <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wide bg-gray-100 text-gray-600`}>
-                                                        {enq.service_type}
-                                                    </span>
-                                                </div>
-                                                <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 text-sm text-gray-600 mb-4">
-                                                    <a href={`mailto:${enq.email}`} className="hover:text-primary transition-colors">{enq.email}</a>
-                                                    <a href={`tel:${enq.phone}`} className="hover:text-primary transition-colors font-medium">{enq.phone}</a>
-                                                    <span className="text-gray-400">{new Date(enq.created_at).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })}</span>
-                                                </div>
-                                                {enq.message && (
-                                                    <div className="bg-gray-50 p-4 rounded-xl text-sm italic text-gray-700 border border-gray-100">
-                                                        "{enq.message}"
+                                {/* Rows */}
+                                <div className="divide-y divide-gray-100">
+                                    {filteredEnquiries.map((enq) => {
+                                        const isNew = enq.status === 'new';
+                                        const initials = (enq.name || 'U').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+                                        const serviceColors = {
+                                            flight: 'bg-blue-50 text-blue-700',
+                                            holiday: 'bg-emerald-50 text-emerald-700',
+                                            umrah: 'bg-amber-50 text-amber-700',
+                                            visa: 'bg-purple-50 text-purple-700',
+                                        };
+                                        const tagColor = serviceColors[enq.service_type] || 'bg-gray-100 text-gray-600';
+                                        return (
+                                            <div
+                                                key={enq.id}
+                                                className={`grid grid-cols-1 md:grid-cols-[2fr_2.5fr_1.5fr_auto] gap-3 md:gap-4 px-5 py-3 hover:bg-gray-50/80 transition-colors relative group ${isNew ? 'bg-blue-50/20' : ''}`}
+                                            >
+                                                {isNew && <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary rounded-r" />}
+
+                                                {/* Col 1: Avatar + Name + Tag */}
+                                                <div className="flex items-center gap-3 min-w-0">
+                                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-black shrink-0 ${isNew ? 'bg-primary text-white' : 'bg-gray-100 text-gray-500'}`}>
+                                                        {initials}
                                                     </div>
-                                                )}
-                                            </div>
+                                                    <div className="min-w-0">
+                                                        <p className={`text-sm truncate ${isNew ? 'font-bold text-gray-900' : 'font-semibold text-gray-700'}`}>{enq.name || '—'}</p>
+                                                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wide ${tagColor}`}>
+                                                            {enq.service_type}
+                                                        </span>
+                                                    </div>
+                                                </div>
 
-                                            <div className="flex flex-row md:flex-col items-center justify-between md:justify-start gap-4 shrink-0 md:w-48 md:border-l md:border-gray-100 md:pl-5">
-                                                <div className="w-full">
-                                                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1.5">Action Status</label>
+                                                {/* Col 2: Message preview */}
+                                                <div className="flex items-center min-w-0">
+                                                    <p className="text-xs text-gray-500 truncate">{enq.message || '—'}</p>
+                                                </div>
+
+                                                {/* Col 3: Contact + Date */}
+                                                <div className="flex flex-col justify-center gap-0.5 min-w-0">
+                                                    <a href={`mailto:${enq.email}`} className="text-xs text-gray-600 hover:text-primary transition-colors truncate">{enq.email}</a>
+                                                    <a href={`tel:${enq.phone}`} className="text-xs text-gray-500 hover:text-primary transition-colors">{enq.phone}</a>
+                                                    <span className="text-[10px] text-gray-400">{new Date(enq.created_at).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })}</span>
+                                                </div>
+
+                                                {/* Col 4: Status + Delete */}
+                                                <div className="flex items-center gap-1.5 shrink-0">
                                                     <select
                                                         value={enq.status}
                                                         onChange={(e) => updateEnquiryStatus(enq.id, e.target.value)}
-                                                        className={`w-full text-sm rounded-xl px-3 py-2 font-bold border border-transparent focus:ring-2 focus:ring-primary/20 cursor-pointer transition-colors outline-none ${enq.status === 'new' ? 'bg-red-50 text-red-700 hover:bg-red-100 border-red-100' :
-                                                            enq.status === 'contacted' ? 'bg-yellow-50 text-yellow-700 hover:bg-yellow-100 border-yellow-100' : 'bg-green-50 text-green-700 hover:bg-green-100 border-green-100'
-                                                            }`}
+                                                        className={`text-xs rounded-lg px-2 py-1.5 font-bold border-0 focus:ring-2 focus:ring-primary/20 cursor-pointer outline-none ${enq.status === 'new' ? 'bg-red-50 text-red-700' : enq.status === 'contacted' ? 'bg-amber-50 text-amber-700' : 'bg-green-50 text-green-700'}`}
                                                     >
-                                                        <option value="new">🔴 Needs Action</option>
+                                                        <option value="new">🔴 New</option>
                                                         <option value="contacted">🟡 In Progress</option>
                                                         <option value="resolved">🟢 Resolved</option>
                                                     </select>
+                                                    <button
+                                                        onClick={() => confirm('Delete this lead?') && deleteEnquiry(enq.id)}
+                                                        className="p-1.5 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all opacity-0 group-hover:opacity-100"
+                                                        title="Delete"
+                                                    >
+                                                        <Trash2 className="w-3.5 h-3.5" />
+                                                    </button>
                                                 </div>
-                                                <button onClick={() => confirm('Delete this lead forever?') && deleteEnquiry(enq.id)} className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all self-end md:self-auto md:w-full md:flex md:justify-center md:items-center mt-auto md:mt-2">
-                                                    <Trash2 className="w-4 h-4 md:mr-2 md:inline-block block" /> <span className="hidden md:inline-block text-xs font-bold">Delete Lead</span>
-                                                </button>
                                             </div>
-                                        </div>
-                                    ))}
+                                        );
+                                    })}
                                     {filteredEnquiries.length === 0 && (
                                         <div className="py-20 flex flex-col items-center justify-center text-center">
-                                            <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mb-4">
-                                                <Users className="w-8 h-8 text-gray-300" />
+                                            <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mb-3">
+                                                <Users className="w-7 h-7 text-gray-300" />
                                             </div>
-                                            <h3 className="text-base font-bold text-gray-900">Inbox Zero</h3>
-                                            <p className="text-sm text-gray-500 mt-1 max-w-sm">No customer leads found matching your criteria.</p>
+                                            <h3 className="text-sm font-bold text-gray-900">Inbox Zero</h3>
+                                            <p className="text-xs text-gray-500 mt-1 max-w-xs">No leads matching this filter.</p>
                                         </div>
                                     )}
                                 </div>
