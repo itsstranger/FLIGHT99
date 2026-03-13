@@ -85,6 +85,7 @@ const VisaServices = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
                         <div>
                             <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4"><FileText className="w-6 h-6" /></div>
+                            <div className="text-blue-600 font-bold text-2xl mb-1">10+</div>
                             <h3 className="font-semibold text-gray-900">Expert Guidance</h3>
                             <p className="text-sm text-gray-500 mt-2">Our experts stay updated with the latest immigration rules for all major countries.</p>
                         </div>
@@ -96,6 +97,7 @@ const VisaServices = () => {
                         </div>
                         <div>
                             <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-4"><FileText className="w-6 h-6" /></div>
+                            <div className="text-purple-600 font-bold text-2xl mb-1">100%</div>
                             <h3 className="font-semibold text-gray-900">End-to-End Support</h3>
                             <p className="text-sm text-gray-500 mt-2">From application form filling to interview preparation, we cover it all.</p>
                         </div>
