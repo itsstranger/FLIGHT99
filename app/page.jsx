@@ -10,6 +10,7 @@ import PackageCard from '@/components/PackageCard';
 import Button from '@/components/ui/Button';
 import ServiceBar from '@/components/ServiceBar';
 import Link from 'next/link';
+import AirportInput from '@/components/AirportInput';
 
 import { useRouter } from 'next/navigation';
 import { createPortal } from 'react-dom';
@@ -34,7 +35,9 @@ const Home = () => {
 
     // Extended Flight Form State
     const [flightFrom, setFlightFrom] = useState('');
+    const [flightFromIata, setFlightFromIata] = useState('');
     const [flightTo, setFlightTo] = useState('');
+    const [flightToIata, setFlightToIata] = useState('');
     const [flightTripType, setFlightTripType] = useState('one-way');
     const [showContactPrompt, setShowContactPrompt] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
@@ -313,11 +316,17 @@ const Home = () => {
                                 {/* From */}
                                 <div className="flex-[1.2] flex flex-col justify-center px-3 py-2 md:px-5 md:py-3 hover:bg-blue-50/40 transition-colors rounded-t-xl md:rounded-l-xl md:rounded-tr-none border-b md:border-b-0 md:border-r border-gray-200 cursor-text group relative">
                                     <label className="text-[10px] md:text-xs text-gray-500 font-semibold mb-0.5 cursor-text group-hover:text-primary transition-colors">From</label>
-                                    <input type="text" name="from" value={flightFrom} onChange={(e) => setFlightFrom(e.target.value)} required={!showContactPrompt} className="w-full text-[14px] md:text-lg font-bold text-gray-900 outline-none bg-transparent placeholder-gray-300 truncate md:pr-4" placeholder="Mumbai" />
-                                    <span className="text-[10px] md:text-[11px] text-gray-500 mt-0.5 md:mt-1 truncate block group-hover:text-gray-600 transition-colors font-medium">Enter city or airport</span>
+                                    <AirportInput
+                                        name="from"
+                                        value={flightFrom}
+                                        onChange={(display, iata) => { setFlightFrom(display); setFlightFromIata(iata); }}
+                                        placeholder="Mumbai"
+                                        required={!showContactPrompt}
+                                    />
+                                    <span className="text-[10px] md:text-[11px] text-gray-500 mt-0.5 md:mt-1 truncate block group-hover:text-gray-600 transition-colors font-medium">{flightFromIata ? `IATA: ${flightFromIata}` : 'Enter city or airport'}</span>
 
                                     {/* Swap Icon */}
-                                    <div className="absolute left-1/2 bottom-0 translate-y-1/2 md:top-1/2 md:-translate-y-1/2 md:left-auto md:right-0 md:translate-x-1/2 -translate-x-1/2 z-20 w-8 h-8 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.12)] rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors border border-gray-100 text-[#32315c] hover:text-[#32315c]/80" onClick={() => { const temp = flightFrom; setFlightFrom(flightTo); setFlightTo(temp); }}>
+                                    <div className="absolute left-1/2 bottom-0 translate-y-1/2 md:top-1/2 md:-translate-y-1/2 md:left-auto md:right-0 md:translate-x-1/2 -translate-x-1/2 z-20 w-8 h-8 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.12)] rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors border border-gray-100 text-[#32315c] hover:text-[#32315c]/80" onClick={() => { const tempD = flightFrom; const tempI = flightFromIata; setFlightFrom(flightTo); setFlightFromIata(flightToIata); setFlightTo(tempD); setFlightToIata(tempI); }}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m16 3 4 4-4 4" /><path d="M20 7H4" /><path d="m8 21-4-4 4-4" /><path d="M4 17h16" /></svg>
                                     </div>
                                 </div>
@@ -325,8 +334,14 @@ const Home = () => {
                                 {/* To */}
                                 <div className="flex-[1.2] flex flex-col justify-center px-3 py-2 md:px-5 md:py-3 hover:bg-blue-50/40 transition-colors border-b md:border-b-0 md:border-r border-gray-200 cursor-text pl-4 md:pl-8 pt-4 md:pt-3 group relative">
                                     <label className="text-[10px] md:text-xs text-gray-500 font-semibold mb-0.5 cursor-text group-hover:text-primary transition-colors">To</label>
-                                    <input type="text" name="to" value={flightTo} onChange={(e) => setFlightTo(e.target.value)} required={!showContactPrompt} className="w-full text-[14px] md:text-lg font-bold text-gray-900 outline-none bg-transparent placeholder-gray-300 truncate" placeholder="New Delhi" />
-                                    <span className="text-[10px] md:text-[11px] text-gray-500 mt-0.5 md:mt-1 truncate block group-hover:text-gray-600 transition-colors font-medium">Enter city or airport</span>
+                                    <AirportInput
+                                        name="to"
+                                        value={flightTo}
+                                        onChange={(display, iata) => { setFlightTo(display); setFlightToIata(iata); }}
+                                        placeholder="New Delhi"
+                                        required={!showContactPrompt}
+                                    />
+                                    <span className="text-[10px] md:text-[11px] text-gray-500 mt-0.5 md:mt-1 truncate block group-hover:text-gray-600 transition-colors font-medium">{flightToIata ? `IATA: ${flightToIata}` : 'Enter city or airport'}</span>
                                 </div>
 
                                 {/* Departure */}
