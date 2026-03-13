@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -23,11 +24,18 @@ const PackageCard = ({ packageData }) => {
         >
             {/* Top Section - Image + Title Overlay */}
             <div className="relative h-[65%] w-full overflow-hidden shrink-0">
-                <img
-                    src={displayImage}
-                    alt={title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                {displayImage ? (
+                    <Image
+                        src={displayImage}
+                        alt={title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        priority={false}
+                    />
+                ) : (
+                    <div className="h-full w-full bg-gray-200 flex items-center justify-center text-gray-400 text-sm">No Image</div>
+                )}
                 {/* Gradient for text readability */}
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
 
