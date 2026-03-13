@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Plane, Calendar, ShieldCheck, Map, ArrowRight, TrendingUp, Users, Globe2, ChevronDown, CheckCircle2 } from 'lucide-react';
+import { Plane, Calendar, ShieldCheck, Map, ArrowRight, TrendingUp, Users, Globe2, ChevronDown, CheckCircle2, X } from 'lucide-react';
 import FAQSection from '@/components/FAQSection';
 import CustomPackagesSection from '@/components/CustomPackagesSection';
 import { usePackages } from '@/context/PackageContext';
