@@ -29,6 +29,21 @@ const LeadCaptureModal = () => {
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         className="relative w-full max-w-lg md:max-w-3xl max-h-[90vh] overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-gray-900/5 flex"
                     >
+                        {/* Image Panel — desktop only */}
+                        <div className="hidden md:flex relative w-56 shrink-0 flex-col justify-end overflow-hidden">
+                            <img
+                                src="https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=800&auto=format&fit=crop"
+                                alt="Travel destination"
+                                className="absolute inset-0 w-full h-full object-cover"
+                            />
+                            {/* Dark gradient for text legibility */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
+                            <div className="relative z-10 p-5 text-white">
+                                <p className="text-xs font-bold uppercase tracking-[0.15em] text-white/70 mb-1">Trusted by 10,000+</p>
+                                <p className="text-base font-bold leading-snug">Travellers who explored the world with us ✈️</p>
+                            </div>
+                        </div>
+
                         {/* Form Column */}
                         <div className="flex flex-col flex-1 overflow-y-auto">
                             <div className="flex items-center justify-between border-b px-6 md:px-8 py-4 md:py-5 sticky top-0 bg-white z-10">
@@ -201,20 +216,6 @@ const LeadCaptureModal = () => {
                             </form>
                         </div>
 
-                        {/* Image Panel — desktop only */}
-                        <div className="hidden md:flex relative w-56 shrink-0 flex-col justify-end overflow-hidden">
-                            <img
-                                src="https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=800&auto=format&fit=crop"
-                                alt="Travel destination"
-                                className="absolute inset-0 w-full h-full object-cover"
-                            />
-                            {/* Dark gradient for text legibility */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
-                            <div className="relative z-10 p-5 text-white">
-                                <p className="text-xs font-bold uppercase tracking-[0.15em] text-white/70 mb-1">Trusted by 10,000+</p>
-                                <p className="text-base font-bold leading-snug">Travellers who explored the world with us ✈️</p>
-                            </div>
-                        </div>
                     </motion.div>
                 </div>
             )}
