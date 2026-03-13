@@ -31,7 +31,10 @@ const Navbar = () => {
 
     return (
         <nav
-            className={`fixed z-40 transition-all duration-500 ${isScrolled ? 'top-0 left-0 right-0 md:top-4 md:left-4 md:right-4 bg-white/95 backdrop-blur-xl shadow-lg border border-gray-200/50 py-2 md:py-3 rounded-b-2xl md:rounded-[2rem]' : 'top-0 left-0 right-0 bg-white border-b-2 border-slate-100 py-4 md:py-6'}`}
+            className={`fixed z-40 transition-all duration-500 ${isScrolled
+                    ? 'top-0 left-0 right-0 bg-white shadow-md border-b border-gray-200 py-2 md:top-4 md:left-4 md:right-4 md:py-3 md:bg-white/95 md:backdrop-blur-xl md:shadow-lg md:border-gray-200/50 md:rounded-[2rem]'
+                    : 'top-0 left-0 right-0 bg-white border-b-2 border-slate-100 py-4 md:py-6'
+                }`}
         >
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex items-center justify-between">
@@ -153,19 +156,6 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                {/* Drawer Footer CTA */}
-                <div className="p-6 border-t border-gray-100 bg-gray-50/50 mt-auto">
-                    <Button
-                        variant="primary"
-                        className="w-full shadow-xl shadow-primary/20 h-14 text-[16px] font-black tracking-widest uppercase rounded-2xl"
-                        onClick={() => {
-                            setIsMobileMenuOpen(false);
-                            openModal('plan');
-                        }}
-                    >
-                        Plan Your Trip
-                    </Button>
-                </div>
             </div>
         </nav>
     );
