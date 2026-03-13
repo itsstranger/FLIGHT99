@@ -20,7 +20,7 @@ const FAQPage = () => {
                         <span className="text-primary font-bold tracking-wider uppercase text-sm mb-3 block opacity-80">Support Center</span>
                         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 font-heading">Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#e6a810]">Questions</span></h1>
                         <p className="font-secondary text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
-                            Everything you need to know about booking your dream trip with FLIGHT99.
+                            Everything you need to know about booking your dream trip with FLIGHT99 Travel Enterprises.
                         </p>
                     </div>
 

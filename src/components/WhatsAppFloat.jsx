@@ -5,7 +5,7 @@ import React from 'react';
 const WhatsAppFloat = () => {
     // You can replace this number with the actual WhatsApp business number
     const whatsappNumber = "+917356409377";
-    const customMessage = "Hello FLIGHT99, I need help planning a trip!";
+    const customMessage = "Hello FLIGHT99 Travel Enterprises, I need help planning a trip!";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(customMessage)}`;
 
     return (

@@ -21,7 +21,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-    title: 'FLIGHT99 - Your Trusted Travel Partner',
+    title: 'FLIGHT99 Travel Enterprises - Your Trusted Travel Partner',
     description: 'Expert travel services for flights, visas, and holiday packages.',
 };
 

@@ -65,7 +65,7 @@ export default function ContactPage() {
                         Contact Us
                     </h1>
                     <p className="text-[1rem] md:text-[1.2rem] lg:text-[1.618rem] text-white/80 max-w-[61.8%] min-w-[300px] mx-auto font-secondary leading-[1.618] font-medium drop-shadow-md">
-                        Have a question about our tour packages, visa services, or flights? Get in touch with the FLIGHT99 team today.
+                        Have a question about our tour packages, visa services, or flights? Get in touch with the FLIGHT99 Travel Enterprises team today.
                     </p>
 
                 </div>

@@ -42,7 +42,7 @@ export default function CustomPackagesSection() {
                     <div className="max-w-3xl flex-1">
                         <p className="text-[#e6a810] font-bold tracking-widest uppercase text-sm mb-4">Our Packages</p>
                         <h2 className="text-3xl md:text-5xl lg:text-5xl font-black text-white leading-tight font-heading uppercase">
-                            Let's Design Your Customized<br className="hidden md:block" /> Package With FLIGHT99
+                            Let's Design Your Customized<br className="hidden md:block" /> Package With FLIGHT99 Travel Enterprises
                         </h2>
                     </div>
                     <div className="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end justify-between shrink-0 mt-4 md:mt-0 py-1 gap-6 md:gap-0">

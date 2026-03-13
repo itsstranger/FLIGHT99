@@ -43,7 +43,7 @@ const AdminLogin = () => {
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
             <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
                 <div className="text-center mb-8">
-                    <img src="/assets/logo.png" alt="FLIGHT99" className="h-12 w-auto mx-auto mb-4" />
+                    <img src="/assets/logo.png" alt="FLIGHT99 Travel Enterprises" className="h-12 w-auto mx-auto mb-4" />
                     <h2 className="text-2xl font-bold text-gray-900">Admin Portal</h2>
                     <p className="text-sm text-gray-500">Sign in to manage packages</p>
                 </div>

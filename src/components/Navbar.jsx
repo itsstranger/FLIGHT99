@@ -49,7 +49,7 @@ const Navbar = () => {
                         <Link href="/" className="flex items-center gap-2 transition-transform duration-300 hover:scale-105" onClick={() => setIsMobileMenuOpen(false)}>
                             <img
                                 src="/assets/logo.png"
-                                alt="FLIGHT99"
+                                alt="FLIGHT99 Travel Enterprises"
                                 className="h-10 md:h-14 w-auto object-contain drop-shadow-sm"
                                 suppressHydrationWarning={true}
                             />
@@ -94,7 +94,7 @@ const Navbar = () => {
                     {/* Mobile Only CTA - WhatsApp & Call icons */}
                     <div className="md:hidden flex items-center gap-2">
                         <a
-                            href="https://wa.me/+917356409377?text=Hello%20FLIGHT99%2C%20I%20need%20help%20planning%20a%20trip%21"
+                            href="https://wa.me/+917356409377?text=Hello%20FLIGHT99%20Travel%20Enterprises%2C%20I%20need%20help%20planning%20a%20trip%21"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="p-2 text-[#25D366] bg-[#25D366]/10 rounded-full hover:scale-105 transition-transform"
@@ -118,7 +118,7 @@ const Navbar = () => {
             <div className={`fixed top-0 left-0 bottom-0 w-[280px] bg-white z-[60] shadow-2xl flex flex-col transform transition-transform duration-300 cubic-bezier(0.16, 1, 0.3, 1) md:hidden ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 {/* Drawer Header */}
                 <div className="p-5 border-b border-gray-100 flex items-center justify-between bg-primary/5">
-                    <img src="/assets/logo.png" alt="FLIGHT99" className="h-8 w-auto object-contain" suppressHydrationWarning={true} />
+                    <img src="/assets/logo.png" alt="FLIGHT99 Travel Enterprises" className="h-8 w-auto object-contain" suppressHydrationWarning={true} />
                     <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 -mr-2 text-gray-500 hover:text-gray-800 hover:bg-white rounded-full transition-all shadow-sm">
                         <X className="w-5 h-5" />
                     </button>

@@ -38,7 +38,7 @@ const HajjUmrah = () => {
                         </div>
                         <h2 className="text-3xl font-bold text-gray-900 mb-6">Embark on Your Spiritual <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#e6a810]">Journey</span> with Peace of Mind</h2>
                         <p className="text-gray-600 mb-8 leading-relaxed">
-                            Focus on your worship while we handle the logistics. FLIGHT99 offers comprehensive Hajj and Umrah services tailored to your needs.
+                            Focus on your worship while we handle the logistics. FLIGHT99 Travel Enterprises offers comprehensive Hajj and Umrah services tailored to your needs.
                             From visa processing and flight bookings to comfortable accommodation near the Haram, our dedicated team ensures a hassle-free experience.
                         </p>
 

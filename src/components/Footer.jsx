@@ -29,7 +29,7 @@ const Footer = () => {
                 <div className={`grid grid-cols-1 md:grid-cols-4 gap-12 pt-16 pb-12 ${visibilityClass}`}>
                     {/* Brand Column */}
                     <div className="space-y-4">
-                        <h2 className="text-2xl font-bold tracking-tight">FLIGHT99</h2>
+                        <h2 className="text-2xl font-bold tracking-tight">FLIGHT99 Travel Enterprises</h2>
                         <p className="text-gray-300 text-sm leading-relaxed">
                             Experience the world with premium travel packages tailored just for you. From boutique stays to exclusive excursions, we handle it all.
                         </p>

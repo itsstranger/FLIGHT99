@@ -11,7 +11,7 @@ export const faqs = [
     },
     {
         question: "What are the packages you offer?",
-        answer: "Journey through the essence of global destinations with FLIGHT99. You can customize and explore your trip from the spiritual journey of Hajj and Umrah packages to the landscapes of Europe with us. Here are the packages we offer:\n\n• International packages: Europe, USA, Turkey, Azerbaijan, Thailand, Malaysia, Vietnam, Dubai & more\n• Domestic Packages: Kashmir, Delhi, Agra, Manali, Jaipur, Honeymoon packages\n• Spiritual packages: Hajj and Umrah, Customised Umrah"
+        answer: "Journey through the essence of global destinations with FLIGHT99 Travel Enterprises. You can customize and explore your trip from the spiritual journey of Hajj and Umrah packages to the landscapes of Europe with us. Here are the packages we offer:\n\n• International packages: Europe, USA, Turkey, Azerbaijan, Thailand, Malaysia, Vietnam, Dubai & more\n• Domestic Packages: Kashmir, Delhi, Agra, Manali, Jaipur, Honeymoon packages\n• Spiritual packages: Hajj and Umrah, Customised Umrah"
     },
     {
         question: "What about the payment process?",

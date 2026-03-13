@@ -39,7 +39,7 @@ const VisaServices = () => {
                         <h2 className="text-3xl font-bold text-gray-900 mb-6">Expert Visa <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#e6a810]">Assistance</span> for All Destinations</h2>
                         <p className="text-gray-600 mb-8 leading-relaxed">
                             Planning an international trip? Don't let visa complexities hold you back.
-                            FLIGHT99 provides comprehensive visa services for tourists and business travelers.
+                            FLIGHT99 Travel Enterprises provides comprehensive visa services for tourists and business travelers.
                             Whether you're heading to Dubai, Europe (Schengen), USA, UK, or anywhere else,
                             our team ensures a smooth and error-free application process.
                         </p>
@@ -81,7 +81,7 @@ const VisaServices = () => {
                     </div>
                 </div>
                 <div className="mt-16 bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4">Why Choose FLIGHT99 for Visas?</h2>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-4">Why Choose FLIGHT99 Travel Enterprises for Visas?</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
                         <div>
                             <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4"><FileText className="w-6 h-6" /></div>

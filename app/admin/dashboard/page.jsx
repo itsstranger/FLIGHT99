@@ -113,7 +113,7 @@ const AdminDashboard = () => {
                         <Link href="/" className="flex items-center transition-transform hover:scale-105">
                             <img
                                 src="/assets/logo.png"
-                                alt="FLIGHT99"
+                                alt="FLIGHT99 Travel Enterprises"
                                 className="h-14 w-auto object-contain drop-shadow-sm"
                                 suppressHydrationWarning={true}
                             />
