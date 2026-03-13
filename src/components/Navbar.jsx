@@ -32,8 +32,8 @@ const Navbar = () => {
     return (
         <nav
             className={`fixed z-40 transition-all duration-500 ${isScrolled
-                    ? 'top-0 left-0 right-0 bg-white shadow-md border-b border-gray-200 py-2 md:top-4 md:left-4 md:right-4 md:py-3 md:bg-white/95 md:backdrop-blur-xl md:shadow-lg md:border-gray-200/50 md:rounded-[2rem]'
-                    : 'top-0 left-0 right-0 bg-white border-b-2 border-slate-100 py-4 md:py-6'
+                ? 'top-0 left-0 right-0 bg-white shadow-md border-b border-gray-200 py-2 md:top-4 md:left-4 md:right-4 md:py-3 md:bg-white/95 md:backdrop-blur-xl md:shadow-lg md:border-gray-200/50 md:rounded-[2rem]'
+                : 'top-0 left-0 right-0 bg-white border-b-2 border-slate-100 py-4 md:py-6'
                 }`}
         >
             <div className="container mx-auto px-4 md:px-6">
@@ -53,7 +53,7 @@ const Navbar = () => {
                             <img
                                 src="/assets/logo.png"
                                 alt="FLIGHT99 Travel Enterprises"
-                                className="h-10 md:h-14 w-auto object-contain drop-shadow-sm"
+                                className="h-12 md:h-14 w-auto object-contain drop-shadow-sm"
                                 suppressHydrationWarning={true}
                             />
                         </Link>
@@ -121,7 +121,7 @@ const Navbar = () => {
             <div className={`fixed top-0 left-0 bottom-0 w-[280px] bg-white z-[60] shadow-2xl flex flex-col transform transition-transform duration-300 cubic-bezier(0.16, 1, 0.3, 1) md:hidden ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 {/* Drawer Header */}
                 <div className="p-5 border-b border-gray-100 flex items-center justify-between bg-primary/5">
-                    <img src="/assets/logo.png" alt="FLIGHT99 Travel Enterprises" className="h-8 w-auto object-contain" suppressHydrationWarning={true} />
+                    <img src="/assets/logo.png" alt="FLIGHT99 Travel Enterprises" className="h-10 w-auto object-contain" suppressHydrationWarning={true} />
                     <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 -mr-2 text-gray-500 hover:text-gray-800 hover:bg-white rounded-full transition-all shadow-sm">
                         <X className="w-5 h-5" />
                     </button>
