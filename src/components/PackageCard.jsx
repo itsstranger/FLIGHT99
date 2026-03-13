@@ -24,7 +24,17 @@ const PackageCard = ({ packageData }) => {
         >
             {/* Top Section - Image + Title Overlay */}
             <div className="relative h-[65%] w-full overflow-hidden shrink-0">
-                {displayImage ? (
+                {!displayImage ? (
+                    <div className="h-full w-full bg-gray-200 flex items-center justify-center text-gray-400 text-sm">No Image</div>
+                ) : displayImage.startsWith('data:') ? (
+                    // base64 from admin upload — Next.js <Image> can't optimize data: URLs
+                    <img
+                        src={displayImage}
+                        alt={title}
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                ) : (
+                    // Real remote URL (Supabase Storage / Unsplash) — use optimized Image
                     <Image
                         src={displayImage}
                         alt={title}
@@ -33,8 +43,6 @@ const PackageCard = ({ packageData }) => {
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                         priority={false}
                     />
-                ) : (
-                    <div className="h-full w-full bg-gray-200 flex items-center justify-center text-gray-400 text-sm">No Image</div>
                 )}
                 {/* Gradient for text readability */}
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />

@@ -360,10 +360,12 @@ const AdminDashboard = () => {
                                                         <td className="px-4 py-4">
                                                             <div className="flex items-center gap-3">
                                                                 <div className="w-12 h-12 rounded-xl overflow-hidden bg-gray-100 shrink-0 relative">
-                                                                    {pkg.image_url ? (
-                                                                        <NextImage src={pkg.image_url} alt={pkg.title} fill sizes="48px" className="object-cover" />
-                                                                    ) : (
+                                                                    {!pkg.image_url ? (
                                                                         <div className="w-full h-full bg-gray-200" />
+                                                                    ) : pkg.image_url.startsWith('data:') ? (
+                                                                        <img src={pkg.image_url} alt={pkg.title} className="w-full h-full object-cover" />
+                                                                    ) : (
+                                                                        <NextImage src={pkg.image_url} alt={pkg.title} fill sizes="48px" className="object-cover" />
                                                                     )}
                                                                 </div>
                                                                 <div>
@@ -394,10 +396,12 @@ const AdminDashboard = () => {
                                         {filteredPackages.map((pkg) => (
                                             <div key={pkg.id} className="relative group rounded-[20px] overflow-hidden bg-gray-50 border border-gray-100">
                                                 <div className="aspect-[4/3] relative w-full overflow-hidden">
-                                                    {pkg.image_url ? (
-                                                        <NextImage src={pkg.image_url} alt={pkg.title} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                                                    ) : (
+                                                    {!pkg.image_url ? (
                                                         <div className="w-full h-full bg-gray-200" />
+                                                    ) : pkg.image_url.startsWith('data:') ? (
+                                                        <img src={pkg.image_url} alt={pkg.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                                    ) : (
+                                                        <NextImage src={pkg.image_url} alt={pkg.title} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                                                     )}
                                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                                                     <p className="absolute bottom-3 left-3 right-3 text-white font-bold leading-tight line-clamp-2">{pkg.title}</p>
