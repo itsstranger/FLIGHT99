@@ -737,11 +737,29 @@ const PackageFormModal = ({ isOpen, onClose, packageData, onSubmit }) => {
         if (!file) return;
         try {
             setProcessing(true);
+
+            // Step 1: Process & crop the image (returns base64 for instant preview)
             const base64 = await processImage(file);
-            setFormData(prev => ({ ...prev, image: base64 }));
+            setFormData(prev => ({ ...prev, image: base64 })); // show preview immediately
+
+            // Step 2: Convert base64 data URL → Blob for upload
+            const fetchRes = await fetch(base64);
+            const blob = await fetchRes.blob();
+
+            // Step 3: Upload blob to Supabase Storage 'images' bucket
+            const fileName = `package-${Date.now()}-${Math.random().toString(36).slice(2)}.jpg`;
+            const { error: uploadError } = await supabase.storage
+                .from('images')
+                .upload(fileName, blob, { contentType: 'image/jpeg', upsert: false });
+
+            if (uploadError) throw uploadError;
+
+            // Step 4: Get the public URL and store it (replaces the base64 preview)
+            const { data: { publicUrl } } = supabase.storage.from('images').getPublicUrl(fileName);
+            setFormData(prev => ({ ...prev, image: publicUrl }));
         } catch (error) {
-            console.error("Image processing failed", error);
-            alert("Failed to process image.");
+            console.error('Image upload failed:', error);
+            alert('Failed to upload image. Please try again.');
         } finally {
             setProcessing(false);
         }
@@ -787,7 +805,7 @@ const PackageFormModal = ({ isOpen, onClose, packageData, onSubmit }) => {
                             {processing && (
                                 <div className="absolute inset-0 bg-white/90 backdrop-blur-sm flex flex-col items-center justify-center z-10">
                                     <Loader2 className="w-8 h-8 animate-spin text-primary mb-2" />
-                                    <p className="text-sm font-bold text-gray-900">Processing image...</p>
+                                    <p className="text-sm font-bold text-gray-900">Processing & uploading image...</p>
                                 </div>
                             )}
                             <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
