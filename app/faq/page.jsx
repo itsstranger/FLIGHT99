@@ -2,16 +2,13 @@
 
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import FAQSection from '@/components/FAQSection';
 
 const FAQPage = () => {
 
 
     return (
-        <main className="min-h-screen bg-gray-50 flex flex-col">
-            <Navbar />
+        <div className="bg-gray-50 flex flex-col">
 
             <div className="flex-1 pt-24 md:pt-32 pb-20 px-4 md:px-6">
                 <div className="max-w-4xl mx-auto">
@@ -52,8 +49,7 @@ const FAQPage = () => {
                 </div>
             </div>
 
-            <Footer />
-        </main>
+        </div>
     );
 };
 

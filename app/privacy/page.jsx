@@ -1,8 +1,6 @@
 'use client';
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { Lock, Eye, Database, Share2, ShieldCheck, Cookie } from 'lucide-react';
 
 const PrivacyPage = () => {
@@ -35,8 +33,7 @@ const PrivacyPage = () => {
     ];
 
     return (
-        <main className="min-h-screen bg-gray-50 flex flex-col">
-            <Navbar />
+        <div className="bg-gray-50 flex flex-col">
 
             {/* Cinematic Header */}
             <div className="relative pt-32 pb-20 bg-[#0a1128] overflow-hidden">
@@ -84,8 +81,7 @@ const PrivacyPage = () => {
                 </div>
             </div>
 
-            <Footer />
-        </main>
+        </div>
     );
 };
 

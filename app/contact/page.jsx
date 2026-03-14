@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { useSettings } from '@/context/SettingsContext';
 
 export default function ContactPage() {
@@ -48,7 +48,7 @@ export default function ContactPage() {
     };
 
     return (
-        <main className="min-h-screen bg-gray-50 flex flex-col pt-16 selection:bg-primary/20">
+        <div className="bg-gray-50 flex flex-col pt-16 selection:bg-primary/20">
             {/* Cinematic Hero */}
             <div className="relative pt-10 pb-8 md:pt-16 md:pb-12 lg:pt-20 lg:pb-16 overflow-hidden flex items-center justify-center bg-[#0a1128] rounded-b-[2rem] md:rounded-b-[3rem] shadow-2xl z-10">
                 {/* Advanced Glowing Orbs (Golden Ratio positioned) */}
@@ -104,7 +104,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-gray-900 mb-1 font-secondary text-[1rem] md:text-[1.1rem] group-hover:text-[#e6a810] transition-colors">Email Us</h4>
-                                    <a href={`mailto:${settings.support_email}`} className="text-gray-600 font-secondary text-[1rem] hover:text-[#e6a810] transition-colors inline-block">{settings.support_email}</a>
+                                    <a href={`mailto:${settings.support_email}`} className="text-gray-600 font-secondary text-[1rem] hover:text-[#e6a810] transition-colors inline-block">booking@flight99.co.in</a>
                                     <p className="text-gray-400 text-[0.75rem] mt-[0.382rem] uppercase tracking-[0.1em] font-bold">We reply within 24 hours</p>
                                 </div>
                             </div>
@@ -201,6 +201,6 @@ export default function ContactPage() {
 
                 </div>
             </div>
-        </main>
+        </div>
     );
 }

@@ -1,8 +1,6 @@
 'use client';
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { Shield, ScrollText, AlertCircle, FileText, CheckCircle } from 'lucide-react';
 
 const TermsPage = () => {
@@ -35,8 +33,7 @@ const TermsPage = () => {
     ];
 
     return (
-        <main className="min-h-screen bg-gray-50 flex flex-col">
-            <Navbar />
+        <div className="bg-gray-50 flex flex-col">
 
             {/* Cinematic Header */}
             <div className="relative pt-32 pb-20 bg-[#0a1128] overflow-hidden">
@@ -76,14 +73,13 @@ const TermsPage = () => {
 
                     <div className="bg-blue-50/50 rounded-[32px] p-8 border border-blue-100/50 text-center">
                         <p className="text-sm text-gray-500 italic">
-                            These terms were last updated on March 14, 2026. For any questions regarding our terms, please contact us at support@flight99.co.in
+                            These terms were last updated on March 14, 2026. For any questions regarding our terms, please contact us at booking@flight99.co.in
                         </p>
                     </div>
                 </div>
             </div>
 
-            <Footer />
-        </main>
+        </div>
     );
 };
 

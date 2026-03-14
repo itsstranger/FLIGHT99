@@ -6,7 +6,7 @@ import { supabase } from '@/lib/supabase';
 const SettingsContext = createContext();
 
 const defaultSettings = {
-    support_email: 'support@flight99.co.in',
+    support_email: 'booking@flight99.co.in',
     physical_address: 'Nilamboor Road, Wandoor',
     whatsapp_number: '+917356409377',
     facebook_url: '',
