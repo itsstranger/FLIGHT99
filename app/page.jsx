@@ -175,7 +175,7 @@ const Home = () => {
             </section>
 
             {/* Overlapping Straddle Search Widget Layer */}
-            <div className="relative z-30 w-full flex flex-col items-center px-4 -mt-[145px] md:-mt-[155px]">
+            <div id="flights" className="relative z-30 w-full flex flex-col items-center px-4 -mt-[145px] md:-mt-[155px]">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}

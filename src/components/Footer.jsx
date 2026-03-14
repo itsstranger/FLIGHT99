@@ -47,8 +47,9 @@ const Footer = () => {
                         <ul className="space-y-3 text-sm text-gray-300">
                             <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
                             <li><Link href="/tour-packages" className="hover:text-white transition-colors">Tour Packages</Link></li>
-                            <li><Link href="/flights" className="hover:text-white transition-colors">Flights</Link></li>
-                            <li><Link href="/visas" className="hover:text-white transition-colors">Visa Services</Link></li>
+                            <li><Link href="/#flights" className="hover:text-white transition-colors">Flights</Link></li>
+                            <li><Link href="/visa" className="hover:text-white transition-colors">Visa Services</Link></li>
+                            <li><Link href="/hajj-umrah" className="hover:text-white transition-colors">Hajj & Umrah</Link></li>
                             <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
                         </ul>
                     </div>
